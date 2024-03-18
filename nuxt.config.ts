@@ -14,5 +14,9 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/eslint-module',
 	],
+	tailwindcss: {
+		exposeConfig: true,
+		viewer: true,
+	},
 	devtools: { enabled: true }
 })

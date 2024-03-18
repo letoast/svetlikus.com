@@ -2,10 +2,10 @@
 </script>
 <template>
 	<div>
-		<div class="container text-white">
-			<div>
+		<div class="container">
+			<h1 class="text-7xl text-white">
 				dsfsd
-			</div>
+			</h1>
 		</div>
 	</div>
 </template>
