@@ -1,21 +1,12 @@
 <script setup lang="ts">
+useHead({
+	bodyAttrs: {
+		class: 'bg-[#090909] text-white h-full'
+	},
+})
 </script>
 <template>
-	<div>
-		<div class="container">
-			<h1 class="text-7xl text-white">
-				dsfsd
-			</h1>
-		</div>
-	</div>
+	<NuxtLayout>
+		<NuxtPage />
+	</NuxtLayout>
 </template>
-
-<style lang="postcss">
-#__nuxt {
-  @apply h-full;
-}
-
-body {
-  @apply bg-[#090909];
-}
-</style>
