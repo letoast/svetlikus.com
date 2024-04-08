@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
 	app: {
 		head: {
-			// htmlAttrs: {
-			// 	class: 'dark h-full'
-			// },
+			link: [
+				{ rel: 'stylesheet', href: 'https://use.typekit.net/tit7gaj.css' }
+			]
 		}
 	},
 	modules: [
@@ -13,6 +13,10 @@ export default defineNuxtConfig({
 		'@nuxtjs/eslint-module',
 		'nuxt-icon'
 	],
+	tailwindcss: {
+		configPath: '@/tailwind.config.ts',
+		cssPath: '@/assets/css/tailwind.css',
+	},
 	devtools: { enabled: true },
 	shadcn: {
 		/**

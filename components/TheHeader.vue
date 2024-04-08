@@ -1,16 +1,4 @@
 <script setup lang="ts">
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuIndicator,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-	NavigationMenuViewport,
-} from '@/components/ui/navigation-menu'
-import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
-
 </script>
 
 <template>
@@ -19,12 +7,12 @@ import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
 			<div class="col-span-2">
 				<NuxtLink
 					to="/"
-					class="scroll-me-5"
+					class="scroll-me-5 text-secondary"
 				>
-					Svetlikus
+					<CommonLogo class="h-6" />
 				</NuxtLink>
 			</div>
-			<div class="col-span-10 flex gap-10">
+			<div class="col-span-8 flex justify-between">
 				<NuxtLink to="/">
 					<Icon
 						name="tabler:home"

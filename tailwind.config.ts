@@ -1,10 +1,12 @@
 import type { Config } from 'tailwindcss'
-import colors from 'tailwindcss/colors'
+import plugin from 'tailwindcss/plugin'
 import animate from 'tailwindcss-animate'
+import colors from 'tailwindcss/colors'
 
 const srcDir = "."
 
 export default {
+	// mode: 'jit',
 	darkMode: ["class"],
 	content: [
 		`${srcDir}/components/**/*.{vue,js,ts}`,
@@ -33,6 +35,12 @@ export default {
 				primary: '#A54CFE',
 				secondary: '#06CAD6',
 			},
+			fontFamily: {
+				'sans': ['futura-pt', 'sans-serif']
+			},
+			fontSize: {
+				base: '1.125rem'
+			},
 			keyframes: {
 				"accordion-down": {
 					from: { height: 0 },
@@ -49,5 +57,23 @@ export default {
 			},
 		},
 	},
-	plugins: [animate],
+	plugins: [
+		animate,
+		// plugin(function ({ addBase, theme }) {
+		// 	addBase({
+		// 		'a': {
+		// 			color: colors.white,
+		// 			fontWeight: theme('fontWeight.medium'),
+		// 			filter: `drop-shadow(0 4px 4px ${theme('colors.secondary')}00)`,
+		// 			transitionProperty: 'all',
+		// 			transitionDuration: '300ms',
+		// 			'&:hover': {
+		// 				color: theme('colors.secondary'),
+		// 				filter: `drop-shadow(0 4px 4px ${theme('colors.secondary')}88)`,
+		// 				'@apply font-medium drop-shadow-[0 4px 4px rgba(6,202,214,0.00)] transition-all duration-300 hover:drop-shadow-[0 4px 4px rgba(6,202,214,0.88)]',
+		// 			},
+		// 		}
+		// 	})
+		// }),
+	],
 } satisfies Config

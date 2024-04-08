@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-[#090909] text-white h-full ;
+	}
+
+	a {
+		@apply text-white hover:text-secondary font-medium drop-shadow-[0_4px_4px_theme(colors.secondary)00] transition-all duration-300 hover:drop-shadow-[0_4px_4px_theme(colors.secondary)88];
+	}
+}
+
+@layer components {
+	.lead {
+		@apply text-2xl leading-10 mb-3;
+	}
+}
