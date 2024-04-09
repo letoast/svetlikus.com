@@ -11,7 +11,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'shadcn-nuxt',
 		'@nuxtjs/eslint-module',
-		'nuxt-icon'
+		'nuxt-icon',
+		'@vueuse/nuxt'
 	],
 	tailwindcss: {
 		configPath: '@/tailwind.config.ts',

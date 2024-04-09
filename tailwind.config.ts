@@ -39,7 +39,7 @@ export default {
 				'sans': ['futura-pt', 'sans-serif']
 			},
 			fontSize: {
-				base: '1.125rem'
+				base: '1.5rem'
 			},
 			keyframes: {
 				"accordion-down": {

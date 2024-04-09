@@ -39,24 +39,14 @@ function updateRefs () {
 				class="relative overflow-hidden rounded-2xl"
 			>
 				<div class="flex">
-					<div class="aspect-[2/1.13] min-w-0 shrink-0 grow-0 basis-full">
+					<div
+						v-for="index in 5"
+						:key="index"
+						class="aspect-[2/1.13] min-w-0 shrink-0 grow-0 basis-full"
+					>
 						<img
 							src="/slide.png"
 							class="size-full object-cover"
-						>
-					</div>
-					<div class="aspect-[2/1.13] min-w-0 shrink-0 grow-0 basis-full">
-						<img
-							src="/slide.png"
-							class="size-full object-cover"
-							alt=""
-						>
-					</div>
-					<div class="aspect-[2/1.13] min-w-0 shrink-0 grow-0 basis-full">
-						<img
-							src="/slide.png"
-							class="size-full object-cover"
-							alt=""
 						>
 					</div>
 				</div>
