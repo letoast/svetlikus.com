@@ -1,11 +1,14 @@
+<script setup lang="ts">
+
+</script>
 <template>
 	<div>
-		<section class="pt-52">
+		<section class="py-52">
 			<div class="container">
 				<div class="flex flex-col items-center">
 					<div class="relative">
-						<CommonHeaderStar class="absolute -right-12 -top-12 h-24 blur-sm" />
-						<CommonHeaderStar class="absolute -right-12 -top-12 h-24" />
+						<CommonHeaderStar class="absolute -right-12 -top-12 h-24 animate-[spin_5s_linear_infinite] blur-sm" />
+						<CommonHeaderStar class="absolute -right-12 -top-12 h-24 animate-[spin_5s_linear_infinite]" />
 						<h1 class="relative text-6xl font-bold uppercase">
 							Propel your brand foRward
 						</h1>
@@ -29,5 +32,6 @@
 				</div>
 			</div>
 		</section>
+		<LayoutCarousel />
 	</div>
 </template>
