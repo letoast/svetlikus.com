@@ -5,10 +5,10 @@ const [emblaRef, emblaApi] = emblaCarouselVue()
 
 </script>
 <template>
-	<section class="py-14">
+	<section>
 		<div class="container">
 			<div class="flex justify-center">
-				<p class="text-base text-gray-300">
+				<p class="text-2xl text-neutral-300">
 					Over the years we flew with some amazing brands.
 				</p>
 			</div>

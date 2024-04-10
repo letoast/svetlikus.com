@@ -20,43 +20,47 @@ watch(mouseX, (currVal, prevVal) => {
 <template>
 	<section class="">
 		<div class="container">
-			<div class="flex flex-col items-center">
-				<div class="relative">
-					<div class="absolute -right-12 -top-12 blur-sm">
+			<div class="grid grid-cols-12 gap-x-8">
+				<div class="col-span-10 col-start-2 flex justify-center">
+					<div class="relative">
+						<div class="absolute -right-12 -top-12 blur-sm">
+							<CommonHeaderStar
+								class="h-24"
+								:style="{
+									transform: `rotate(${output / 10}deg)`
+								}"
+							/>
+						</div>
 						<CommonHeaderStar
-							class="h-24"
+							class="absolute -right-12 -top-12 h-24"
 							:style="{
-								transform: `rotate(${output / 10}deg)`
+								transform: `rotate(${output / 10}deg)`,
+
 							}"
 						/>
+						<h1 class="relative text-6xl font-bold uppercase">
+							Propel your brand foRward
+						</h1>
 					</div>
-					<CommonHeaderStar
-						class="absolute -right-12 -top-12 h-24"
-						:style="{
-							transform: `rotate(${output / 10}deg)`,
-
-						}"
-					/>
-					<h1 class="relative text-6xl font-bold uppercase">
-						Propel your brand foRward
-					</h1>
 				</div>
-				<p class="lead pt-10 text-center text-gray-300">
-					On-demand design services for a monthly fee delivered by industry professionals.
-					<br>
-					Solving design for Founders and CEOs.
-				</p>
-				<div class="mt-14 flex gap-4">
-					<Button
-						variant="outline"
-						class="px-16"
-					>
-						See Plans
-					</Button>
-					<Button class="px-16">
-						Let’s Talk!
-					</Button>
+				<div class="col-span-8 col-start-3 mt-14">
+					<p class="lead text-center text-neutral-300">
+						On-demand design services for a monthly fee delivered by industry professionals. Solving design for Founders and CEOs.
+					</p>
 				</div>
+			</div>
+			<div class="mt-14 grid grid-cols-12 gap-x-8">
+				<Button
+					variant="outline"
+					class="col-span-2 col-start-5"
+				>
+					See Plans
+				</Button>
+				<Button
+					class="col-span-2"
+				>
+					Let’s Talk!
+				</Button>
 			</div>
 		</div>
 	</section>
