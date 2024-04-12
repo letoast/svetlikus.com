@@ -1,5 +1,6 @@
-<!-- eslint-disable @stylistic/no-trailing-spaces -->
 <script setup lang="ts">
+import { TransitionPresets, useTransition } from '@vueuse/core'
+
 withDefaults(defineProps<{
 	cardNumber: string
 	kickerColor?: string
@@ -17,10 +18,34 @@ const grandParentEl = useParentElement(parentEl)
 const cardRef = ref<HTMLElement | null>(null)
 const cardContainerRef = ref<HTMLElement | null>(null)
 
+const isVisible = useElementVisibility(grandParentEl)
 const { isOutside } = useMouseInElement(cardContainerRef)
 const { x, y } = useMouse({ target: grandParentEl, type: 'client' })
 const { top, left } = useElementBounding(cardContainerRef)
-const { tilt, roll, source } = useParallax(cardContainerRef)
+const { roll, tilt, source } = useParallax(cardContainerRef)
+
+const mouseVector = ref([x.value, y.value])
+const parallax = ref([tilt.value, roll.value])
+
+watchThrottled([roll, tilt], ([roll, tilt]) => {
+	parallax.value = [roll, tilt]
+}, {
+	throttle: 100,
+})
+
+const { pause, resume } = useRafFn(() => {
+	mouseVector.value[0] = lerp(mouseVector.value[0], x.value, 0.1)
+	mouseVector.value[1] = lerp(mouseVector.value[1], y.value, 0.1)
+})
+
+watch(isVisible, (isVisible) => {
+	if (isVisible) {
+		resume()
+	}
+	else {
+		pause()
+	}
+})
 </script>
 
 <template>
@@ -37,15 +62,17 @@ const { tilt, roll, source } = useParallax(cardContainerRef)
 		<div
 			ref="cardRef"
 			:style="{
-				'--x': `${x - left}px`,
-				'--y': `${y - top}px`,
-				'transform': !isOutside ? `rotateX(${roll}deg) rotateY(${tilt}deg)` : 'none',
+				'--x': `${mouseVector[0] - left}px`,
+				'--y': `${mouseVector[1] - top}px`,
+				'transform': !isOutside ? `rotateX(${parallax[0] * -2}deg) rotateY(${parallax[1] * -2}deg)` : 'none',
 			}"
 			class="
 				h-full
 				relative
 				px-6
 				py-8
+				transition-transform
+				ease-linear
 			"
 		>
 			<div

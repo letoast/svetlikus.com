@@ -12,34 +12,51 @@ const parentEl = useParentElement()
 const grandParentEl = useParentElement(parentEl)
 const cardRef = ref<HTMLElement | null>(null)
 
+const isVisible = useElementVisibility(grandParentEl)
 const { x, y } = useMouse({ target: grandParentEl, type: 'client' })
 const { top, left } = useElementBounding(cardRef)
+
+const mouseVector = ref([x.value, y.value])
+
+const { pause, resume } = useRafFn(() => {
+	mouseVector.value[0] = lerp(mouseVector.value[0], x.value, 0.1)
+	mouseVector.value[1] = lerp(mouseVector.value[1], y.value, 0.1)
+})
+
+watch(isVisible, (isVisible) => {
+	if (isVisible) {
+		resume()
+	}
+	else {
+		pause()
+	}
+})
 </script>
 
 <template>
 	<div
 		ref="cardRef"
 		:style="{
-			'--x': `${x - left}px`,
-			'--y': `${y - top}px`,
+			'--x': `${mouseVector[0] - left}px`,
+			'--y': `${mouseVector[1] - top}px`,
 		}"
 		class="
-      group
-      relative
-      col-span-4
-      rounded-lg
-      p-8
+			group
+			relative
+			col-span-4
+			rounded-lg
+			p-8
 
-      before:absolute
-      before:z-[-1]
-      before:rounded-lg
-      before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.300)_13.47%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.neutral.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]
-      before:transition-all
-      before:duration-300
-      before:content-['']
+			before:absolute
+			before:z-[-1]
+			before:rounded-lg
+			before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.300)_13.47%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.neutral.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]
+			before:transition-all
+			before:duration-300
+			before:content-['']
 
-      hover:cursor-default
-  "
+			hover:cursor-default
+		"
 		:class="{
 			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_13.47%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:left-[-2px] before:top-[-2px] before:size-[calc(100%+4px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)] hover:before:bg-[linear-gradient(theme(colors.rose.900),_theme(colors.rose.900))]': exposed,
 			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.900)_13.47%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] hover:before:bg-[linear-gradient(theme(colors.neutral.500),_theme(colors.neutral.500))]': !exposed,
@@ -47,11 +64,11 @@ const { top, left } = useElementBounding(cardRef)
 	>
 		<h3
 			class="
-       mb-3
-       text-4xl
-       font-bold
-       text-neutral-300
-   "
+				mb-3
+				text-4xl
+				font-bold
+				text-neutral-300
+			"
 			:class="{
 				'text-rose-500': exposed,
 			}"
@@ -74,10 +91,10 @@ const { top, left } = useElementBounding(cardRef)
 				v-for="item, itemIndex in data.items"
 				:key="itemIndex"
 				class="
-        text-lg
-        font-bold
-        mb-2
-    "
+					text-lg
+					font-bold
+					mb-2
+				"
 				:class="{
 					'text-neutral-200 flex gap-3 items-center': exposed,
 					'text-neutral-500': !exposed,
