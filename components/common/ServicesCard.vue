@@ -41,8 +41,8 @@ const { top, left } = useElementBounding(cardRef)
       hover:cursor-default
   "
 		:class="{
-			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_13.47%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:left-[-2px] before:top-[-2px] before:size-[calc(100%+4px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)]': exposed,
-			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.900)_13.47%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)]': !exposed,
+			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_13.47%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:left-[-2px] before:top-[-2px] before:size-[calc(100%+4px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)] hover:before:bg-[linear-gradient(theme(colors.rose.900),_theme(colors.rose.900))]': exposed,
+			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.900)_13.47%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] hover:before:bg-[linear-gradient(theme(colors.neutral.500),_theme(colors.neutral.500))]': !exposed,
 		}"
 	>
 		<h3

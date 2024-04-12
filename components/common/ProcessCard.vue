@@ -36,27 +36,27 @@ const { top, left } = useElementBounding(cardRef)
       py-8
 
       before:absolute
-      before:left-[-2px]
-      before:top-[-2px]
+      before:left-[-1px]
+      before:top-[-1px]
       before:z-[-1]
-      before:size-[calc(100%+4px)]
+      before:size-[calc(100%+2px)]
       before:rounded-lg
       before:bg-zinc-800
       before:content-['']
 
       after:absolute
-      after:left-[-2px]
-      after:top-[-2px]
+      after:left-[-1px]
+      after:top-[-1px]
       after:z-[-1]
-      after:size-[calc(100%+4px)]
+      after:size-[calc(100%+2px)]
       after:rounded-lg
       after:bg-[radial-gradient(15vw_circle_at_var(--x)_var(--y),_theme(colors.blue.600)_0,_transparent_100%)]
       after:transition-all
-      after:duration-300
       after:content-['']
 
       hover:cursor-default
       hover:bg-[radial-gradient(15vw_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]
+      hover:after:bg-[linear-gradient(theme(colors.blue.600),_theme(colors.blue.600))]
   "
 	>
 		<div
@@ -74,7 +74,6 @@ const { top, left } = useElementBounding(cardRef)
         font-bold
         text-zinc-300
         transition-all
-        duration-300
 
         group-hover:text-blue-600
     "
@@ -88,7 +87,6 @@ const { top, left } = useElementBounding(cardRef)
         font-semibold
         text-zinc-950
         transition-all
-        duration-300
         text-stroke-zinc-500
 
         group-hover:text-blue-600
