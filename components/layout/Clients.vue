@@ -1,11 +1,62 @@
 <script setup lang="ts">
+import { useClamp } from '@vueuse/math'
 import emblaCarouselVue from 'embla-carousel-vue'
+import type { EmblaCarouselType } from 'embla-carousel'
 
-const [emblaRef, emblaApi] = emblaCarouselVue()
+interface Client {
+	image: string
+	title: string
+	link?: string
+}
+
+const props = defineProps<{clients: Client[]}>()
+
+const sectionRef = ref<HTMLElement | null>(null)
+const { top, bottom, height: sectionHeight, width: sectionWidth } = useElementBounding(sectionRef, {
+	immediate: true
+})
+const { height: windowHeight } = useWindowSize({
+	initialHeight: 1
+})
+
+const { y } = useWindowScroll()
+const percentageComputed = computed(() => (windowHeight.value - top.value) / windowHeight.value)
+const percentage = useClamp(percentageComputed, 0, 1)
+
+const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true, dragFree: true })
+
+let internalEngine: ReturnType<EmblaCarouselType['internalEngine']>
+let target: ReturnType<EmblaCarouselType['internalEngine']>['target']
+
+watch(emblaApi, () => {
+	if (emblaApi.value) {
+		internalEngine = emblaApi.value.internalEngine()
+		target = internalEngine.target
+	}
+}, { once: true })
+
+watchThrottled(y, (currVal, prevVal) => {
+	if (top.value > windowHeight.value || bottom.value < 0) return
+	if (currVal > prevVal) {
+		target.add((currVal - prevVal) * 2)
+	} else {
+		target.subtract((prevVal - currVal) * 2)
+	}
+	internalEngine.animation.start()
+}, {
+	throttle: 50
+})
+
+watchDebounced(y, () => {
+	if (top.value > windowHeight.value || bottom.value < 0) return
+	internalEngine.animation.stop()
+}, {
+	debounce: 1000,
+})
 
 </script>
 <template>
-	<section>
+	<section ref="sectionRef">
 		<div class="container">
 			<div class="flex justify-center">
 				<p class="text-2xl text-neutral-300">
@@ -17,35 +68,24 @@ const [emblaRef, emblaApi] = emblaCarouselVue()
 			ref="emblaRef"
 			class="relative mt-14 overflow-hidden"
 		>
-			<div class="flex gap-3">
+			<div
+				v-if="clients.length"
+				class="flex gap-3"
+			>
 				<div
-					v-for="index in 20"
+					v-for="client, index in [...clients, ...clients]"
 					:key="index"
-					class="rounded bg-white/5 px-12 py-4"
+					class="shrink-0 rounded bg-white/5 px-12 py-4"
+					:class="{
+						'ms-3': index === 0
+					}"
 				>
 					<div>
-						<svg
-							width="157"
-							height="29"
-							viewBox="0 0 157 29"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
+						<img
+							class="h-12"
+							:src="client.image"
+							:alt="client.title"
 						>
-							<path
-								d="M108.395 28.0966H107.331C105.713 28.0966 103.71 27.4815 103.307 25.7196C102.794 27.363 99.4598 28.1324 97.0094 28.1324C86.9794 28.1324 78.7971 23.123 78.3883 16.85C78.3511 16.2875 78.3783 15.7205 78.4679 15.1638C79.4137 9.2221 87.355 4.58036 97.01 4.58036C101.134 4.58036 104.943 5.4267 108.03 6.85926C116.124 10.6194 107.199 14.9594 102.754 12.2468C101.245 11.3261 99.2275 10.7629 97.0107 10.7629C92.6548 10.7629 89.0667 12.9374 88.5962 15.7308L88.5948 15.7327L88.5935 15.743L88.5802 15.8275L88.5796 15.8371L88.5769 15.857V15.8583L88.5743 15.8685L88.5736 15.8794L88.5716 15.8909L88.5709 15.8942L88.5663 15.9339L88.5656 15.9441L88.5643 15.955L88.563 15.9653V15.9672L88.5543 16.0498L88.553 16.0594V16.0607L88.5524 16.0825L88.5517 16.0934C88.549 16.1318 88.5464 16.1703 88.5451 16.2087L88.5444 16.2158C88.5417 16.2638 88.5417 16.31 88.5417 16.3599H88.5411C88.5411 19.2962 91.9678 21.7045 96.3238 21.9345C99.6224 22.1075 103.257 21.4373 106.12 19.8465C106.856 19.4358 107.953 18.4197 108.857 18.4197H111.093C111.959 18.4428 112.812 18.8547 112.812 19.9548C112.812 21.2733 112.86 22.5841 112.9 23.902C112.9 26.466 110.833 28.0979 108.395 28.0966ZM75.1852 16.062C75.1852 9.55845 66.8397 4.28564 56.5475 4.28564C46.2559 4.28564 37.9091 9.55845 37.9091 16.062C37.9091 22.5643 46.2559 27.8371 56.5475 27.8371C66.8397 27.8371 75.1852 22.5649 75.1852 16.062ZM48.0792 16.062C48.0792 12.9714 51.8703 10.4682 56.5475 10.4682C61.2227 10.4682 65.0164 12.9714 65.0164 16.062C65.0164 19.1501 61.2227 21.6545 56.5475 21.6545C51.8703 21.6545 48.0792 19.1507 48.0792 16.062ZM130.48 6.38259L117.613 18.8028L117.39 19.0194C115.461 20.8812 115.459 23.9033 117.39 25.7658C119.321 27.6282 122.45 27.6282 124.38 25.7658L124.603 25.5531L134.05 16.433L143.496 25.5511L143.718 25.7658C145.649 27.6302 148.779 27.6282 150.71 25.7658C152.64 23.9033 152.64 20.8819 150.711 19.02L150.487 18.8048L137.621 6.38259C135.656 4.48618 132.445 4.48554 130.48 6.38259ZM21.678 25.7401L34.5461 13.3205L34.7677 13.1053C36.6978 11.2434 36.6985 8.22135 34.7691 6.35825C32.8377 4.49451 29.7069 4.49451 27.7775 6.35761L27.5565 6.57031L18.1079 15.6911L8.66062 6.5716L8.43894 6.35825C6.50754 4.49323 3.3788 4.49451 1.4474 6.35825C-0.48268 8.22135 -0.48268 11.2422 1.44673 13.1033L1.66974 13.3193L14.5365 25.7401C16.5024 27.6385 19.7121 27.6385 21.678 25.7401Z"
-								fill="white"
-								fill-opacity="0.5"
-							/>
-							<path
-								d="M150.098 4.12078L147.995 6.1501L147.94 6.20391C147.456 6.67088 147.456 7.42547 147.94 7.89373C148.424 8.35942 149.208 8.35942 149.691 7.89373L149.745 7.83928L152.11 5.55693H152.111L154.476 7.83928L154.532 7.89373C155.015 8.35942 155.798 8.35942 156.281 7.89373C156.764 7.42611 156.764 6.67088 156.281 6.20391L156.226 6.1501L154.123 4.12078L156.226 2.09146L156.281 2.03829C156.764 1.57196 156.764 0.816085 156.281 0.34975C155.798 -0.116583 155.015 -0.116583 154.532 0.34975L154.476 0.403558L152.11 2.68462L149.746 0.403558L149.691 0.34975C149.207 -0.116583 148.424 -0.116583 147.94 0.34975C147.456 0.816085 147.456 1.5726 147.939 2.03829L147.995 2.09146L150.098 4.12078Z"
-								fill="white"
-								fill-opacity="0.5"
-							/>
-							<path
-								d="M151.221 3.04044L150.103 4.12006L151.221 5.19967C151.713 5.67353 152.516 5.67353 153.009 5.19967L154.127 4.12006L153.009 3.04044C152.516 2.56595 151.713 2.56595 151.221 3.04044Z"
-								fill="#262626"
-							/>
-						</svg>
 					</div>
 				</div>
 			</div>

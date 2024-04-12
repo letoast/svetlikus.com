@@ -12,9 +12,7 @@ withDefaults(defineProps<{
 	kickerColor?: string
 }>(),
 {
-	kickerColor: 'text-neutral-600',
-	description: undefined,
-	cta: undefined
+	kickerColor: 'text-neutral-600'
 })
 </script>
 <template>
