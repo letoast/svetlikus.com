@@ -1,14 +1,15 @@
 import type { Config } from 'tailwindcss'
+import tailwindcss3d from 'tailwindcss-3d'
 import plugin from 'tailwindcss/plugin'
 import animate from 'tailwindcss-animate'
 import colors from 'tailwindcss/colors'
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
 
-const srcDir = "."
+const srcDir = '.'
 
 export default {
 	// mode: 'jit',
-	darkMode: ["class"],
+	darkMode: ['class'],
 	content: [
 		`${srcDir}/components/**/*.{vue,js,ts}`,
 		`${srcDir}/layouts/**/*.vue`,
@@ -20,15 +21,15 @@ export default {
 		`${srcDir}/app.{js,ts,vue}`,
 		`${srcDir}/Error.{js,ts,vue}`,
 		`${srcDir}/error.{js,ts,vue}`,
-		`${srcDir}/app.config.{js,ts}`
+		`${srcDir}/app.config.{js,ts}`,
 	],
-	prefix: "",
+	prefix: '',
 	theme: {
 		container: {
 			center: true,
-			padding: "2rem",
+			padding: '2rem',
 			screens: {
-				"2xl": "1400px",
+				'2xl': '1400px',
 			},
 		},
 		extend: {
@@ -37,29 +38,30 @@ export default {
 				secondary: '#06CAD6',
 			},
 			fontFamily: {
-				'sans': ['futura-pt', 'sans-serif']
+				sans: ['futura-pt', 'sans-serif'],
 			},
 			keyframes: {
-				"accordion-down": {
+				'accordion-down': {
 					from: { height: 0 },
-					to: { height: "var(--radix-accordion-content-height)" },
+					to: { height: 'var(--radix-accordion-content-height)' },
 				},
-				"accordion-up": {
-					from: { height: "var(--radix-accordion-content-height)" },
+				'accordion-up': {
+					from: { height: 'var(--radix-accordion-content-height)' },
 					to: { height: 0 },
 				},
 			},
 			animation: {
-				"accordion-down": "accordion-down 0.2s ease-out",
-				"accordion-up": "accordion-up 0.2s ease-out",
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out',
 			},
 		},
 	},
 	plugins: [
 		animate,
-		plugin(function ({ addUtilities, theme, matchUtilities }) {
+		require('tailwindcss-3d'),
+		plugin(function ({ matchUtilities }) {
 			matchUtilities({
-				'text-stroke': (color) => ({
+				'text-stroke': color => ({
 					textShadow: `-1px -1px 0 ${color}, 1px -1px 0 ${color}, -1px 1px 0 ${color}, 1px 1px 0 ${color}`,
 				}),
 			},

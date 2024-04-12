@@ -19,7 +19,6 @@ export default defineNuxtConfig({
 			stylistic: {
 				indent: 'tab',
 				quotes: 'single',
-
 			},
 		},
 	},
