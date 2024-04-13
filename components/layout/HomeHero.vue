@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { TransitionPresets } from '@vueuse/core'
 
-defineProps<{
+const props = defineProps<{
 	data: {
 		title: string
+		titleStarString: string
 		lead: string
 		cta_primary: {
 			text: string
@@ -16,7 +17,7 @@ defineProps<{
 	}
 }>()
 
-const { y: mouseY, x: mouseX } = useMouse({ type: 'page' })
+const mouseVector = useSmoothMouse()
 
 const rotation = ref(0)
 
@@ -25,11 +26,15 @@ const output = useTransition(rotation, {
 	transition: TransitionPresets.linear,
 })
 
-watch(mouseY, (currVal, prevVal) => {
+const titleSplitToWords = computed(() => {
+	return props.data.title.split(' ')
+})
+
+watch(() => mouseVector.value[1], (currVal, prevVal) => {
 	rotation.value += currVal - prevVal
 })
 
-watch(mouseX, (currVal, prevVal) => {
+watch(() => mouseVector.value[0], (currVal, prevVal) => {
 	rotation.value += currVal - prevVal
 })
 </script>
@@ -39,72 +44,87 @@ watch(mouseX, (currVal, prevVal) => {
 		<div class="container">
 			<div
 				class="
-      grid
-      grid-cols-12
-      gap-x-8
-    "
+					grid
+					grid-cols-12
+					gap-x-8
+				"
 			>
 				<div
 					class="
-       col-span-10
-       col-start-2
-       flex
-       justify-center
-     "
+						col-span-10
+						col-start-2
+						flex
+						justify-center
+					"
 				>
 					<div class="relative">
-						<div
-							class="
-         absolute
-         -right-12
-         -top-12
-         blur-sm
-       "
-						>
-							<CommonHeaderStar
-								class="h-24"
-								:style="{
-									transform: `rotate(${output / 10}deg)`,
-								}"
-							/>
-						</div>
-						<CommonHeaderStar
-							class="
-         absolute
-         -right-12
-         -top-12
-         h-24
-       "
-							:style="{
-								transform: `rotate(${output / 10}deg)`,
-
-							}"
-						/>
 						<h1
 							class="
-         relative
-         text-6xl
-         font-bold
-         uppercase
-       "
+								relative
+								text-9xl
+								font-bold
+								uppercase
+								text-center
+							"
 						>
-							{{ data.title }}
+							<!-- {{ data.title }} -->
+							<span
+								v-for="word, wordIndex in titleSplitToWords"
+								:key="wordIndex"
+								class="
+									inline-block
+									relative
+								"
+							>
+								<div
+									v-if="word === data.titleStarString"
+									class="
+										absolute
+										-right-12
+										-top-12
+										blur-sm
+									"
+								>
+									<CommonHeaderStar
+										class="h-24"
+										:style="{
+											transform: `rotate(${output / 10}deg)`,
+										}"
+									/>
+								</div>
+								<CommonHeaderStar
+									v-if="word === data.titleStarString"
+									class="
+										absolute
+										-right-12
+										-top-12
+										h-24
+									"
+									:style="{
+										transform: `rotate(${output / 10}deg)`,
+
+									}"
+								/>
+								<span class="relative">
+									{{ `${word}` }}{{ `${wordIndex !== titleSplitToWords.length - 1 ? '&nbsp;' : ''}` }}
+								</span>
+							</span>
 						</h1>
 					</div>
 				</div>
 				<div
 					class="
-       col-span-8
-       col-start-3
-       mt-14
-     "
+						col-span-8
+						col-start-3
+						mt-10
+					"
 				>
 					<p
 						class="
-        lead
-        text-center
-        text-neutral-300
-      "
+							lead
+							text-center
+							text-neutral-300
+						"
 					>
 						{{ data.lead }}
 					</p>
@@ -112,18 +132,18 @@ watch(mouseX, (currVal, prevVal) => {
 			</div>
 			<div
 				class="
-      mt-14
-      grid
-      grid-cols-12
-      gap-x-8
-    "
+					mt-10
+					grid
+					grid-cols-12
+					gap-x-8
+				"
 			>
 				<Button
 					variant="outline"
 					class="
-       col-span-2
-       col-start-5
-     "
+						col-span-2
+						col-start-5
+					"
 				>
 					{{ data.cta_primary.text }}
 				</Button>

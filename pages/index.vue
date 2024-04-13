@@ -6,8 +6,8 @@
 	<div>
 		<LayoutHomeHero
 			:data="{
-
-				title: 'Propel your brand foRward',
+				titleStarString: 'forward',
+				title: 'Propel your brand forward',
 				lead: 'On-demand design services for a monthly fee delivered by industry professionals. Solving design for Founders and CEOs.',
 				cta_primary: {
 					text: 'See Plans',
@@ -20,9 +20,9 @@
 
 			}"
 			class="
-     pb-36
-     pt-52
-   "
+				pb-18
+				pt-24
+			"
 		/>
 		<LayoutCarousel class="py-14" />
 		<LayoutClients
@@ -70,12 +70,12 @@
 			/>
 			<div
 				class="
-      container
-      grid
-      grid-cols-12
-      gap-x-8
-      gap-y-6
-    "
+					container
+					grid
+					grid-cols-12
+					gap-x-8
+					gap-y-6
+				"
 			>
 				<CommonProcessCard
 					v-for="card, cardIndex in [
@@ -111,10 +111,10 @@
 				/>
 				<Button
 					class="
-       col-span-2
-       col-start-6
-       mt-8
-     "
+						col-span-2
+						col-start-6
+						mt-8
+					"
 				>
 					Let’s Talk!
 				</Button>
@@ -132,12 +132,12 @@
 			/>
 			<div
 				class="
-      container
-      grid
-      grid-cols-12
-      gap-x-8
-      gap-y-6
-    "
+					container
+					grid
+					grid-cols-12
+					gap-x-8
+					gap-y-6
+				"
 			>
 				<CommonServicesCard
 					:data="{
@@ -182,10 +182,10 @@
 				/>
 				<Button
 					class="
-       col-span-2
-       col-start-6
-       mt-8
-     "
+						col-span-2
+						col-start-6
+						mt-8
+					"
 				>
 					Let’s Talk!
 				</Button>
