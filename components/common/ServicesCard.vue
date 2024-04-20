@@ -1,14 +1,18 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
 	data: {
 		title: string
 		description: string
 		items: string[]
 	}
 	exposed?: boolean
+	customColor: 'rose' | 'yellow' | 'cyan'
 }>()
 
 const cardRef = ref<HTMLElement | null>(null)
+const color = ref(props.customColor === 'rose' ? 'rose' : props.customColor === 'yellow' ? 'yellow' : 'cyan')
+const textColor = ref(props.customColor === 'rose' ? 'text-rose-500' : props.customColor === 'yellow' ? 'text-yellow-400' : 'text-cyan-400')
+const theme900 = ref(props.customColor === 'rose' ? 'theme(colors.rose.900)' : props.customColor === 'yellow' ? 'theme(colors.yellow.900)' : 'theme(colors.cyan.900)')
 const { top, left } = useElementBounding(cardRef)
 const smoothMouse = useSmoothMouse()
 </script>
@@ -30,28 +34,28 @@ const smoothMouse = useSmoothMouse()
 			before:absolute
 			before:z-[-1]
 			before:rounded-lg
-			before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.300)_13.47%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.neutral.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]
 			before:transition-all
 			before:duration-300
 			before:content-['']
 
 			hover:cursor-default
 		"
-		:class="{
-			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_13.47%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:left-[-2px] before:top-[-2px] before:size-[calc(100%+4px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)] hover:before:bg-[linear-gradient(theme(colors.rose.900),_theme(colors.rose.900))]': exposed,
-			'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.900)_13.47%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] hover:before:bg-[linear-gradient(theme(colors.neutral.500),_theme(colors.neutral.500))]': !exposed,
-		}"
+		:class="[
+			exposed && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
+			exposed && 'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_13.47%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)] hover:before:bg-[linear-gradient(theme(colors.rose.700),_theme(colors.rose.500))]',
+			customColor === 'yellow' && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.yellow.300)_13.47%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.yellow.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
+			customColor === 'yellow' && `bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.yellow.900)_13.47%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] hover:before:bg-[linear-gradient(theme(colors.yellow.500),_theme(colors.yellow.500))]`,
+			customColor === 'cyan' && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.cyan.300)_13.47%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.cyan.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
+			customColor === 'cyan' && `bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.cyan.900)_13.47%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] hover:before:bg-[linear-gradient(theme(colors.cyan.500),_theme(colors.cyan.500))]`,
+		]"
 	>
 		<h3
 			class="
 				mb-3
 				text-4xl
 				font-bold
-				text-neutral-300
 			"
-			:class="{
-				'text-rose-500': exposed,
-			}"
+			:class="textColor"
 		>
 			{{ data.title }}
 		</h3>
@@ -74,19 +78,22 @@ const smoothMouse = useSmoothMouse()
 					text-lg
 					font-bold
 					mb-2
+					flex
+					gap-3
+					items-center
 				"
 				:class="{
-					'text-neutral-200 flex gap-3 items-center': exposed,
+					'text-neutral-200': exposed,
 					'text-neutral-500': !exposed,
 				}"
 			>
 				<svg
-					v-if="exposed"
 					width="15"
 					height="16"
 					viewBox="0 0 15 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
+					:class="textColor"
 				>
 					<g clip-path="url(#clip0_839_1917)">
 						<mask
@@ -106,7 +113,7 @@ const smoothMouse = useSmoothMouse()
 						<g mask="url(#mask0_839_1917)">
 							<path
 								d="M7.5 0.5C3.36466 0.5 0 3.86466 0 8C0 12.1353 3.36466 15.5 7.5 15.5C11.6353 15.5 15 12.1353 15 8C15 3.86466 11.6353 0.5 7.5 0.5ZM11.6917 6.02631L6.8985 10.782C6.61654 11.0639 6.16541 11.0827 5.86466 10.8007L3.32707 8.48873C3.02632 8.20677 3.00751 7.73685 3.27068 7.4361C3.55263 7.13533 4.02255 7.11654 4.32331 7.3985L6.33458 9.2406L10.6203 4.95489C10.9211 4.65414 11.391 4.65414 11.6917 4.95489C11.9925 5.25564 11.9925 5.72556 11.6917 6.02631Z"
-								fill="#FF3355"
+								fill="currentColor"
 							/>
 						</g>
 					</g>

@@ -20,6 +20,7 @@ const props = defineProps<{
 const mouseVector = useSmoothMouse()
 
 const rotation = ref(0)
+const sectionRef = ref<HTMLElement | null>(null)
 
 const output = useTransition(rotation, {
 	duration: 0,
@@ -28,6 +29,23 @@ const output = useTransition(rotation, {
 
 const titleSplitToWords = computed(() => {
 	return props.data.title.split(' ')
+})
+
+const { pause, resume, isActive } = useRafFn(() => {
+	rotation.value += 10
+}, {
+	fpsLimit: 60,
+})
+
+const isSectionVisible = useElementVisibility(sectionRef)
+
+watch(isSectionVisible, (isVisible) => {
+	if (isVisible) {
+		resume()
+	}
+	else {
+		pause()
+	}
 })
 
 watch(() => mouseVector.value[1], (currVal, prevVal) => {
@@ -40,7 +58,7 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 </script>
 
 <template>
-	<section class="">
+	<section ref="sectionRef">
 		<div class="container">
 			<div
 				class="

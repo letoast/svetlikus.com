@@ -9,15 +9,16 @@ interface Client {
 	link?: string
 }
 
-const props = defineProps<{clients: Client[]}>()
-
+const props = defineProps<{ clients: Client[] }>()
 const sectionRef = ref<HTMLElement | null>(null)
+
 const { top, bottom, height: sectionHeight, width: sectionWidth } = useElementBounding(sectionRef, {
-	immediate: true
+	immediate: true,
 })
 const { height: windowHeight } = useWindowSize({
-	initialHeight: 1
+	initialHeight: 1,
 })
+const { pixelRatio } = useDevicePixelRatio()
 
 const { y } = useWindowScroll()
 const percentageComputed = computed(() => (windowHeight.value - top.value) / windowHeight.value)
@@ -38,13 +39,14 @@ watch(emblaApi, () => {
 watchThrottled(y, (currVal, prevVal) => {
 	if (top.value > windowHeight.value || bottom.value < 0) return
 	if (currVal > prevVal) {
-		target.add((currVal - prevVal) * 2)
-	} else {
-		target.subtract((prevVal - currVal) * 2)
+		target.add((currVal - prevVal) * 2 / pixelRatio.value)
+	}
+	else {
+		target.subtract((prevVal - currVal) * 2 / pixelRatio.value)
 	}
 	internalEngine.animation.start()
 }, {
-	throttle: 50
+	throttle: 50,
 })
 
 watchDebounced(y, () => {
@@ -53,31 +55,53 @@ watchDebounced(y, () => {
 }, {
 	debounce: 1000,
 })
-
 </script>
+
 <template>
 	<section ref="sectionRef">
 		<div class="container">
-			<div class="flex justify-center">
-				<p class="text-2xl text-neutral-300">
+			<div
+				class="
+					flex
+					justify-center
+				"
+			>
+				<p
+					class="
+						text-2xl
+						text-neutral-300
+					"
+				>
 					Over the years we flew with some amazing brands.
 				</p>
 			</div>
 		</div>
 		<div
 			ref="emblaRef"
-			class="relative mt-14 overflow-hidden"
+			class="
+				relative
+				mt-14
+				overflow-hidden
+			"
 		>
 			<div
 				v-if="clients.length"
-				class="flex gap-3"
+				class="
+					flex
+					gap-3
+				"
 			>
 				<div
 					v-for="client, index in [...clients, ...clients]"
 					:key="index"
-					class="shrink-0 rounded bg-white/5 px-12 py-4"
+					class="
+						shrink-0
+						rounded
+						px-12
+						py-4
+					"
 					:class="{
-						'ms-3': index === 0
+						'ms-3': index === 0,
 					}"
 				>
 					<div>
