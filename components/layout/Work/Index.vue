@@ -27,5 +27,23 @@
 				<LayoutWorkSingle />
 			</div>
 		</div>
+		<div
+			class="
+				col-span-12
+				flex
+				justify-center
+				pt-4
+			"
+		>
+			<Button
+				class="
+					col-span-2
+					col-start-6
+					mt-8
+				"
+			>
+				See all projects
+			</Button>
+		</div>
 	</section>
 </template>
