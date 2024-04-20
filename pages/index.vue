@@ -132,21 +132,7 @@
 				</Button>
 			</div>
 		</section>
-		<section class="py-14">
-			<CommonExposedText
-				:data="{
-					kicker: 'Work',
-					title: 'Check what we delivered',
-					description: 'As creatives ourselves, we know that what you really want to see is the work that’s actually live. Here’s a showcase of some of our recent projects.',
-					cta: {
-						text: 'See all projects',
-						link: '#',
-					},
-				}"
-				:kicker-color="'text-cyan-400'"
-				class="pb-10"
-			/>
-		</section>
+		<LayoutWork class="py-14" />
 		<section class="py-14">
 			<CommonExposedText
 				:data="{
