@@ -1,6 +1,9 @@
+<script setup lang="ts">
+</script>
+
 <template>
 	<div>
-		<TheHeader />
+		<TheHeader ref="defaultHeaderRef" />
 		<slot />
 	</div>
 </template>

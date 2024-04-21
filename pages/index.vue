@@ -196,38 +196,47 @@
 			</div>
 		</section>
 
-		<LayoutClients
-			:clients="[
-				{
-					image: '/logos/fino.svg',
-					title: 'fino',
-				},
-				{
-					image: '/logos/zivabowl.svg',
-					title: 'Živabowl',
-				},
-				{
-					image: '/logos/novus.svg',
-					title: 'Novus',
-				},
-				{
-					image: '/logos/voga.svg',
-					title: 'VOGA',
-				},
-				{
-					image: '/logos/alphacool.svg',
-					title: 'Alphacool',
-				},
-				{
-					image: '/logos/bragg.svg',
-					title: 'Bragg',
-				},
-				{
-					image: '/logos/valkyrie.svg',
-					title: 'Valkyrie',
-				},
-			]"
-			class="py-14"
-		/>
+		<section>
+			<CommonExposedText
+				:data="{
+					kicker: 'Pricing',
+					title: 'Collaboration plans that cover all your needs',
+					description: 'Simplicity and transparency define our pricing. No hidden surprises or restrictions. Enjoy continuous support whenever you need it.',
+					cta: {
+						text: 'See all projects',
+						link: '#',
+					},
+				}"
+				:kicker-color="'text-purple-500'"
+				class="pb-10"
+			/>
+
+			<div class="container">
+				<div
+					class="
+						grid
+						grid-cols-12
+						gap-x-8
+						gap-y-8
+					"
+				>
+					<div
+						v-for="col in 3"
+						:key="col"
+						class="
+							col-span-4
+							w-full
+							h-20
+							relative
+						"
+					>
+						<CommonGradientBorder
+							color-from="theme(colors.cyan.500)"
+							color-to="theme(colors.cyan.500)"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 </template>

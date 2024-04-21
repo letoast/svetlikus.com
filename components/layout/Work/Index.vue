@@ -40,6 +40,10 @@
 					col-span-2
 					col-start-6
 					mt-8
+					text-neutral-950
+					bg-secondary
+
+					hover:bg-secondary/80
 				"
 			>
 				See all projects
