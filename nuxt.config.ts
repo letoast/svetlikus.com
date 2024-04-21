@@ -25,6 +25,7 @@ export default defineNuxtConfig({
 	tailwindcss: {
 		configPath: '@/tailwind.config.ts',
 		cssPath: '@/assets/css/tailwind.css',
+		exposeConfig: true,
 	},
 	devtools: { enabled: true },
 	shadcn: {

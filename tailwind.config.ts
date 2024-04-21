@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss'
-import tailwindcss3d from 'tailwindcss-3d'
 import plugin from 'tailwindcss/plugin'
 import animate from 'tailwindcss-animate'
 import colors from 'tailwindcss/colors'
@@ -49,15 +48,48 @@ export default {
 					from: { height: 'var(--radix-accordion-content-height)' },
 					to: { height: 0 },
 				},
+				'fade-up': {
+					'0%': {
+						translate: '-50% 100% 0',
+						opacity: 0,
+					},
+					'100%': {
+						translate: '-50% 0 0',
+						opacity: 1,
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-up': 'fade-up 0.3s ease-out',
 			},
 		},
+		linearBorderGradients: {
+			directions: { // defaults to these values
+				t: 'to top',
+				tr: 'to top right',
+				r: 'to right',
+				br: 'to bottom right',
+				b: 'to bottom',
+				bl: 'to bottom left',
+				l: 'to left',
+				tl: 'to top left',
+			},
+			colors: { // defaults to {}
+				'purple': colors.purple[500],
+				'neutral-500': colors.neutral[500],
+			},
+			background: {
+				'neutral-950': colors.neutral[950],
+				'neutral-950/20': `${colors.neutral[950]}20`,
+			},
+		},
+
 	},
 	plugins: [
 		animate,
+		require('tailwindcss-border-gradient-radius'),
 		require('tailwindcss-3d'),
 		plugin(function ({ matchUtilities }) {
 			matchUtilities({

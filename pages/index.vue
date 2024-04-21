@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import tailwindConfig from '#tailwind-config'
 </script>
 
 <template>
@@ -196,7 +196,9 @@
 			</div>
 		</section>
 
-		<section>
+		<section
+			class="py-14"
+		>
 			<CommonExposedText
 				:data="{
 					kicker: 'Pricing',
@@ -230,10 +232,16 @@
 							relative
 						"
 					>
-						<CommonGradientBorder
-							color-from="theme(colors.cyan.500)"
-							color-to="theme(colors.cyan.500)"
-						/>
+						<div
+							class="
+								p-10
+								gradient-border-1
+								rounded-xl
+								border-gradient-tl-purple-neutral-950
+							"
+						>
+							dsfdsf
+						</div>
 					</div>
 				</div>
 			</div>
