@@ -82,6 +82,8 @@ export default {
 			},
 			background: {
 				'neutral-950': colors.neutral[950],
+				'neutral-900': colors.neutral[900],
+				'neutral-800': colors.neutral[800],
 				'neutral-950/20': `${colors.neutral[950]}20`,
 			},
 		},

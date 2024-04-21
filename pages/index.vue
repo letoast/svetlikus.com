@@ -196,55 +196,6 @@ import tailwindConfig from '#tailwind-config'
 			</div>
 		</section>
 
-		<section
-			class="py-14"
-		>
-			<CommonExposedText
-				:data="{
-					kicker: 'Pricing',
-					title: 'Collaboration plans that cover all your needs',
-					description: 'Simplicity and transparency define our pricing. No hidden surprises or restrictions. Enjoy continuous support whenever you need it.',
-					cta: {
-						text: 'See all projects',
-						link: '#',
-					},
-				}"
-				:kicker-color="'text-purple-500'"
-				class="pb-10"
-			/>
-
-			<div class="container">
-				<div
-					class="
-						grid
-						grid-cols-12
-						gap-x-8
-						gap-y-8
-					"
-				>
-					<div
-						v-for="col in 3"
-						:key="col"
-						class="
-							col-span-4
-							w-full
-							h-20
-							relative
-						"
-					>
-						<div
-							class="
-								p-10
-								gradient-border-1
-								rounded-xl
-								border-gradient-tl-purple-neutral-950
-							"
-						>
-							dsfdsf
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		<LayoutPricing class="py-14" />
 	</div>
 </template>
