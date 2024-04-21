@@ -61,12 +61,10 @@ const smoothMouse = useSmoothMouse()
 		</h3>
 		<p
 			v-if="data.description"
-			class="text-lg"
-			:class="{
-				'text-neutral-200': exposed,
-				'text-neutral-400': !exposed,
-
-			}"
+			class="
+				text-lg
+				text-neutral-200
+			"
 		>
 			{{ data.description }}
 		</p>
@@ -81,11 +79,8 @@ const smoothMouse = useSmoothMouse()
 					flex
 					gap-3
 					items-center
+					text-neutral-200
 				"
-				:class="{
-					'text-neutral-200': exposed,
-					'text-neutral-500': !exposed,
-				}"
 			>
 				<svg
 					width="15"
