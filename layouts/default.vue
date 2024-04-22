@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<div>
+	<div class="pb-20">
 		<TheHeader ref="defaultHeaderRef" />
 		<slot />
 	</div>
