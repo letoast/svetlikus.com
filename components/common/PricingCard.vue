@@ -28,6 +28,11 @@ withDefaults(defineProps<{
 		exposed: false,
 	}),
 })
+
+const cardRef = ref<HTMLElement | null>(null)
+
+const { top, left } = useElementBounding(cardRef)
+const smoothMouse = useSmoothMouse()
 </script>
 
 <template>
@@ -44,7 +49,7 @@ withDefaults(defineProps<{
 			class="
 				block
 				text-base
-				font-demi
+				font-medium
 				leading-[19.20px]
 				text-purple-500
 				uppercase
@@ -53,15 +58,30 @@ withDefaults(defineProps<{
 			MOST POPULAR*
 		</span>
 		<div
+			ref="cardRef"
+			:style="{
+				'--x': `${smoothMouse[0] - left}px`,
+				'--y': `${smoothMouse[1] - top}px`,
+			}"
 			class="
 				flex
 				flex-col
 				gap-3
 				p-10
-				gradient-border-1
-				rounded-xl
+				rounded-lg
+				relative
+
+				before:absolute
+				before:z-[-1]
+				before:rounded-lg
+				before:transition-all
+				before:duration-300
+				before:content-['']
 			"
-			:class="data.exposed ? 'border-gradient-tl-purple-neutral-900 shadow-2xl shadow-purple-600' : 'border-gradient-tl-neutral-500-neutral-900'"
+			:class="{
+				'shadow-2xl shadow-purple-600 before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.purple.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.purple.600)_13.47%,_theme(colors.neutral.800)00_62.24%)] bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.purple.950)_0%,_theme(colors.purple.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] hover:before:bg-[linear-gradient(theme(colors.purple.700),_theme(colors.purple.500))]': data.exposed,
+				'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.300)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.neutral.600)_13.47%,_theme(colors.neutral.800)00_62.24%)] bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.900)_0%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] hover:before:bg-[linear-gradient(theme(colors.neutral.500),_theme(colors.neutral.500))]': !data.exposed,
+			}"
 		>
 			<h3
 				class="
