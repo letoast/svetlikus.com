@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 		'nuxt-icon',
 		'@vueuse/nuxt',
 		'@nuxt/eslint',
+		'nuxt-marquee',
 	],
 	eslint: {
 		config: {
