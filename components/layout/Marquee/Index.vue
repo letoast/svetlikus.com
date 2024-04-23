@@ -1,5 +1,11 @@
+<script setup lang="ts">
+const sectionRef = ref<HTMLElement | null>(null)
+
+const visible = useElementVisibility(sectionRef)
+</script>
+
 <template>
-	<section>
+	<section ref="sectionRef">
 		<div
 			class="
 				flex
@@ -7,7 +13,10 @@
 				gap-1
 			"
 		>
-			<NuxtMarquee class="py-1">
+			<NuxtMarquee
+				class="py-1"
+				:play="visible"
+			>
 				<LayoutMarqueeItem
 					v-for="item in 20"
 					:key="item"
@@ -16,13 +25,17 @@
 			<NuxtMarquee
 				direction="right"
 				class="py-1"
+				:play="visible"
 			>
 				<LayoutMarqueeItem
 					v-for="item in 20"
 					:key="item"
 				/>
 			</NuxtMarquee>
-			<NuxtMarquee class="py-1">
+			<NuxtMarquee
+				class="py-1"
+				:play="visible"
+			>
 				<LayoutMarqueeItem
 					v-for="item in 20"
 					:key="item"

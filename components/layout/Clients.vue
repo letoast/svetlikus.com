@@ -23,6 +23,7 @@ const { pixelRatio } = useDevicePixelRatio()
 const { y } = useWindowScroll()
 const percentageComputed = computed(() => (windowHeight.value - top.value) / windowHeight.value)
 const percentage = useClamp(percentageComputed, 0, 1)
+const visible = useElementVisibility(sectionRef)
 
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true, dragFree: true })
 
@@ -37,6 +38,7 @@ watch(emblaApi, () => {
 }, { once: true })
 
 watchThrottled(y, (currVal, prevVal) => {
+	if (!visible.value) return
 	if (top.value > windowHeight.value || bottom.value < 0) return
 	if (currVal > prevVal) {
 		target.add((currVal - prevVal) * 2 / pixelRatio.value)

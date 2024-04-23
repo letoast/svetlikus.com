@@ -18,10 +18,32 @@ const { isOutside } = useMouseInElement(cardContainerRef)
 const { top, left } = useElementBounding(cardContainerRef)
 const smoothMouse = useSmoothMouse()
 const { roll, tilt, source } = useParallax(cardContainerRef)
+const visible = useElementVisibility(cardContainerRef)
+
+const x = ref(smoothMouse.value[0] - left.value)
+const y = ref(smoothMouse.value[1] - top.value)
+
+const { pause, resume } = watchPausable([smoothMouse.value, top], () => {
+	x.value = smoothMouse.value[0] - left.value
+	y.value = smoothMouse.value[1] - top.value
+})
+
+watch(visible, (isVisible) => {
+	if (isVisible) {
+		resume()
+	}
+	else {
+		pause()
+	}
+}, {
+	immediate: true,
+
+})
 
 const parallax = ref([tilt.value, roll.value])
 
 watchThrottled([roll, tilt], ([roll, tilt]) => {
+	if (!visible.value) return
 	parallax.value = [roll, tilt]
 }, {
 	throttle: 100,
@@ -42,8 +64,8 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 		<div
 			ref="cardRef"
 			:style="{
-				'--x': `${smoothMouse[0] - left}px`,
-				'--y': `${smoothMouse[1] - top}px`,
+				'--x': `${x}px`,
+				'--y': `${y}px`,
 				'transform': !isOutside ? `rotateX(${parallax[0] * -2}deg) rotateY(${parallax[1] * -2}deg)` : 'none',
 			}"
 			class="

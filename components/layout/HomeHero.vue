@@ -49,10 +49,12 @@ watch(isSectionVisible, (isVisible) => {
 })
 
 watch(() => mouseVector.value[1], (currVal, prevVal) => {
+	if (!isSectionVisible.value) return
 	rotation.value += currVal - prevVal
 })
 
 watch(() => mouseVector.value[0], (currVal, prevVal) => {
+	if (!isSectionVisible.value) return
 	rotation.value += currVal - prevVal
 })
 </script>

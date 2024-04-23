@@ -15,14 +15,36 @@ const textColor = ref(props.customColor === 'rose' ? 'text-rose-500' : props.cus
 const theme900 = ref(props.customColor === 'rose' ? 'theme(colors.rose.900)' : props.customColor === 'yellow' ? 'theme(colors.yellow.900)' : 'theme(colors.cyan.900)')
 const { top, left } = useElementBounding(cardRef)
 const smoothMouse = useSmoothMouse()
+
+const visible = useElementVisibility(cardRef)
+
+const x = ref(smoothMouse.value[0] - left.value)
+const y = ref(smoothMouse.value[1] - top.value)
+
+const { pause, resume } = watchPausable([smoothMouse.value, top], () => {
+	x.value = smoothMouse.value[0] - left.value
+	y.value = smoothMouse.value[1] - top.value
+})
+
+watch(visible, (isVisible) => {
+	if (isVisible) {
+		resume()
+	}
+	else {
+		pause()
+	}
+}, {
+	immediate: true,
+
+})
 </script>
 
 <template>
 	<div
 		ref="cardRef"
 		:style="{
-			'--x': `${smoothMouse[0] - left}px`,
-			'--y': `${smoothMouse[1] - top}px`,
+			'--x': `${x}px`,
+			'--y': `${y}px`,
 		}"
 		class="
 			group

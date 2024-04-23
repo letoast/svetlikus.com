@@ -2,6 +2,7 @@ export function useSmoothMouse() {
 	const { pixelRatio } = useDevicePixelRatio()
 	const { x, y } = useMouse({ type: 'client' })
 	const smoothMouse = ref([x.value, y.value])
+	const { x: scrollX, y: scrollY } = useWindowScroll()
 
 
 	// const { pause, resume, isActive } = useRafFn(() => {
@@ -20,9 +21,18 @@ export function useSmoothMouse() {
 	// 	}
 	// })
 
-	watchEffect(() => {
+	// watchEffect(() => {
+	// 	smoothMouse.value[0] = x.value
+	// 	smoothMouse.value[1] = y.value
+	// }, {
+	// 	flush: 'post',
+	// })
+
+	watchThrottled([x, y, scrollX, scrollY], () => {
 		smoothMouse.value[0] = x.value
 		smoothMouse.value[1] = y.value
+	}, {
+		throttle: 16,
 	})
 
 	return smoothMouse
