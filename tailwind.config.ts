@@ -93,7 +93,7 @@ export default {
 		animate,
 		require('tailwindcss-border-gradient-radius'),
 		require('tailwindcss-3d'),
-		plugin(function ({ matchUtilities }) {
+		plugin(function ({ matchUtilities, addUtilities }) {
 			matchUtilities({
 				'text-stroke': color => ({
 					textShadow: `-1px -1px 0 ${color}, 1px -1px 0 ${color}, -1px 1px 0 ${color}, 1px 1px 0 ${color}`,
@@ -101,6 +101,18 @@ export default {
 			},
 			{
 				values: { ...flattenColorPalette(colors) },
+			})
+			addUtilities({
+				// https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode
+				'.horizontal-writing-tb': { 'writing-mode': 'horizontal-tb' },
+				'.vertical-writing-rl': { 'writing-mode': 'vertical-rl' },
+				'.vertical-writing-lr': { 'writing-mode': 'vertical-lr' },
+				// https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation
+				'.orientation-mixed': { 'text-orientation': 'mixed' },
+				'.orientation-upright': { 'text-orientation': 'upright' },
+				'.orientation-sideways-right': { 'text-orientation': 'sideways-right' },
+				'.orientation-sideways': { 'text-orientation': 'sideways' },
+				'.orientation-glyph': { 'text-orientation': 'use-glyph-orientation' },
 			})
 		}),
 	],

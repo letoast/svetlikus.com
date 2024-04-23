@@ -1,0 +1,59 @@
+<template>
+	<div
+		class="
+			fixed
+			top-1/2
+			-translate-y-1/2
+			left-1/2
+			-translate-x-1/2
+			w-full
+		"
+	>
+		<div
+			class="
+				container
+				flex
+				content-end
+			"
+		>
+			<div class="ml-auto">
+				<div
+					class="
+						flex
+						flex-col
+						items-center
+						gap-4
+						translate-x-[calc(100%_+_1rem)]
+					"
+				>
+					<Icon
+						name="mdi:linkedin"
+						size="24"
+					/>
+					<Icon
+						name="mdi:instagram"
+						size="24"
+					/>
+					<Icon
+						name="mdi:youtube"
+						size="24"
+					/>
+					<Icon
+						name="ri:facebook-fill"
+						size="24"
+					/>
+					<span
+						class="
+							orientation-mixed
+							vertical-writing-lr
+							rotate-180
+						"
+					>
+
+						Follow us* —
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
