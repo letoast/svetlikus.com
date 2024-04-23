@@ -1,7 +1,9 @@
 <script setup lang="ts">
 const cardRef = ref<HTMLElement | null>(null)
 
-const { top, left } = useElementBounding(cardRef)
+const { top, left } = useElementBounding(cardRef, {
+	immediate: true,
+})
 const smoothMouse = useSmoothMouse()
 const visible = useElementVisibility(cardRef)
 

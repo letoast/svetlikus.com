@@ -5,6 +5,7 @@ const fixedHeaderRef = ref<HTMLElement | null>(null)
 const { y } = useWindowScroll()
 const { height: headerHeight } = useElementBounding(headerRef)
 const { height: fixedHeaderHeight } = useElementBounding(fixedHeaderRef)
+const fps = useFps()
 
 const setHeaderHeight = computed(() => {
 	if (y.value > headerHeight.value) {
@@ -67,6 +68,7 @@ const setHeaderHeight = computed(() => {
 						'animate-fade-up col-auto fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-white/20 border-solid backdrop-blur-xl drop-shadow-xl bg-neutral-950/40': setHeaderHeight > 0,
 					}"
 				>
+					{{ fps }}
 					<NuxtLink to="/">
 						<Icon
 							name="tabler:home"

@@ -12,7 +12,8 @@ interface Client {
 const props = defineProps<{ clients: Client[] }>()
 const sectionRef = ref<HTMLElement | null>(null)
 
-const { top, bottom, height: sectionHeight, width: sectionWidth } = useElementBounding(sectionRef, {
+const emblaRef = ref<HTMLElement | null>(null)
+const { top, bottom, height: sectionHeight, width: sectionWidth } = useElementBounding(emblaRef, {
 	immediate: true,
 })
 const { height: windowHeight } = useWindowSize({
@@ -21,42 +22,55 @@ const { height: windowHeight } = useWindowSize({
 const { pixelRatio } = useDevicePixelRatio()
 
 const { y } = useWindowScroll()
-const percentageComputed = computed(() => (windowHeight.value - top.value) / windowHeight.value)
+const translateX = ref(50)
+const percentageComputed = computed(() => (windowHeight.value - bottom.value) / windowHeight.value)
 const percentage = useClamp(percentageComputed, 0, 1)
 const visible = useElementVisibility(sectionRef)
 
-const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true, dragFree: true })
+// const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true, dragFree: true })
 
-let internalEngine: ReturnType<EmblaCarouselType['internalEngine']>
-let target: ReturnType<EmblaCarouselType['internalEngine']>['target']
+// let internalEngine: ReturnType<EmblaCarouselType['internalEngine']>
+// let target: ReturnType<EmblaCarouselType['internalEngine']>['target']
 
-watch(emblaApi, () => {
-	if (emblaApi.value) {
-		internalEngine = emblaApi.value.internalEngine()
-		target = internalEngine.target
-	}
-}, { once: true })
+// watch(emblaApi, () => {
+// 	if (emblaApi.value) {
+// 		internalEngine = emblaApi.value.internalEngine()
+// 		target = internalEngine.target
+// 	}
+// }, { once: true })
 
-watchThrottled(y, (currVal, prevVal) => {
-	if (!visible.value) return
-	if (top.value > windowHeight.value || bottom.value < 0) return
-	if (currVal > prevVal) {
-		target.add((currVal - prevVal) * 2 / pixelRatio.value)
-	}
-	else {
-		target.subtract((prevVal - currVal) * 2 / pixelRatio.value)
-	}
-	internalEngine.animation.start()
-}, {
-	throttle: 50,
-})
+// watchThrottled(y, (currVal, prevVal) => {
+// 	if (!visible.value) return
+// 	if (top.value > windowHeight.value || bottom.value < 0) return
+// 	if (currVal > prevVal) {
+// 		target.add((currVal - prevVal) * 2 / pixelRatio.value)
+// 	}
+// 	else {
+// 		target.subtract((prevVal - currVal) * 2 / pixelRatio.value)
+// 	}
+// 	internalEngine.animation.start()
+// }, {
+// 	throttle: 100,
+// })
 
-watchDebounced(y, () => {
-	if (top.value > windowHeight.value || bottom.value < 0) return
-	internalEngine.animation.stop()
-}, {
-	debounce: 1000,
-})
+// watchDebounced(y, () => {
+// 	if (top.value > windowHeight.value || bottom.value < 0) return
+// 	internalEngine.animation.stop()
+// }, {
+// 	debounce: 1000,
+// })
+
+
+// watch(y, (currVal, prevVal) => {
+// 	if (!visible.value) return
+// 	if (top.value > windowHeight.value || bottom.value < 0) return
+// 	if (currVal > prevVal) {
+// 		translateX.value = translateX.value + ((currVal - prevVal) * 2 / pixelRatio.value) / 100
+// 	}
+// 	else {
+// 		translateX.value = translateX.value - ((prevVal - currVal) * 2 / pixelRatio.value) / 100
+// 	}
+// })
 </script>
 
 <template>
@@ -91,29 +105,35 @@ watchDebounced(y, () => {
 				class="
 					flex
 					gap-3
+					top-0
 				"
 			>
-				<div
-					v-for="client, index in [...clients, ...clients]"
-					:key="index"
-					class="
-						shrink-0
-						rounded
-						px-12
-						py-4
-					"
-					:class="{
-						'ms-3': index === 0,
-					}"
+				<NuxtMarquee
+					class="py-1"
+					:play="visible"
 				>
-					<div>
-						<img
-							class="h-12"
-							:src="client.image"
-							:alt="client.title"
-						>
+					<div
+						v-for="client, index in clients"
+						:key="index"
+						class="
+							shrink-0
+							rounded
+							px-12
+							py-4
+						"
+						:class="{
+							'ms-3': index === 0,
+						}"
+					>
+						<div>
+							<img
+								class="h-12"
+								:src="client.image"
+								:alt="client.title"
+							>
+						</div>
 					</div>
-				</div>
+				</NuxtMarquee>
 			</div>
 		</div>
 	</section>
