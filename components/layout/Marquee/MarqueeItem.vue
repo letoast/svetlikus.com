@@ -7,12 +7,22 @@ const { top, left } = useElementBounding(cardRef, {
 const smoothMouse = useSmoothMouse()
 const visible = useElementVisibility(cardRef)
 
-const x = ref(smoothMouse.value[0] - left.value)
-const y = ref(smoothMouse.value[1] - top.value)
+// const x = ref(smoothMouse.value[0] - left.value)
+// const y = ref(smoothMouse.value[1] - top.value)
+let x = smoothMouse.value[0] - left.value
+let y = smoothMouse.value[1] - top.value
 
-const { pause, resume } = watchPausable([smoothMouse.value, top], () => {
-	x.value = smoothMouse.value[0] - left.value
-	y.value = smoothMouse.value[1] - top.value
+// const { pause, resume } = watchPausable([smoothMouse.value, top], () => {
+// 	x.value = smoothMouse.value[0] - left.value
+// 	y.value = smoothMouse.value[1] - top.value
+// })
+
+const { pause, resume } = useRafFn(() => {
+	x = smoothMouse.value[0] - left.value
+	y = smoothMouse.value[1] - top.value
+
+	cardRef.value.style.setProperty('--x', `${x}px`)
+	cardRef.value.style.setProperty('--y', `${y}px`)
 })
 
 watch(visible, (isVisible) => {
@@ -30,10 +40,6 @@ watch(visible, (isVisible) => {
 <template>
 	<div
 		ref="cardRef"
-		:style="{
-			'--x': `${x}px`,
-			'--y': `${y}px`,
-		}"
 		class="
 			inline-flex
 			items-center
