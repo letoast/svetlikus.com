@@ -25,47 +25,29 @@ const setHeaderHeight = computed(() => {
 	>
 		<div
 			ref="headerRef"
-			class="
-				container
-				py-10
-			"
+			class="container py-10"
 		>
 			<div
-				class="
-					grid
-					grid-cols-12
-					items-center
-				"
+				class="grid grid-cols-12 items-center"
 			>
 				<div
 					class="col-span-2"
 					:class="{
-						'hidden col-span-1': setHeaderHeight > 0,
+						'col-span-1 hidden': setHeaderHeight > 0,
 					}"
 				>
 					<NuxtLink
 						to="/"
-						class="
-							scroll-me-5
-							text-secondary
-						"
+						class="scroll-me-5 text-secondary"
 					>
 						<CommonLogo class="h-6" />
 					</NuxtLink>
 				</div>
 				<div
 					ref="fixedHeaderRef"
-					class="
-						col-span-8
-						flex
-						items-center
-						justify-center
-						gap-6
-						py-4
-						px-6
-					"
+					class="col-span-8 flex items-center justify-center gap-6 px-6 py-4"
 					:class="{
-						'animate-fade-up col-auto fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-white/20 border-solid backdrop-blur-xl drop-shadow-xl bg-neutral-950/40': setHeaderHeight > 0,
+						'fixed bottom-6 left-1/2 z-50 col-auto animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/40 drop-shadow-xl backdrop-blur-xl -translate-x-1/2': setHeaderHeight > 0,
 					}"
 				>
 					{{ fps }}

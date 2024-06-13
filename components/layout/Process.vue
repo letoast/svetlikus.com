@@ -10,13 +10,7 @@
 			class="pb-10"
 		/>
 		<div
-			class="
-				container
-				grid
-				grid-cols-12
-				gap-x-8
-				gap-y-6
-			"
+			class="container grid grid-cols-12 gap-x-8 gap-y-6"
 		>
 			<CommonProcessCard
 				v-for="card, cardIndex in [
@@ -51,11 +45,7 @@
 				:description="card.description"
 			/>
 			<Button
-				class="
-					col-span-2
-					col-start-6
-					mt-8
-				"
+				class="col-span-2 col-start-6 mt-8"
 			>
 				Let’s Talk!
 			</Button>

@@ -11,13 +11,7 @@ defineProps<{
 	<NuxtLink
 		:to="cta.link"
 		class="
-			flex
-			items-center
-			gap-2
-			text-lg
-			font-book
-			text-cyan-400
-
+			flex items-center gap-2 text-lg font-book text-cyan-400
 			hover:text-cyan-300
 		"
 	>

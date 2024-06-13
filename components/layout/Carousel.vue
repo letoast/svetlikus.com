@@ -37,51 +37,26 @@ function updateRefs() {
 		<div class="container">
 			<div
 				ref="emblaRef"
-				class="
-					relative
-					overflow-hidden
-					rounded-2xl
-				"
+				class="relative overflow-hidden rounded-2xl"
 			>
 				<div class="flex">
 					<div
 						v-for="index in 5"
 						:key="index"
-						class="
-							aspect-[2/1.13]
-							min-w-0
-							shrink-0
-							grow-0
-							basis-full
-						"
+						class="aspect-[2/1.13] min-w-0 shrink-0 grow-0 basis-full"
 					>
 						<img
 							src="/slide.png"
-							class="
-								size-full
-								object-cover
-							"
+							class="size-full object-cover"
 						>
 					</div>
 				</div>
 
 				<div
-					class="
-						absolute
-						bottom-3
-						left-1/2
-						flex
-						-translate-x-1/2
-						items-center
-						gap-5
-					"
+					class="absolute bottom-3 left-1/2 flex items-center gap-5 -translate-x-1/2"
 				>
 					<Button
-						class="
-							border
-							backdrop-blur-sm
-							transition-all
-						"
+						class="border backdrop-blur-sm transition-all"
 						variant="ghost"
 						:class="{
 							'cursor-not-allowed opacity-30': !canScrollPrev,
@@ -95,11 +70,7 @@ function updateRefs() {
 						{{ currentSlide + 1 }} / {{ totalSlides }}
 					</div>
 					<Button
-						class="
-							border
-							backdrop-blur-sm
-							transition-all
-						"
+						class="border backdrop-blur-sm transition-all"
 						variant="ghost"
 						:class="{
 							'cursor-not-allowed opacity-30': !canScrollNext,

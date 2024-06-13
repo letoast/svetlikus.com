@@ -111,65 +111,31 @@ function updateRefs() {
 
 		<div
 			class="
-				container
-				relative
-
-				before:absolute
-				before:-top-4
-				before:-left-4
-				before:z-[-1]
-				before:rounded-2xl
-				before:content-['']
-				before:w-[calc(100%+2rem)]
-				before:h-[calc(100%+4rem)]
-				before:bg-[linear-gradient(to_bottom,_theme(colors.transparent),_theme(colors.neutral.900))]
+				container relative
+				before:absolute before:-left-4 before:-top-4 before:z-[-1] before:h-[calc(100%+4rem)] before:w-[calc(100%+2rem)] before:rounded-2xl before:bg-[linear-gradient(to_bottom,_theme(colors.transparent),_theme(colors.neutral.900))] before:content-['']
 			"
 		>
 			<div
-				class="
-					grid
-					grid-cols-12
-					gap-x-8
-					gap-y-8
-					items-end
-				"
+				class="grid grid-cols-12 items-end gap-x-8 gap-y-8"
 			>
 				<div
 					v-for="item, index in data.items"
 					:key="index"
-					class="
-						col-span-4
-						w-full
-						relative
-					"
+					class="relative col-span-4 w-full"
 				>
 					<CommonPricingCard
 						:data="item"
 					/>
 				</div>
 				<div
-					class="
-						col-span-12
-						p-6
-						rounded-xl
-						border
-						border-neutral-100/20
-						bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)]
-					"
+					class="col-span-12 rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
 				>
 					<div
-						class="
-							flex
-							gap-8
-							items-center
-						"
+						class="flex items-center gap-8"
 					>
 						<div
 							ref="emblaRef"
-							class="
-								relative
-								overflow-hidden
-							"
+							class="relative overflow-hidden"
 						>
 							<div
 								class="flex"
@@ -177,67 +143,31 @@ function updateRefs() {
 								<div
 									v-for="item in 4"
 									:key="item"
-									class="
-										flex
-										gap-8
-										items-center
-										w-full
-										basis-full
-										flex-grow
-										flex-shrink-0
-									"
+									class="flex w-full flex-shrink-0 flex-grow basis-full items-center gap-8"
 								>
 									<div
-										class="
-											flex
-											items-center
-											gap-4
-											flex-grow
-											flex-shrink-0
-										"
+										class="flex flex-shrink-0 flex-grow items-center gap-4"
 									>
 										<img
 											src="/slide.png"
 											alt="TODO"
-											class="
-												w-20
-												h-20
-												object-cover
-												rounded-md
-											"
+											class="h-20 w-20 rounded-md object-cover"
 										>
 										<div>
 											<p
-												class="
-													text-lg
-													font-bold
-													leading-[21.60px]
-													text-white
-													text-opacity-50
-												"
+												class="text-lg font-bold leading-[21.60px] text-white text-opacity-50"
 											>
 												Ime Priimek
 											</p>
 											<p
-												class="
-													text-lg
-													font-book
-													leading-[21.60px]
-													text-white
-													text-opacity-50
-												"
+												class="text-lg font-book leading-[21.60px] text-white text-opacity-50"
 											>
 												Founder of Growth Lab
 											</p>
 										</div>
 									</div>
 									<p
-										class="
-											text-lg
-											font-book
-											leading-[21.60px]
-											opacity-50
-										"
+										class="text-lg font-book leading-[21.60px] opacity-50"
 									>
 										“I absolutely adore collaborating with them on projects. They really do amazing research work and provide practical, beautiful and pragmatic solutions. Much recommended!”
 									</p>
@@ -246,19 +176,10 @@ function updateRefs() {
 						</div>
 
 						<div
-							class="
-								flex
-								items-center
-								gap-5
-							"
+							class="flex items-center gap-5"
 						>
 							<Button
-								class="
-									border
-									backdrop-blur-sm
-									transition-all
-									p-3
-								"
+								class="border p-3 backdrop-blur-sm transition-all"
 								variant="ghost"
 								:class="{
 									'cursor-not-allowed opacity-30': !canScrollPrev,
@@ -272,12 +193,7 @@ function updateRefs() {
 								{{ currentSlide + 1 }} / {{ totalSlides }}
 							</div>
 							<Button
-								class="
-									border
-									backdrop-blur-sm
-									transition-all
-									p-3
-								"
+								class="border p-3 backdrop-blur-sm transition-all"
 								variant="ghost"
 								:class="{
 									'cursor-not-allowed opacity-30': !canScrollNext,

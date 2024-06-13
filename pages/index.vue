@@ -19,10 +19,7 @@ import tailwindConfig from '#tailwind-config'
 				},
 
 			}"
-			class="
-				pb-18
-				pt-24
-			"
+			class="pb-18 pt-24"
 		/>
 		<LayoutCarousel class="py-14" />
 		<LayoutClients

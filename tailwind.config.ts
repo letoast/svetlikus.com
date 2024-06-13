@@ -41,21 +41,21 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: { height: 0 },
+					from: { height: '0' },
 					to: { height: 'var(--radix-accordion-content-height)' },
 				},
 				'accordion-up': {
 					from: { height: 'var(--radix-accordion-content-height)' },
-					to: { height: 0 },
+					to: { height: '0' },
 				},
 				'fade-up': {
 					'0%': {
 						translate: '-50% 100% 0',
-						opacity: 0,
+						opacity: '0',
 					},
 					'100%': {
 						translate: '-50% 0 0',
-						opacity: 1,
+						opacity: '1',
 					},
 				},
 			},

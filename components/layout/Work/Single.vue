@@ -1,35 +1,19 @@
 <template>
 	<div class="col-span-6">
 		<div
-			class="
-				rounded-lg
-				overflow-hidden
-			"
+			class="overflow-hidden rounded-lg"
 		>
 			<img
 				src="/slide.png"
-				class="
-					size-full
-					object-cover
-				"
+				class="size-full object-cover"
 			>
 		</div>
 	</div>
 	<div
-		class="
-			col-span-4
-			flex
-			flex-col
-			gap-4
-			justify-center
-		"
+		class="col-span-4 flex flex-col justify-center gap-4"
 	>
 		<div
-			class="
-				flex
-				flex-wrap
-				gap-3
-			"
+			class="flex flex-wrap gap-3"
 		>
 			<CommonTag
 				v-for="item in 8"
@@ -40,20 +24,12 @@
 			</CommonTag>
 		</div>
 		<h3
-			class="
-				text-3xl
-				text-neutral-300
-				font-bold
-			"
+			class="text-3xl font-bold text-neutral-300"
 		>
 			EK Water Blocks
 		</h3>
 		<p
-			class="
-				text-lg
-				font-book
-				text-neutral-400
-			"
+			class="text-lg font-book text-neutral-400"
 		>
 			We held pivotal roles within design, with goal to enhance the brand's visual identity and contribute to its global recognition.
 		</p>

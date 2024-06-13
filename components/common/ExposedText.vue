@@ -12,9 +12,10 @@ withDefaults(defineProps<{
 	kickerColor?: string
 }>(),
 {
-	kickerColor: 'text-neutral-600'
+	kickerColor: 'text-neutral-600',
 })
 </script>
+
 <template>
 	<div class="container grid grid-cols-12 gap-x-8 gap-y-6">
 		<div class="col-span-6 col-start-4 flex flex-col justify-center gap-4 text-center">

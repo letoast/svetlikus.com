@@ -1,30 +1,13 @@
 <template>
 	<div
-		class="
-			fixed
-			top-1/2
-			-translate-y-1/2
-			left-1/2
-			-translate-x-1/2
-			w-full
-		"
+		class="fixed left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2"
 	>
 		<div
-			class="
-				container
-				flex
-				content-end
-			"
+			class="container flex content-end"
 		>
 			<div class="ml-auto">
 				<div
-					class="
-						flex
-						flex-col
-						items-center
-						gap-4
-						translate-x-[calc(100%_+_1rem)]
-					"
+					class="flex flex-col items-center gap-4 translate-x-[calc(100%_+_1rem)]"
 				>
 					<Icon
 						name="mdi:linkedin"
@@ -43,11 +26,7 @@
 						size="24"
 					/>
 					<span
-						class="
-							orientation-mixed
-							vertical-writing-lr
-							rotate-180
-						"
+						class="rotate-180 vertical-writing-lr orientation-mixed"
 					>
 
 						Follow us* —

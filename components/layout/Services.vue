@@ -10,14 +10,7 @@
 			class="pb-10"
 		/>
 		<div
-			class="
-				container
-				grid
-				grid-cols-12
-				gap-x-8
-				gap-y-6
-				items-baseline
-			"
+			class="container grid grid-cols-12 items-baseline gap-x-8 gap-y-6"
 		>
 			<CommonServicesCard
 				:data="{
@@ -64,11 +57,7 @@
 				custom-color="yellow"
 			/>
 			<Button
-				class="
-					col-span-2
-					col-start-6
-					mt-8
-				"
+				class="col-span-2 col-start-6 mt-8"
 			>
 				Let’s Talk!
 			</Button>

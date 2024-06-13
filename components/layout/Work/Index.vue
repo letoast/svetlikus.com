@@ -15,12 +15,7 @@
 		/>
 		<div class="container">
 			<div
-				class="
-					grid
-					grid-cols-12
-					gap-x-8
-					gap-y-8
-				"
+				class="grid grid-cols-12 gap-x-8 gap-y-8"
 			>
 				<LayoutWorkSingle />
 				<LayoutWorkSingle />
@@ -28,21 +23,11 @@
 			</div>
 		</div>
 		<div
-			class="
-				col-span-12
-				flex
-				justify-center
-				pt-4
-			"
+			class="col-span-12 flex justify-center pt-4"
 		>
 			<Button
 				class="
-					col-span-2
-					col-start-6
-					mt-8
-					text-neutral-950
-					bg-secondary
-
+					col-span-2 col-start-6 mt-8 bg-secondary text-neutral-950
 					hover:bg-secondary/80
 				"
 			>

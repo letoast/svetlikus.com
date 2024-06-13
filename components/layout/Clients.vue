@@ -77,16 +77,10 @@ const visible = useElementVisibility(sectionRef)
 	<section ref="sectionRef">
 		<div class="container">
 			<div
-				class="
-					flex
-					justify-center
-				"
+				class="flex justify-center"
 			>
 				<p
-					class="
-						text-2xl
-						text-neutral-300
-					"
+					class="text-2xl text-neutral-300"
 				>
 					Over the years we flew with some amazing brands.
 				</p>
@@ -94,19 +88,11 @@ const visible = useElementVisibility(sectionRef)
 		</div>
 		<div
 			ref="emblaRef"
-			class="
-				relative
-				mt-14
-				overflow-hidden
-			"
+			class="relative mt-14 overflow-hidden"
 		>
 			<div
 				v-if="clients.length"
-				class="
-					flex
-					gap-3
-					top-0
-				"
+				class="top-0 flex gap-3"
 			>
 				<NuxtMarquee
 					class="py-1"
@@ -115,12 +101,7 @@ const visible = useElementVisibility(sectionRef)
 					<div
 						v-for="client, index in clients"
 						:key="index"
-						class="
-							shrink-0
-							rounded
-							px-12
-							py-4
-						"
+						class="shrink-0 rounded px-12 py-4"
 						:class="{
 							'ms-3': index === 0,
 						}"

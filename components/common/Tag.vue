@@ -15,33 +15,13 @@ const wrapperClass = computed(() => {
 <template>
 	<div
 		class="
-			flex
-			items-center
-			justify-center
-			relative
-			px-2
-			rounded
-
-			before:-left-px
-			before:-top-px
-			before:size-[calc(100%+2px)]
-			before:absolute
-			before:z-[-1]
-			before:rounded
-			before:transition-all
-			before:duration-300
-			before:content-['']
+			relative flex items-center justify-center rounded px-2
+			before:absolute before:-left-px before:-top-px before:z-[-1] before:size-[calc(100%+2px)] before:rounded before:transition-all before:duration-300 before:content-['']
 		"
 		:class="wrapperClass"
 	>
 		<span
-			class="
-				text-xs
-				font-book
-				leading-[20.78px]
-				text-center
-				text-white
-			"
+			class="text-xs font-book text-center leading-[20.78px] text-white"
 		>
 			<slot />
 		</span>

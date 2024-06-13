@@ -7,11 +7,7 @@ const visible = useElementVisibility(sectionRef)
 <template>
 	<section ref="sectionRef">
 		<div
-			class="
-				flex
-				flex-col
-				gap-1
-			"
+			class="flex flex-col gap-1"
 		>
 			<NuxtMarquee
 				class="py-1"

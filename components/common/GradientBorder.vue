@@ -9,15 +9,10 @@ const props = defineProps<{
 
 <template>
 	<div
-		class="
-			gradient-border
-			absolute
-			w-[calc(100%+2px)]
-			h-[calc(100%+2px)]
-			rounded-xl
-			border-solid
-		"
-		:class="`bg-[linear-gradient(transparent,transparent),linear-gradient(to_right,_${colorFrom},_${colorTo})]`"
+		class="gradient-border absolute h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-xl border-solid"
+		:class="`
+			bg-[linear-gradient(transparent,transparent),linear-gradient(to_right,_${colorFrom+',_'+colorTo})]
+		`"
 	/>
 </template>
 
