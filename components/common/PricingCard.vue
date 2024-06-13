@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// import tv from 'tailwind-variants'
+
 withDefaults(defineProps<{
 	data: {
 		title: string
@@ -54,6 +56,12 @@ watch(visible, (isVisible) => {
 	immediate: true,
 
 })
+
+// const { } = tv({
+// 	slots: {
+
+// 	}
+// })
 </script>
 
 <template>
@@ -77,7 +85,7 @@ watch(visible, (isVisible) => {
 				before:absolute before:z-[-1] before:rounded-lg before:transition-all before:duration-300 before:content-['']
 			"
 			:class="{
-				'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.purple.950)_0%,_theme(colors.purple.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] shadow-2xl shadow-purple-600 before:-left-px before:-top-px before:size-[calc(100%+2px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.purple.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.purple.600)_13.47%,_theme(colors.neutral.800)00_62.24%)] hover:before:bg-[linear-gradient(theme(colors.purple.700),_theme(colors.purple.500))]': data.exposed,
+				'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.purple.950)_0%,_theme(colors.purple.950)00_62.24%),linear-gradient(210deg,_theme(colors.purple.950)_-2.85%,_#090909_100%)] shadow-2xl shadow-purple-600 before:-left-px before:-top-px before:size-[calc(100%+2px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.purple.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.purple.600)_13.47%,_theme(colors.neutral.800)00_62.24%)] hover:before:bg-[linear-gradient(theme(colors.purple.700),_theme(colors.purple.500))]': data.exposed,
 				'bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.900)_0%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)] before:-left-px before:-top-px before:size-[calc(100%+2px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.neutral.300)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.neutral.600)_13.47%,_theme(colors.neutral.800)00_62.24%)] hover:before:bg-[linear-gradient(theme(colors.neutral.500),_theme(colors.neutral.500))]': !data.exposed,
 			}"
 		>
@@ -101,7 +109,11 @@ watch(visible, (isVisible) => {
 				<span class="inline-block">{{ data.pricePeriod }} <sup>{{ data.pricePeriodSuperscript }}</sup></span>
 			</p>
 			<hr
-				class="border border-neutral-800"
+				class="border"
+				:class="{
+					'border-purple-800': data.exposed,
+					'border-neutral-800': !data.exposed,
+				}"
 			>
 			<p
 				class="text-lg font-book leading-[21.60px] text-neutral-400"

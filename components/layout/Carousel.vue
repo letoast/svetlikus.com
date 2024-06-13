@@ -55,7 +55,17 @@ function updateRefs() {
 				<div
 					class="absolute bottom-3 left-1/2 flex items-center gap-5 -translate-x-1/2"
 				>
-					<Button
+					<UiButton
+						variant="ghost"
+						:class="{
+							'cursor-not-allowed opacity-30': !canScrollPrev,
+							'hover:border-secondary hover:bg-secondary/30 hover:shadow-lg hover:shadow-secondary/30': canScrollPrev,
+						}"
+						@click="emblaApi?.scrollPrev"
+					>
+						<Icon name="tabler:arrow-left" />
+					</UiButton>
+					<!-- <Button
 						class="border backdrop-blur-sm transition-all"
 						variant="ghost"
 						:class="{
@@ -65,11 +75,21 @@ function updateRefs() {
 						@click="emblaApi?.scrollPrev"
 					>
 						<Icon name="tabler:arrow-left" />
-					</Button>
+					</Button> -->
 					<div>
 						{{ currentSlide + 1 }} / {{ totalSlides }}
 					</div>
-					<Button
+					<UiButton
+						variant="ghost"
+						:class="{
+							'cursor-not-allowed opacity-30': !canScrollNext,
+							'hover:border-secondary hover:bg-secondary/30 hover:shadow-lg hover:shadow-secondary/30': canScrollNext,
+						}"
+						@click="emblaApi?.scrollNext"
+					>
+						<Icon name="tabler:arrow-right" />
+					</UiButton>
+					<!-- <Button
 						class="border backdrop-blur-sm transition-all"
 						variant="ghost"
 						:class="{
@@ -79,7 +99,7 @@ function updateRefs() {
 						@click="emblaApi?.scrollNext"
 					>
 						<Icon name="tabler:arrow-right" />
-					</Button>
+					</Button> -->
 				</div>
 			</div>
 		</div>

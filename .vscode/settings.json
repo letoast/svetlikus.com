@@ -1,7 +1,39 @@
 {
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit"
-	},
+	// Enable ESlint flat config support
 	"eslint.experimental.useFlatConfig": true,
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"[vue]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "stylelint.vscode-stylelint"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "stylelint.vscode-stylelint"
+	},
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"tailwindCSS.experimental.classRegex": [
+		[
+			"ui:\\s*{([^)]*)\\s*}",
+			"[\"'`]([^\"'`]*).*?[\"'`]"
+		],
+		[
+			"/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}",
+			":\\s*[\"'`]([^\"'`]*).*?[\"'`]"
+		]
+	],
+	"tailwindCSS.classAttributes": [
+		"class",
+		"className",
+		"ngClass",
+		"ui"
+	],
+	"editor.quickSuggestions": {
+		"strings": true
+	}
 }

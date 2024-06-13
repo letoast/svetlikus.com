@@ -9,11 +9,12 @@ export default defineNuxtConfig({
 	},
 	modules: [
 		'@nuxtjs/tailwindcss',
-		'shadcn-nuxt',
-		'nuxt-icon',
+		// 'shadcn-nuxt',
+		// 'nuxt-icon',
 		'@vueuse/nuxt',
 		'@nuxt/eslint',
 		'nuxt-marquee',
+		'@nuxt/ui',
 	],
 	eslint: {
 		config: {

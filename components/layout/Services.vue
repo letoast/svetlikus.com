@@ -56,11 +56,11 @@
 				}"
 				custom-color="yellow"
 			/>
-			<Button
+			<UButton
 				class="col-span-2 col-start-6 mt-8"
 			>
 				Let’s Talk!
-			</Button>
+			</UButton>
 		</div>
 	</section>
 </template>

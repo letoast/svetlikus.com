@@ -117,17 +117,19 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 			<div
 				class="mt-10 grid grid-cols-12 gap-x-8"
 			>
-				<Button
+				<UButton
 					variant="outline"
+					color="primary"
 					class="col-span-2 col-start-5"
 				>
 					{{ data.cta_primary.text }}
-				</Button>
-				<Button
+				</UButton>
+				<UButton
+					color="primary"
 					class="col-span-2"
 				>
-					{{ data.cta_secondary.text }}
-				</Button>
+					{{ data.cta_primary.text }}
+				</UButton>
 			</div>
 		</div>
 	</section>

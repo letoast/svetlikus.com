@@ -178,8 +178,8 @@ function updateRefs() {
 						<div
 							class="flex items-center gap-5"
 						>
-							<Button
-								class="border p-3 backdrop-blur-sm transition-all"
+							<UButton
+								class="border p-3 text-white backdrop-blur-sm"
 								variant="ghost"
 								:class="{
 									'cursor-not-allowed opacity-30': !canScrollPrev,
@@ -187,13 +187,13 @@ function updateRefs() {
 								}"
 								@click="emblaApi?.scrollPrev"
 							>
-								<Icon name="tabler:arrow-left" />
-							</Button>
+								<Icon name="tabler:chevron-left" />
+							</UButton>
 							<div class="whitespace-nowrap">
 								{{ currentSlide + 1 }} / {{ totalSlides }}
 							</div>
-							<Button
-								class="border p-3 backdrop-blur-sm transition-all"
+							<UButton
+								class="border p-3 text-white backdrop-blur-sm"
 								variant="ghost"
 								:class="{
 									'cursor-not-allowed opacity-30': !canScrollNext,
@@ -201,8 +201,8 @@ function updateRefs() {
 								}"
 								@click="emblaApi?.scrollNext"
 							>
-								<Icon name="tabler:arrow-right" />
-							</Button>
+								<Icon name="tabler:chevron-right" />
+							</UButton>
 						</div>
 					</div>
 				</div>

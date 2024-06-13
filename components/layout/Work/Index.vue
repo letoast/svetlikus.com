@@ -25,14 +25,12 @@
 		<div
 			class="col-span-12 flex justify-center pt-4"
 		>
-			<Button
-				class="
-					col-span-2 col-start-6 mt-8 bg-secondary text-neutral-950
-					hover:bg-secondary/80
-				"
+			<UButton
+				class="col-span-2 col-start-6 mt-8"
+				color="secondary"
 			>
 				See all projects
-			</Button>
+			</UButton>
 		</div>
 	</section>
 </template>
