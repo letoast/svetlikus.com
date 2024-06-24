@@ -25,6 +25,11 @@
 		[
 			"/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}",
 			":\\s*[\"'`]([^\"'`]*).*?[\"'`]"
+		],
+		// https://github.com/paolotiu/tailwind-intellisense-regex-list?tab=readme-ov-file
+		[
+			"tv\\(([^)]*)\\)",
+			"{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"
 		]
 	],
 	"tailwindCSS.classAttributes": [

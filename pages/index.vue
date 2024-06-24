@@ -1,9 +1,37 @@
 <script setup lang="ts">
 import tailwindConfig from '#tailwind-config'
+
+const { $directus, $readItems } = useNuxtApp()
+
+const { data: page, error } = await useAsyncData('page', () => {
+	return $directus.request($readItems('svetlikus_pages', {
+		deep: {
+			translations: {
+				_filter: {
+					slug: {
+						_eq: 'home',
+					},
+				},
+			},
+		},
+		fields: ['*', {
+			translations: ['*', {
+				blocks: ['*', {
+					item: ['*'],
+				}],
+			}] }],
+		limit: 1,
+	}))
+}, {
+	transform: (data) => {
+		return data[0].translations[0]
+	},
+})
 </script>
 
 <template>
 	<div>
+		{{ page }}
 		<LayoutHomeHero
 			:data="{
 				titleStarString: 'forward',
