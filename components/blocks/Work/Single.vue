@@ -6,15 +6,18 @@ const props = defineProps<{
 }>()
 
 const { $directus, $readItems, $readItem } = useNuxtApp()
-const { data: project, error, refresh } = await useLazyAsyncData(`project-${props.data?.svetlikus_projects_id?.id}`, async () => {
+const { data: projectData, error, refresh } = await useLazyAsyncData(`project-${props.data?.svetlikus_projects_id?.id}`, async () => {
 	return await $directus.request($readItem('svetlikus_projects', props.data?.svetlikus_projects_id?.id, {
 		fields: ['*.*.*'],
 	}))
 }, {
-	transform: (data) => {
-		return data?.translations?.[0]
-	},
+	// transform: (data) => {
+	// 	return data?.translations?.[0]
+	// },
+})
 
+const project = computed(() => {
+	return projectData.value?.translations?.[0]
 })
 </script>
 
@@ -35,6 +38,7 @@ const { data: project, error, refresh } = await useLazyAsyncData(`project-${prop
 		<div
 			class="flex flex-wrap gap-3"
 		>
+			{{ projectData }}
 			<CommonTag
 				v-for="item in 8"
 				:key="item"
