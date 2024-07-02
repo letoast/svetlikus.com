@@ -71,65 +71,34 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					<div class="relative">
 						<h1
 							class="relative text-center text-9xl font-bold uppercase"
-						>
-							<!-- {{ data.title }} -->
-							<span
-								v-for="word, wordIndex in titleSplitToWords"
-								:key="wordIndex"
-								class="relative inline-block"
-							>
-								<div
-									v-if="word === data.titleStarString"
-									class="absolute -right-12 -top-12 blur-sm"
-								>
-									<CommonHeaderStar
-										class="h-24"
-										:style="{
-											transform: `rotate(${output / 10}deg)`,
-										}"
-									/>
-								</div>
-								<CommonHeaderStar
-									v-if="word === data.titleStarString"
-									class="absolute -right-12 -top-12 h-24"
-									:style="{
-										transform: `rotate(${output / 10}deg)`,
-
-									}"
-								/>
-								<span class="relative">
-									{{ `${word}` }}{{ `${wordIndex !== titleSplitToWords.length - 1 ? '&nbsp;' : ''}` }}
-								</span>
-							</span>
-						</h1>
+							v-html="data.title"
+						/>
 					</div>
 				</div>
 				<div
 					class="col-span-8 col-start-3 mt-10"
 				>
-					<p
+					<div
 						class="lead text-center text-neutral-300"
-					>
-						{{ data.lead }}
-					</p>
+						v-html="data.lead"
+					/>
 				</div>
 			</div>
 			<div
 				class="mt-10 grid grid-cols-12 gap-x-8"
 			>
 				<UButton
-					variant="outline"
 					color="primary"
 					class="col-span-2 col-start-5"
-				>
-					{{ data.cta_primary.text }}
-				</UButton>
+					:label="data?.cta?.label"
+					:variant="data?.cta?.variant || 'solid'"
+				/>
 				<UButton
 					color="primary"
 					class="col-span-2"
-				>
-					{{ data.cta_primary.text }}
-				</UButton>
+					:label="data?.cta_2?.label"
+					:variant="data?.cta_2?.variant || 'outline'"
+				/>
 			</div>
 		</div>
 	</section>

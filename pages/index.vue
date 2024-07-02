@@ -3,36 +3,39 @@ import tailwindConfig from '#tailwind-config'
 
 const { $directus, $readItems } = useNuxtApp()
 
-const { data: page, error } = await useAsyncData('page', () => {
-	return $directus.request($readItems('svetlikus_pages', {
+const { data: page, error, refresh } = await useLazyAsyncData('page', async () => {
+	return await $directus.request($readItems('svetlikus_pages', {
 		deep: {
 			translations: {
 				_filter: {
-					slug: {
-						_eq: 'home',
-					},
+					_and: [
+						{
+							languages_code: { _eq: 'en-US' },
+						},
+						{
+							slug: { _eq: 'home' },
+						},
+					],
 				},
 			},
 		},
-		fields: ['*', {
-			translations: ['*', {
-				blocks: ['*', {
-					item: ['*'],
-				}],
-			}] }],
+		fields: ['*', { translations: ['*', { blocks: ['*', { item: ['*', '*.*.*'] }] }] }],
 		limit: 1,
 	}))
-}, {
-	transform: (data) => {
-		return data[0].translations[0]
-	},
 })
 </script>
 
 <template>
 	<div>
-		{{ page }}
-		<LayoutHomeHero
+		<Blocks :blocks="page?.[0].translations[0].blocks" />
+		<!-- <pre>
+
+		{{ page?.[0].translations[0].blocks }}
+	</pre> -->
+		<UButton @click="refresh">
+			Refresh
+		</UButton>
+		<BlocksHero
 			:data="{
 				titleStarString: 'forward',
 				title: 'Propel your brand forward',
@@ -49,8 +52,8 @@ const { data: page, error } = await useAsyncData('page', () => {
 			}"
 			class="pb-18 pt-24"
 		/>
-		<LayoutCarousel class="py-14" />
-		<LayoutClients
+		<BlocksCarousel class="py-14" />
+		<BlocksClients
 			:clients="[
 				{
 					image: '/logos/fino.svg',
@@ -83,11 +86,11 @@ const { data: page, error } = await useAsyncData('page', () => {
 			]"
 			class="py-14"
 		/>
-		<LayoutServices class="py-14" />
-		<LayoutWork class="py-14" />
-		<LayoutProcess class="py-14" />
-		<LayoutPricing class="py-14" />
-		<LayoutBenefits class="py-14" />
-		<LayoutMarquee class="py-14" />
+		<BlocksServices class="py-14" />
+		<BlocksWork class="py-14" />
+		<BlocksProcess class="py-14" />
+		<BlocksPricing class="py-14" />
+		<BlocksBenefits class="py-14" />
+		<BlocksMarquee class="py-14" />
 	</div>
 </template>

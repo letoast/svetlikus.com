@@ -7,6 +7,12 @@ export default defineNuxtConfig({
 			],
 		},
 	},
+	components: [
+		{
+			global: true,
+			path: '@/components',
+		},
+	],
 	modules: [
 		'@nuxtjs/tailwindcss',
 		// 'shadcn-nuxt',
@@ -30,8 +36,4 @@ export default defineNuxtConfig({
 		exposeConfig: true,
 	},
 	devtools: { enabled: true },
-	shadcn: {
-		prefix: '',
-		componentDir: './components/ui',
-	},
 })

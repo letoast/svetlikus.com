@@ -91,7 +91,7 @@ const visible = useElementVisibility(sectionRef)
 			class="relative mt-14 overflow-hidden"
 		>
 			<div
-				v-if="clients.length"
+				v-if="clients?.length"
 				class="top-0 flex gap-3"
 			>
 				<NuxtMarquee

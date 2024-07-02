@@ -17,9 +17,9 @@
 			<div
 				class="grid grid-cols-12 gap-x-8 gap-y-8"
 			>
-				<LayoutWorkSingle />
-				<LayoutWorkSingle />
-				<LayoutWorkSingle />
+				<BlocksWorkSingle />
+				<BlocksWorkSingle />
+				<BlocksWorkSingle />
 			</div>
 		</div>
 		<div

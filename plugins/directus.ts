@@ -1,6 +1,6 @@
-import { createDirectus, rest, readItem, readItems, readOpenApiSpec } from '@directus/sdk'
+import { createDirectus, rest, readItem, readItems, readOpenApiSpec, graphql } from '@directus/sdk'
 
-const directus = createDirectus('https://svetlikus.ciriltrcek.com').with(rest())
+const directus = createDirectus('https://svetlikus.datalog.si').with(rest())
 
 export default defineNuxtPlugin(async () => {
 	return {

@@ -89,7 +89,7 @@ function updateRefs() {
 	canScrollNext.value = emblaApi.value?.canScrollNext()
 	canScrollPrev.value = emblaApi.value?.canScrollPrev()
 	currentSlide.value = emblaApi.value?.selectedScrollSnap()
-	totalSlides.value = emblaApi.value?.scrollSnapList().length
+	totalSlides.value = emblaApi.value?.scrollSnapList()?.length
 }
 </script>
 

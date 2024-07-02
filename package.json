@@ -8,7 +8,8 @@
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
-		"lint": "eslint . --fix"
+		"lint": "eslint . --fix",
+		"generate-types": "openapi-typescript https://svetlikus.datalog.si/server/specs/oas -o ./types/svetlikus.d.ts"
 	},
 	"dependencies": {
 		"@directus/sdk": "^16.1.0",
@@ -25,6 +26,7 @@
 		"lucide-vue-next": "^0.394.0",
 		"nuxt": "^3.12.1",
 		"nuxt-marquee": "^1.0.4",
+		"openapi-typescript": "^7.0.0",
 		"radix-vue": "^1.8.3",
 		"stylelint-config-standard-scss": "^13.1.0",
 		"tailwind-merge": "^2.3.0",

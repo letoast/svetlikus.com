@@ -13,7 +13,7 @@ const visible = useElementVisibility(sectionRef)
 				class="py-1"
 				:play="visible"
 			>
-				<LayoutMarqueeItem
+				<BlocksMarqueeItem
 					v-for="item in 20"
 					:key="item"
 				/>
@@ -23,7 +23,7 @@ const visible = useElementVisibility(sectionRef)
 				class="py-1"
 				:play="visible"
 			>
-				<LayoutMarqueeItem
+				<BlocksMarqueeItem
 					v-for="item in 20"
 					:key="item"
 				/>
@@ -32,7 +32,7 @@ const visible = useElementVisibility(sectionRef)
 				class="py-1"
 				:play="visible"
 			>
-				<LayoutMarqueeItem
+				<BlocksMarqueeItem
 					v-for="item in 20"
 					:key="item"
 				/>
