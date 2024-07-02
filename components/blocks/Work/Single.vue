@@ -8,7 +8,7 @@ const props = defineProps<{
 const { $directus, $readItems, $readItem } = useNuxtApp()
 const { data: projectData, error, refresh } = await useLazyAsyncData(`project-${props.data?.svetlikus_projects_id?.id}`, async () => {
 	return await $directus.request($readItem('svetlikus_projects', props.data?.svetlikus_projects_id?.id, {
-		fields: ['*.*.*'],
+		fields: ['id', { translations: ['*', { image: ['*'] }] }, { tags: [{ svetlikus_projects_tags_id: ['color', { translations: ['*'] }] }] }],
 	}))
 }, {
 	// transform: (data) => {
@@ -38,13 +38,12 @@ const project = computed(() => {
 		<div
 			class="flex flex-wrap gap-3"
 		>
-			{{ projectData }}
 			<CommonTag
-				v-for="item in 8"
-				:key="item"
-				:color="item % 2 === 0 ? 'rose' : item % 3 === 0 ? 'yellow' : 'cyan'"
+				v-for="item, index in projectData.tags"
+				:key="index"
+				:color="item?.svetlikus_projects_tags_id?.color"
 			>
-				Brand Heart
+				{{ item?.svetlikus_projects_tags_id?.translations?.[0].title }}
 			</CommonTag>
 		</div>
 		<h3

@@ -32,13 +32,6 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 <template>
 	<div>
 		<Blocks :blocks="page" />
-		<!-- <pre>
-
-		{{ page?.[0].translations[0].blocks }}
-	</pre> -->
-		<UButton @click="refresh">
-			Refresh
-		</UButton>
 		<BlocksHero
 			:data="{
 				titleStarString: 'forward',
