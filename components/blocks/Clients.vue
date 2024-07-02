@@ -9,7 +9,7 @@ interface Client {
 	link?: string
 }
 
-const props = defineProps<{ clients: Client[] }>()
+const props = defineProps<{ clients: Client[], data: unknown }>()
 const sectionRef = ref<HTMLElement | null>(null)
 
 const emblaRef = ref<HTMLElement | null>(null)
@@ -71,6 +71,10 @@ const visible = useElementVisibility(sectionRef)
 // 		translateX.value = translateX.value - ((prevVal - currVal) * 2 / pixelRatio.value) / 100
 // 	}
 // })
+
+function clientData(client: unknown) {
+	return client?.svetlikus_clients_id
+}
 </script>
 
 <template>
@@ -82,7 +86,7 @@ const visible = useElementVisibility(sectionRef)
 				<p
 					class="text-2xl text-neutral-300"
 				>
-					Over the years we flew with some amazing brands.
+					{{ data?.lead }}
 				</p>
 			</div>
 		</div>
@@ -91,7 +95,7 @@ const visible = useElementVisibility(sectionRef)
 			class="relative mt-14 overflow-hidden"
 		>
 			<div
-				v-if="clients?.length"
+				v-if="data?.clients?.length"
 				class="top-0 flex gap-3"
 			>
 				<NuxtMarquee
@@ -99,20 +103,24 @@ const visible = useElementVisibility(sectionRef)
 					:play="visible"
 				>
 					<div
-						v-for="client, index in clients"
+						v-for="client, index in data?.clients"
 						:key="index"
 						class="shrink-0 rounded px-12 py-4"
 						:class="{
 							'ms-3': index === 0,
 						}"
 					>
-						<div>
+						<a
+							:href="clientData(client)?.url"
+							:title="clientData(client)?.title"
+							target="_blank"
+						>
 							<img
 								class="h-12"
-								:src="client.image"
-								:alt="client.title"
+								:src="`${$directus.url}assets/${clientData(client)?.image.filename_disk}`"
+								:alt="clientData(client)?.title"
 							>
-						</div>
+						</a>
 					</div>
 				</NuxtMarquee>
 			</div>

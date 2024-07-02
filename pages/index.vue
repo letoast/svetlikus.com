@@ -19,15 +19,19 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 				},
 			},
 		},
-		fields: ['*', { translations: ['*', { blocks: ['*', { item: ['*', '*.*.*'] }] }] }],
+		fields: ['*.*.*.*.*.*.*'],
 		limit: 1,
 	}))
+}, {
+	transform: (data) => {
+		return data?.[0].translations[0].blocks
+	},
 })
 </script>
 
 <template>
 	<div>
-		<Blocks :blocks="page?.[0].translations[0].blocks" />
+		<Blocks :blocks="page" />
 		<!-- <pre>
 
 		{{ page?.[0].translations[0].blocks }}

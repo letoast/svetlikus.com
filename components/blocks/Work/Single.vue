@@ -1,10 +1,30 @@
+<script setup lang="ts">
+const props = defineProps<{
+	data: {
+		id: number
+	}
+}>()
+
+const { $directus, $readItems, $readItem } = useNuxtApp()
+const { data: project, error, refresh } = await useLazyAsyncData(`project-${props.data?.svetlikus_projects_id?.id}`, async () => {
+	return await $directus.request($readItem('svetlikus_projects', props.data?.svetlikus_projects_id?.id, {
+		fields: ['*.*.*'],
+	}))
+}, {
+	transform: (data) => {
+		return data?.translations?.[0]
+	},
+
+})
+</script>
+
 <template>
 	<div class="col-span-6">
 		<div
 			class="overflow-hidden rounded-lg"
 		>
 			<img
-				src="/slide.png"
+				:src="`${$directus.url}assets/${project?.image?.filename_disk}`"
 				class="size-full object-cover"
 			>
 		</div>
@@ -26,13 +46,12 @@
 		<h3
 			class="text-3xl font-bold text-neutral-300"
 		>
-			EK Water Blocks
+			{{ project?.title }}
 		</h3>
-		<p
+		<div
 			class="text-lg font-book text-neutral-400"
-		>
-			We held pivotal roles within design, with goal to enhance the brand's visual identity and contribute to its global recognition.
-		</p>
+			v-html="project?.description"
+		/>
 		<CommonCTA
 			:cta="{
 				text: 'View Case Study',

@@ -6,7 +6,6 @@ defineProps<{
 
 <template>
 	<section>
-		{{ data }}
 		<CommonExposedText
 			:data="{
 				kicker: 'Services',
@@ -32,6 +31,7 @@ defineProps<{
 			<UButton
 				class="col-span-2 col-start-6 mt-8"
 				:label="data?.cta?.label"
+				:to="data?.cta?.href"
 			/>
 		</div>
 	</section>

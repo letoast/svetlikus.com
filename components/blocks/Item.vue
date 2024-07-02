@@ -17,6 +17,7 @@ function clearAndUpper(text: string) {
 <template>
 	<component
 		:is="componentFile"
+		class="py-14"
 		:data="block.item"
 	/>
 </template>

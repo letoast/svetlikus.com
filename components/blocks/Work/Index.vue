@@ -1,13 +1,19 @@
+<script setup lang="ts">
+defineProps<{
+	data: unknown
+}>()
+</script>
+
 <template>
 	<section>
 		<CommonExposedText
 			:data="{
 				kicker: 'Work',
-				title: 'Check what we delivered',
-				description: 'As creatives ourselves, we know that what you really want to see is the work that’s actually live. Here’s a showcase of some of our recent projects.',
+				title: data?.title,
+				description: data?.lead,
 				cta: {
-					text: 'See all projects',
-					link: '#',
+					text: data?.cta?.label,
+					link: data?.cta?.href,
 				},
 			}"
 			:kicker-color="'text-cyan-400'"
@@ -17,9 +23,11 @@
 			<div
 				class="grid grid-cols-12 gap-x-8 gap-y-8"
 			>
-				<BlocksWorkSingle />
-				<BlocksWorkSingle />
-				<BlocksWorkSingle />
+				<BlocksWorkSingle
+					v-for="project, index in data?.projects"
+					:key="index"
+					:data="project"
+				/>
 			</div>
 		</div>
 		<div
@@ -28,9 +36,9 @@
 			<UButton
 				class="col-span-2 col-start-6 mt-8"
 				color="secondary"
-			>
-				See all projects
-			</UButton>
+				:to="data?.cta_2?.href"
+				:label="data?.cta_2?.label"
+			/>
 		</div>
 	</section>
 </template>

@@ -52,8 +52,8 @@ watch(visible, (isVisible) => {
 			hover:cursor-default
 		"
 		:class="[
-			exposed && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
-			exposed && `
+			customColor === 'rose' && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
+			customColor === 'rose' && `
 				bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_0%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)]
 				before:-left-px before:-top-px before:size-[calc(100%+2px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)]
 				hover:before:bg-[linear-gradient(theme(colors.rose.700),_theme(colors.rose.500))]
