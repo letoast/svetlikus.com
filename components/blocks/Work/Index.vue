@@ -8,7 +8,7 @@ defineProps<{
 	<section>
 		<CommonExposedText
 			:data="{
-				kicker: 'Work',
+				kicker: data?.kicker,
 				title: data?.title,
 				description: data?.lead,
 				cta: {

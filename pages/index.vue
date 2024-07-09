@@ -32,7 +32,7 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 <template>
 	<div>
 		<Blocks :blocks="page" />
-		<BlocksHero
+		<!-- <BlocksHero
 			:data="{
 				titleStarString: 'forward',
 				title: 'Propel your brand forward',
@@ -88,6 +88,6 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 		<BlocksProcess class="py-14" />
 		<BlocksPricing class="py-14" />
 		<BlocksBenefits class="py-14" />
-		<BlocksMarquee class="py-14" />
+		<BlocksMarquee class="py-14" /> -->
 	</div>
 </template>

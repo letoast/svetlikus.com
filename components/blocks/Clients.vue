@@ -79,17 +79,14 @@ function clientData(client: unknown) {
 
 <template>
 	<section ref="sectionRef">
-		<div class="container">
-			<div
-				class="flex justify-center"
-			>
-				<p
-					class="text-2xl text-neutral-300"
-				>
-					{{ data?.lead }}
-				</p>
-			</div>
-		</div>
+		<CommonExposedText
+			:data="{
+				title: data?.title,
+				description: data?.lead,
+			}"
+			:kicker-color="'text-emerald-400'"
+			class="pb-10"
+		/>
 		<div
 			ref="emblaRef"
 			class="relative mt-14 overflow-hidden"
