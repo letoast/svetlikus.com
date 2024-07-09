@@ -14,6 +14,7 @@ withDefaults(defineProps<{
 			link: string
 		}
 		exposed?: boolean
+		above_info?: string
 	}
 }>(), {
 	data: () => ({
@@ -69,10 +70,11 @@ watch(visible, (isVisible) => {
 		class="flex flex-col items-end gap-2"
 	>
 		<span
-			v-if="data.exposed"
-			class="block text-base font-medium uppercase leading-[19.20px] text-purple-500"
+			v-if="data?.above_info"
+			:class="data.exposed ? 'text-purple-500' : 'text-neutral-100'"
+			class="block text-base font-medium uppercase leading-[19.20px]"
 		>
-			MOST POPULAR*
+			{{ data?.above_info }}
 		</span>
 		<div
 			ref="cardRef"
@@ -122,15 +124,14 @@ watch(visible, (isVisible) => {
 			</p>
 			<ul class="">
 				<li
-					v-for="item, itemIndex in data.items"
+					v-for="item, itemIndex in data?.items"
 					:key="itemIndex"
 					class="mb-2 flex items-baseline gap-3 text-lg text-neutral-200"
 				>
 					<CommonIconsCheckmark
 						:class="data.exposed ? 'text-purple-500' : 'text-neutral-100'"
 					/>
-
-					{{ item }}
+					{{ item?.description }}
 				</li>
 			</ul>
 		</div>

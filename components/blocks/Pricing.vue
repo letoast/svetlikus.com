@@ -1,73 +1,17 @@
 <script setup lang="ts">
 import emblaCarouselVue from 'embla-carousel-vue'
 
-const data = ref({
-	items: [
-		{
-			title: 'Design Sprint',
-			description: 'When you need extra help on short notice. Perfect to test our service on a short-form design project.',
-			price: '€1,950',
-			pricePeriod: '/week',
-			pricePeriodSuperscript: '+VAT',
-			items: [
-				'One design at a time',
-				'Design delivery in few business days',
-				'One user',
-				'As many revisions as you need',
-				'Fixed weekly investment fee',
-				'Pause or cancel as you like',
-				'Simple task managment',
-			],
-			cta: {
-				text: 'Get Started',
-				link: '#',
-			},
-		},
-		{
-			title: 'Design Bonanza',
-			description: 'Flexibility you need to handle multiple design requests for a flat monthly rate. Perfect to propel your business forward!',
-			price: '€6,950',
-			pricePeriod: '/month',
-			pricePeriodSuperscript: '+VAT',
-			items: [
-				'Work on two designs at a time',
-				'Design delivery in few business days',
-				'No user limits',
-				'As many revisions as you need',
-				'Pause or cancel as you like',
-				'Seamless support from start to finish line',
-				'Simple task managment',
-				'Exclusive access to Brand Strategy Workshop',
-			],
-			cta: {
-				text: 'Let\'s talk!',
-				link: '#',
-			},
-			exposed: true,
-		},
-		{
-			title: 'Bespoke project',
-			description: 'For single big scope projects or workshops we’ll give you a detailed quote covering everything from design to delivery — with no hidden charges. Tell us what you need.',
-			items: [
-				'Power ups unlocked',
-				'Tailor made offer',
-				'Custom payment plans',
-				'Initial consultancy',
-			],
-			cta: {
-				text: 'Inquire',
-				link: '#',
-			},
-		},
-	],
-})
+const props = defineProps<{
+	data: unknown
+}>()
+
 
 const [emblaRef, emblaApi] = emblaCarouselVue()
 
 const canScrollNext = ref(true)
 const canScrollPrev = ref(true)
 const currentSlide = ref(0)
-const totalSlides = ref(0)
+const totalSlides = ref(props.data?.testimonials?.length || 0)
 
 
 watchEffect(() => {
@@ -97,12 +41,12 @@ function updateRefs() {
 	<section>
 		<CommonExposedText
 			:data="{
-				kicker: 'Pricing',
-				title: 'Collaboration plans that cover all your needs',
-				description: 'Simplicity and transparency define our pricing. No hidden surprises or restrictions. Enjoy continuous support whenever you need it.',
+				kicker: data?.kicker,
+				title: data?.title,
+				description: data?.lead,
 				cta: {
-					text: 'See all projects',
-					link: '#',
+					text: data?.cta?.label,
+					link: data?.cta?.href,
 				},
 			}"
 			:kicker-color="'text-purple-500'"
@@ -119,7 +63,7 @@ function updateRefs() {
 				class="grid grid-cols-12 items-end gap-x-8 gap-y-8"
 			>
 				<div
-					v-for="item, index in data.items"
+					v-for="item, index in data?.pricing_table"
 					:key="index"
 					class="relative col-span-4 w-full"
 				>
@@ -141,7 +85,7 @@ function updateRefs() {
 								class="flex"
 							>
 								<div
-									v-for="item in 4"
+									v-for="item in data?.testimonials"
 									:key="item"
 									class="flex w-full flex-shrink-0 flex-grow basis-full items-center gap-8"
 								>

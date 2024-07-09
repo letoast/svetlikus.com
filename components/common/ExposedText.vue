@@ -1,7 +1,7 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
 	data: {
-		kicker: string
+		kicker?: string
 		title: string
 		description?: string
 		cta?: {
