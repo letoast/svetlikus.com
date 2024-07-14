@@ -9,7 +9,7 @@ interface Client {
 	link?: string
 }
 
-const props = defineProps<{ clients: Client[], data: unknown }>()
+const props = defineProps<{ data: unknown }>()
 const sectionRef = ref<HTMLElement | null>(null)
 
 const emblaRef = ref<HTMLElement | null>(null)

@@ -6,7 +6,7 @@ const props = defineProps<{
 
 const { data } = useLazyAsyncData(props.url, async () => {
 	const data = await $fetch(props.url, {
-		mode: 'cors',
+		mode: 'no-cors',
 		headers: {
 			'Content-Type': 'image/svg+xml',
 		},

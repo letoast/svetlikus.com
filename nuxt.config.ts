@@ -14,7 +14,14 @@ export default defineNuxtConfig({
 			path: '@/components',
 		},
 	],
-
+	experimental: {
+		asyncContext: true,
+		defaults: {
+			useAsyncData: {
+				deep: false,
+			},
+		},
+	},
 	modules: [
 		'@nuxtjs/tailwindcss',
 		// 'shadcn-nuxt',

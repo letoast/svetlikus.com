@@ -1,11 +1,6 @@
 import { createDirectus, rest, readItem, readItems, readOpenApiSpec, graphql } from '@directus/sdk'
 
-const directus = createDirectus('https://svetlikus.datalog.si').with(rest({
-	onRequest: (request) => {
-		request.referrerPolicy = 'origin'
-		return request
-	},
-}))
+const directus = createDirectus('https://svetlikus.datalog.si').with(rest())
 
 export default defineNuxtPlugin(async () => {
 	return {

@@ -3,8 +3,8 @@ const route = useRoute()
 
 const { $directus, $readItem, $readItems } = useNuxtApp()
 
-const { data: page, error, refresh } = await useLazyAsyncData('page', async () => {
-	const pageIds = await $directus.request($readItems('svetlikus_projects', {
+const { data: pageIds } = await useAsyncData('projectIds', async () => {
+	return await $directus.request($readItems('svetlikus_projects', {
 		fields: ['id', 'translations.*'],
 		deep: {
 			translations: {
@@ -18,8 +18,14 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 			},
 		},
 	}))
-	const page = await $directus.request($readItem('svetlikus_projects', pageIds.find(page => page.translations?.[0].slug === route.params.slug).id, {
-		fields: ['*.*'],
+})
+
+const { data: project } = await useAsyncData('projectId', async () => {
+	const pageId = pageIds.value?.find(page => page?.translations?.[0]?.slug === route?.params?.slug)?.id
+	console.log(pageIds.value)
+
+	return await $directus.request($readItem('svetlikus_projects', pageId, {
+		fields: ['*.*.*.*.*.*.*'],
 		deep: {
 			translations: {
 				_filter: {
@@ -32,20 +38,18 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 			},
 		},
 	}))
-	return page
 }, {
 	transform: (data) => {
-		return data
+		return data?.translations?.[0]
 	},
 })
 </script>
 
 <template>
 	<div>
-		{{ page }}
 		<Blocks
-			v-if="page?.length"
-			:blocks="page"
+			v-if="project?.blocks?.length"
+			:blocks="project.blocks"
 		/>
 	</div>
 </template>

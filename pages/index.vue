@@ -3,7 +3,7 @@ import tailwindConfig from '#tailwind-config'
 
 const { $directus, $readItems } = useNuxtApp()
 
-const { data: page, error, refresh } = await useLazyAsyncData('page', async () => {
+const { data: page, error, refresh } = await useAsyncData('page', async () => {
 	return await $directus.request($readItems('svetlikus_pages', {
 		deep: {
 			translations: {
@@ -19,7 +19,7 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 				},
 			},
 		},
-		fields: ['*.*.*.*.*.*.*.*'],
+		fields: ['*.*.*.*.*.*.*.*.*'],
 		limit: 1,
 	}))
 }, {
@@ -31,6 +31,9 @@ const { data: page, error, refresh } = await useLazyAsyncData('page', async () =
 
 <template>
 	<div>
-		<Blocks :blocks="page" />
+		<Blocks
+			v-if="page?.length"
+			:blocks="page"
+		/>
 	</div>
 </template>
