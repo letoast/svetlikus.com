@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="pointer-events-none fixed left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+		class="pointer-events-none fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2"
 	>
 		<div
 			class="container flex content-end"

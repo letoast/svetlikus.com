@@ -25,7 +25,7 @@ const { data: project } = await useAsyncData('projectId', async () => {
 	console.log(pageIds.value)
 
 	return await $directus.request($readItem('svetlikus_projects', pageId, {
-		fields: ['*.*.*.*.*.*.*'],
+		fields: ['*.*.*.*.*.*.*.*.*'],
 		deep: {
 			translations: {
 				_filter: {
