@@ -5,6 +5,7 @@ const props = defineProps<{
 	data: unknown
 }>()
 
+const { $directus } = useNuxtApp()
 
 const [emblaRef, emblaApi] = emblaCarouselVue()
 
@@ -12,7 +13,6 @@ const canScrollNext = ref(true)
 const canScrollPrev = ref(true)
 const currentSlide = ref(0)
 const totalSlides = ref(props.data?.testimonials?.length || 0)
-
 
 watchEffect(() => {
 	if (emblaApi.value) {
@@ -93,28 +93,29 @@ function updateRefs() {
 										class="flex flex-shrink-0 flex-grow items-center gap-4"
 									>
 										<img
-											src="/slide.png"
-											alt="TODO"
+											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.filename_disk}`"
+											:alt="item?.svetlikus_testimonials_id?.name"
 											class="h-20 w-20 rounded-md object-cover"
 										>
 										<div>
 											<p
 												class="text-lg font-bold leading-[21.60px] text-white text-opacity-50"
 											>
-												Ime Priimek
+												{{ item?.svetlikus_testimonials_id?.name }}
 											</p>
 											<p
 												class="text-lg font-book leading-[21.60px] text-white text-opacity-50"
 											>
-												Founder of Growth Lab
+												{{ item?.svetlikus_testimonials_id?.translations?.[0].position }}
 											</p>
 										</div>
 									</div>
-									<p
-										class="text-lg font-book leading-[21.60px] opacity-50"
-									>
-										“I absolutely adore collaborating with them on projects. They really do amazing research work and provide practical, beautiful and pragmatic solutions. Much recommended!”
-									</p>
+									<ClientOnly>
+										<p
+											class="text-lg font-book leading-[21.60px] opacity-50"
+											v-html="item?.svetlikus_testimonials_id?.translations?.[0]?.quote"
+										/>
+									</ClientOnly>
 								</div>
 							</div>
 						</div>

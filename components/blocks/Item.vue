@@ -3,7 +3,11 @@ const props = defineProps<{
 	block: unknown
 }>()
 
-const componentFile = resolveComponent(`Blocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))}`)
+const componentFile = resolveComponent(`Blocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))
+	.split('_')
+	.map(toSentenceCase)
+	.join('')
+	.replace(' ', '')}`)
 
 function toSentenceCase(text: string) {
 	return text?.replace(/([A-Z])/g, ' $1')?.replace(/^./, str => str?.toUpperCase())
