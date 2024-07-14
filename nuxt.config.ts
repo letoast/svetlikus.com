@@ -26,6 +26,10 @@ export default defineNuxtConfig({
 		// 'nuxt-icon',
 		'@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n'],
 
+	icon: {
+		mode: 'svg',
+	},
+
 	eslint: {
 		config: {
 			stylistic: {

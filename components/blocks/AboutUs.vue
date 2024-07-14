@@ -20,7 +20,7 @@ const { $directus } = useNuxtApp()
 		<div
 			class="container grid grid-cols-12 gap-x-8 gap-y-8"
 		>
-			<div class="col-span-12 flex flex-col items-center gap-4 text-neutral-400 transition-all duration-300">
+			<div class="col-span-12 flex flex-col items-center gap-4 text-neutral-400">
 				<NuxtLinkLocale
 					:to="data?.cta?.href"
 					class="text-yellow-500"
@@ -33,7 +33,7 @@ const { $directus } = useNuxtApp()
 				</NuxtLinkLocale>
 			</div>
 
-			<div class="col-span-12 flex flex-col items-center gap-4 text-neutral-400 transition-all duration-300">
+			<div class="col-span-12 flex flex-col items-center gap-4 text-neutral-400">
 				<img
 					:src="`${$directus.url}assets/${data?.image?.filename_disk}`"
 					class="aspect-[3/1] rounded object-cover-lg"

@@ -81,16 +81,16 @@ export default defineAppConfig({
 				},
 				secondary: {
 					solid: cn(`
-						text-neutral-950 shadow-sm bg-secondary-500 ring-1 ring-inset ring-secondary
+						bg-secondary-500 text-neutral-950 shadow-sm ring-1 ring-inset ring-secondary
 						disabled:bg-secondary-500
 						focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-500
-						hover:bg-secondary-600 hover:ring-secondary-600 hover:shadow-lg hover:shadow-secondary-600/30
+						hover:bg-secondary-600 hover:shadow-lg hover:shadow-secondary-600/30 hover:ring-secondary-600
 					`),
 					outline: cn(`
-						bg-transparent ring-1 ring-inset ring-secondary text-secondary-500
+						bg-transparent text-secondary-500 ring-1 ring-inset ring-secondary
 						disabled:bg-transparent
 						focus-visible:ring-2 focus-visible:ring-secondary-500
-						hover:text-white hover:shadow-lg hover:bg-secondary-500 hover:shadow-secondary-600/30
+						hover:bg-secondary-500 hover:text-white hover:shadow-lg hover:shadow-secondary-600/30
 					`),
 					soft: cn(`
 						text-secondary-500
