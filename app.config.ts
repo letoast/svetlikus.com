@@ -2,6 +2,9 @@ import { cn } from '@/utils'
 
 export default defineAppConfig({
 	ui: {
+		icons: {
+			dynamic: true,
+		},
 		primary: 'svetlikus-purple',
 		button: {
 			base: cn(`

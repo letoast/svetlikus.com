@@ -23,7 +23,10 @@ const { $directus } = useNuxtApp()
 			<div
 				v-for="item, index in data?.benefits"
 				:key="index"
-				class="col-span-3 flex flex-col items-center gap-4 text-neutral-400 transition-all duration-300"
+				class="
+					col-span-6 flex flex-col items-center gap-4 text-neutral-400 transition-all duration-300
+					lg:col-span-3
+				"
 				:class="{
 					'hover:text-emerald-500': item?.color === 'emerald',
 					'hover:text-blue-500': item?.color === 'blue',

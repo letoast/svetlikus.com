@@ -47,9 +47,10 @@ watch(visible, (isVisible) => {
 			'--y': `${y}px`,
 		}"
 		class="
-			group relative col-span-4 rounded-lg p-8
+			group relative col-span-12 rounded-lg p-8
 			before:absolute before:z-[-1] before:rounded-lg before:transition-all before:duration-300 before:content-['']
 			hover:cursor-default
+			lg:col-span-4
 		"
 		:class="[
 			customColor === 'rose' && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',

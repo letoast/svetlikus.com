@@ -65,7 +65,10 @@ function updateRefs() {
 				<div
 					v-for="item, index in data?.pricing_table"
 					:key="index"
-					class="relative col-span-4 w-full"
+					class="
+						relative col-span-12 w-full
+						lg:col-span-4
+					"
 				>
 					<CommonPricingCard
 						:data="item"
@@ -75,7 +78,10 @@ function updateRefs() {
 					class="col-span-12 rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
 				>
 					<div
-						class="flex items-center gap-8"
+						class="
+							flex flex-col items-center gap-8
+							lg:flex-row
+						"
 					>
 						<div
 							ref="emblaRef"
@@ -87,7 +93,10 @@ function updateRefs() {
 								<div
 									v-for="item in data?.testimonials"
 									:key="item"
-									class="flex w-full flex-shrink-0 flex-grow basis-full items-center gap-8"
+									class="
+										flex w-full flex-shrink-0 flex-grow basis-full flex-col gap-8
+										lg:flex-row lg:items-center
+									"
 								>
 									<div
 										class="flex flex-shrink-0 flex-grow items-center gap-4"

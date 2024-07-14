@@ -85,11 +85,14 @@ function clientData(client: unknown) {
 				description: data?.lead,
 			}"
 			:kicker-color="'text-emerald-400'"
-			class="pb-10"
+			class="lg:pb-10"
 		/>
 		<div
 			ref="emblaRef"
-			class="relative mt-14 overflow-hidden"
+			class="
+				relative mt-7 overflow-hidden
+				lg:mt-14
+			"
 		>
 			<div
 				v-if="data?.clients?.length"

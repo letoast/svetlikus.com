@@ -16,7 +16,12 @@ const tags = computed(() => {
 
 <template>
 	<NuxtErrorBoundary>
-		<div class="col-span-6">
+		<div
+			class="
+				col-span-12
+				lg:col-span-6
+			"
+		>
 			<div
 				class="overflow-hidden rounded-lg"
 			>
@@ -28,8 +33,9 @@ const tags = computed(() => {
 		</div>
 		<div
 			class="
-				col-span-6 flex flex-col justify-center gap-4
+				col-span-12 flex flex-col justify-center gap-4
 				lg:col-span-4
+				md:col-span-6
 			"
 		>
 			<div

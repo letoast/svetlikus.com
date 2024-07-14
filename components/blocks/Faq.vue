@@ -11,7 +11,12 @@ const { $directus } = useNuxtApp()
 		<div
 			class="container grid grid-cols-12 gap-x-8 gap-y-8"
 		>
-			<div class="col-span-4">
+			<div
+				class="
+					col-span-12 text-center
+					lg:col-span-4 lg:text-start
+				"
+			>
 				<span
 					v-if="data.kicker"
 					class="text-xl/6 font-bold uppercase text-yellow-500"
@@ -20,7 +25,10 @@ const { $directus } = useNuxtApp()
 				</span>
 				<div
 					v-if="data.title"
-					class="text-[2.75rem]/[3.25rem] font-bold text-gray-100"
+					class="
+						text-[1.75rem]/[2.25rem] font-bold text-gray-100
+						lg:text-[2.75rem]/[3.25rem]
+					"
 					v-html="data.title"
 				/>
 				<div
@@ -29,7 +37,12 @@ const { $directus } = useNuxtApp()
 					v-html="data.lead"
 				/>
 			</div>
-			<div class="col-span-8">
+			<div
+				class="
+					col-span-12
+					lg:col-span-8
+				"
+			>
 				<UAccordion
 					:items="data.items.map(item => ({
 						label: item.question,
@@ -42,8 +55,9 @@ const { $directus } = useNuxtApp()
 							color="white"
 							:label="label"
 							:block="false"
-							class="justify-start px-0"
-							:icon="open ? 'tabler:plus' : 'tabler:minus'"
+							class="justify-between px-0 text-start text-lg"
+							:icon="open ? 'tabler:minus' : 'tabler:plus'"
+							trailing
 						/>
 					</template>
 					<template #item="{ item: { content } }">

@@ -26,7 +26,10 @@ defineProps<{
 				:description="card.description"
 			/>
 			<UButton
-				class="col-span-2 col-start-6 mt-8"
+				class="
+					col-span-10 col-start-2 mt-8
+					lg:col-span-2 lg:col-start-6
+				"
 				:label="data?.cta?.label"
 				:to="data?.cta?.href"
 			/>
