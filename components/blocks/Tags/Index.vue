@@ -4,15 +4,16 @@ const sectionRef = ref<HTMLElement | null>(null)
 const visible = useElementVisibility(sectionRef)
 
 const { $directus, $readItems } = useNuxtApp()
+const { localeProperties } = useI18n()
 
-const { data: tags, error, refresh } = await useLazyAsyncData('tags', async () => {
+const { data: tags } = await useLazyAsyncData('tags', async () => {
 	return await $directus.request($readItems('svetlikus_projects_tags', {
 		deep: {
 			translations: {
 				_filter: {
 					_and: [
 						{
-							languages_code: { _eq: 'en-US' },
+							languages_code: { _eq: localeProperties.value.iso },
 						},
 					],
 				},

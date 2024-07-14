@@ -2,6 +2,7 @@
 import tailwindConfig from '#tailwind-config'
 
 const { $directus, $readItems } = useNuxtApp()
+const { localeProperties } = useI18n()
 
 const { data: page, error, refresh } = await useAsyncData('page', async () => {
 	return await $directus.request($readItems('svetlikus_pages', {
@@ -10,7 +11,7 @@ const { data: page, error, refresh } = await useAsyncData('page', async () => {
 				_filter: {
 					_and: [
 						{
-							languages_code: { _eq: 'en-US' },
+							languages_code: { _eq: localeProperties.value.iso },
 						},
 						{
 							slug: { _eq: 'home' },

@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-	<NuxtLink
+	<NuxtLinkLocale
 		:to="cta?.link"
 		class="
 			flex items-center gap-2 text-lg font-book text-cyan-400
@@ -17,5 +17,5 @@ defineProps<{
 	>
 		{{ cta?.text }}
 		<Icon name="tabler:chevron-right" />
-	</NuxtLink>
+	</NuxtLinkLocale>
 </template>

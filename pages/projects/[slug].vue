@@ -2,6 +2,7 @@
 const route = useRoute()
 
 const { $directus, $readItem, $readItems } = useNuxtApp()
+const { localeProperties } = useI18n()
 
 const { data: pageIds } = await useAsyncData('projectIds', async () => {
 	return await $directus.request($readItems('svetlikus_projects', {
@@ -11,7 +12,7 @@ const { data: pageIds } = await useAsyncData('projectIds', async () => {
 				_filter: {
 					_and: [
 						{
-							languages_code: { _eq: 'en-US' },
+							languages_code: { _eq: localeProperties.value.iso },
 						},
 					],
 				},
@@ -31,7 +32,7 @@ const { data: project } = await useAsyncData('projectId', async () => {
 				_filter: {
 					_and: [
 						{
-							languages_code: { _eq: 'en-US' },
+							languages_code: { _eq: localeProperties.value.iso },
 						},
 					],
 				},

@@ -4,15 +4,15 @@ const props = defineProps<{
 	alt?: string
 }>()
 
-const { data } = useLazyAsyncData(props.url, async () => {
-	const data = await $fetch(props.url, {
-		mode: 'no-cors',
+const { data, error } = useAsyncData(props.url, () =>
+	$fetch(props.url, {
 		headers: {
 			'Content-Type': 'image/svg+xml',
 		},
+		parseResponse: txt => txt,
 	})
-
-	return await data.text()
+, {
+	server: false,
 })
 </script>
 
