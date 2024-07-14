@@ -6,11 +6,11 @@ const props = defineProps<{
 const componentFile = resolveComponent(`Blocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))}`)
 
 function toSentenceCase(text: string) {
-	return text.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())
+	return text?.replace(/([A-Z])/g, ' $1')?.replace(/^./, str => str?.toUpperCase())
 }
 
 function clearAndUpper(text: string) {
-	return text.replace(/-/, '').toUpperCase()
+	return text?.replace(/-/, '')?.toUpperCase()
 }
 </script>
 
@@ -18,6 +18,6 @@ function clearAndUpper(text: string) {
 	<component
 		:is="componentFile"
 		class="py-14"
-		:data="block.item"
+		:data="block?.item"
 	/>
 </template>

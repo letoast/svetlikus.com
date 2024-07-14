@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineProps<{
+	data: unknown
+}>()
+
 const cardRef = ref<HTMLElement | null>(null)
 
 const { top, left } = useElementBounding(cardRef, {
@@ -49,7 +53,7 @@ watch(visible, (isVisible) => {
 		<p
 			class="text-xs font-book text-center leading-[20.78px] text-[#eaeaea] text-opacity-40"
 		>
-			Web Development
+			{{ data?.title }}
 		</p>
 	</div>
 </template>

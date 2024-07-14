@@ -7,12 +7,14 @@ export default defineNuxtConfig({
 			],
 		},
 	},
+
 	components: [
 		{
 			global: true,
 			path: '@/components',
 		},
 	],
+
 	modules: [
 		'@nuxtjs/tailwindcss',
 		// 'shadcn-nuxt',
@@ -22,6 +24,7 @@ export default defineNuxtConfig({
 		'nuxt-marquee',
 		'@nuxt/ui',
 	],
+
 	eslint: {
 		config: {
 			stylistic: {
@@ -30,10 +33,13 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	tailwindcss: {
 		configPath: '@/tailwind.config.ts',
 		cssPath: '@/assets/css/tailwind.css',
 		exposeConfig: true,
 	},
+
 	devtools: { enabled: true },
+	compatibilityDate: '2024-07-14',
 })

@@ -24,7 +24,6 @@
 		"clsx": "^2.1.1",
 		"embla-carousel-vue": "^8.1.5",
 		"lucide-vue-next": "^0.394.0",
-		"nuxt": "^3.12.1",
 		"nuxt-marquee": "^1.0.4",
 		"openapi-typescript": "^7.0.0",
 		"radix-vue": "^1.8.3",
@@ -35,6 +34,7 @@
 		"tailwindcss-border-gradient-radius": "^3.0.1",
 		"tailwindcss-theme-customizer": "^1.0.4",
 		"vue": "^3.4.27",
+		"vue-inline-svg": "^3.1.2",
 		"vue-router": "^4.3.3"
 	},
 	"devDependencies": {
@@ -47,6 +47,7 @@
 		"eslint": "^9.4.0",
 		"eslint-plugin-readable-tailwind": "^1.5.2",
 		"eslint-plugin-tailwindcss": "^3.17.3",
+		"nuxt": "^3.12.3",
 		"nuxt-icon": "^0.6.10",
 		"shadcn-nuxt": "^0.10.4",
 		"stylelint-config-tailwindcss": "^0.0.7",

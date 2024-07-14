@@ -28,7 +28,7 @@ const project = computed(() => {
 		>
 			<img
 				:src="`${$directus.url}assets/${project?.image?.filename_disk}`"
-				class="size-full object-cover"
+				class="aspect-video size-full object-cover"
 			>
 		</div>
 	</div>
@@ -58,7 +58,7 @@ const project = computed(() => {
 		<CommonCTA
 			:cta="{
 				text: 'View Case Study',
-				link: '/work/ek-water-blocks',
+				link: `/projects/${project.slug}`,
 			}"
 		/>
 	</div>
