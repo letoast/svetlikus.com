@@ -22,9 +22,9 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	modules: ['@nuxtjs/tailwindcss', // 'shadcn-nuxt',
-		// 'nuxt-icon',
-		'@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n'],
+	modules: [// 'shadcn-nuxt',
+    '@nuxtjs/tailwindcss', // 'nuxt-icon',
+    '@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n', "@nuxt/scripts"],
 
 	icon: {
 		mode: 'svg',
