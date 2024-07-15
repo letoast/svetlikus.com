@@ -12,6 +12,7 @@ defineProps<{
 		>
 			<BlocksItem
 				:block="item"
+				:class="index === blocks.length - 1 ? 'pb-40' : ''"
 			/>
 		</NuxtErrorBoundary>
 	</div>

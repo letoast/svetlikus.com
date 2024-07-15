@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<div class="pb-20">
+	<div>
 		<NuxtLoadingIndicator />
 		<TheHeader ref="defaultHeaderRef" />
 		<CommonVerticalSideText />
