@@ -47,6 +47,60 @@ const { data: project } = await useAsyncData('projectId', async () => {
 
 <template>
 	<div>
+		<section>
+			<div class="container">
+				<div
+					class="grid grid-cols-12 gap-x-8 gap-y-8"
+				>
+					<div
+						class="
+							col-span-12 flex flex-col justify-center gap-4
+							md:col-span-6
+						"
+					>
+						<div
+							class="flex flex-wrap gap-3"
+						>
+							<CommonTag
+								v-for="item, index in project.tags"
+								:key="index"
+								:color="item?.svetlikus_projects_tags_id?.color"
+							>
+								{{ item?.svetlikus_projects_tags_id?.translations?.[0].title }}
+							</CommonTag>
+						</div>
+						<h3
+							class="text-3xl font-bold text-neutral-300"
+						>
+							{{ project?.title }}
+						</h3>
+						<div
+							class="text-lg font-book text-neutral-400"
+							v-html="project?.description"
+						/>
+						<CommonCTA
+							:cta="{
+								text: 'Company website',
+								link: project?.project_link,
+								target: '_blank',
+							}"
+						/>
+					</div>
+					<div
+						class="md:col-span-6"
+					>
+						<div
+							class="overflow-hidden rounded-lg"
+						>
+							<img
+								:src="`${$directus.url}assets/${project?.image?.filename_disk}`"
+								class="aspect-video size-full object-cover"
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 		<Blocks
 			v-if="project?.blocks?.length"
 			:blocks="project.blocks"

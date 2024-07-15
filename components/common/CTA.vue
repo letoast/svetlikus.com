@@ -3,6 +3,7 @@ defineProps<{
 	cta: {
 		text: string
 		link: string
+		target?: '_blank' | '_self'
 	}
 }>()
 </script>
@@ -14,6 +15,7 @@ defineProps<{
 			flex items-center gap-2 text-lg font-book text-cyan-400
 			hover:text-cyan-300
 		"
+		:target="cta.target ?? '_self'"
 	>
 		{{ cta?.text }}
 		<Icon name="tabler:chevron-right" />

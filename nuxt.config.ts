@@ -4,6 +4,8 @@ export default defineNuxtConfig({
 		head: {
 			link: [
 				{ rel: 'stylesheet', href: 'https://use.typekit.net/tit7gaj.css' },
+				{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+				{ rel: 'preconnect', href: 'https://svetlikus.datalog.si' },
 			],
 		},
 	},
@@ -23,8 +25,8 @@ export default defineNuxtConfig({
 		},
 	},
 	modules: [// 'shadcn-nuxt',
-    '@nuxtjs/tailwindcss', // 'nuxt-icon',
-    '@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n', "@nuxt/scripts"],
+		'@nuxtjs/tailwindcss', // 'nuxt-icon',
+		'@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n', '@nuxt/scripts'],
 
 	icon: {
 		mode: 'svg',
