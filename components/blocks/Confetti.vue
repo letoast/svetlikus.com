@@ -36,9 +36,6 @@ watch(visible, async (isVisible) => {
 		confetti.clear()
 	}
 })
-
-onMounted(() => {
-})
 </script>
 
 <template>

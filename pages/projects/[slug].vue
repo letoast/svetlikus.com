@@ -23,7 +23,6 @@ const { data: pageIds } = await useAsyncData('projectIds', async () => {
 
 const { data: project } = await useAsyncData('projectId', async () => {
 	const pageId = pageIds.value?.find(page => page?.translations?.[0]?.slug === route?.params?.slug)?.id
-	console.log(pageIds.value)
 
 	return await $directus.request($readItem('svetlikus_projects', pageId, {
 		fields: ['*.*.*.*.*.*.*.*.*'],
