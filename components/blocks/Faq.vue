@@ -59,6 +59,7 @@ const { $directus } = useNuxtApp()
 							:label="label"
 							:block="false"
 							class="justify-between px-0 text-start text-xl"
+							:class="open ? '' : 'opacity-50'"
 							:icon="open ? 'tabler:minus' : 'tabler:plus'"
 							trailing
 						/>
