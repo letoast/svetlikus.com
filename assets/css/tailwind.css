@@ -8,7 +8,7 @@
 	} */
 
 	body {
-		@apply bg-[#090909] text-white h-full ;
+		@apply bg-[#090909] text-white h-full subpixel-antialiased;
 	}
 
 	a {
