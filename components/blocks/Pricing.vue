@@ -112,15 +112,21 @@ function updateRefs() {
 										>
 										<div>
 											<p
-												class="text-lg font-bold text-white text-opacity-50"
+												class="text-lg font-bold text-gray-200"
 											>
 												{{ item?.svetlikus_testimonials_id?.name }}
 											</p>
 											<p
-												class="text-lg font-book text-white text-opacity-50"
+												class="text-md font-book text-white text-opacity-50"
 											>
 												{{ item?.svetlikus_testimonials_id?.translations?.[0].position }}
 											</p>
+											<UIcon
+												v-for="star, index in item?.svetlikus_testimonials_id?.rating"
+												:key="index"
+												name="gravity-ui:star-fill"
+												class="me-1 text-gray-300"
+											/>
 										</div>
 									</div>
 									<ClientOnly>
