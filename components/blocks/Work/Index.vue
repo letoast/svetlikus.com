@@ -23,6 +23,7 @@ defineProps<{
 				color="secondary"
 				:to="data?.cta?.href"
 				:label="data?.cta?.label"
+				:variant="data?.cta?.variant"
 			/>
 		</div>
 		<div class="container">

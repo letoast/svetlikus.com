@@ -53,6 +53,18 @@ const { $directus } = useNuxtApp()
 					{{ item?.description }}
 				</p>
 			</div>
+			<div
+				class="col-span-12 flex justify-center pt-4"
+			>
+				<UButton
+					v-if="data.cta"
+					class="col-span-2 col-start-6 mt-8"
+					color="secondary"
+					:variant="data.cta.variant"
+					:to="data?.cta?.href"
+					:label="data?.cta?.label"
+				/>
+			</div>
 		</div>
 	</section>
 </template>
