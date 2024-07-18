@@ -11,14 +11,20 @@ defineProps<{
 				kicker: data?.kicker,
 				title: data?.title,
 				description: data?.lead,
-				cta: {
-					text: data?.cta?.label,
-					link: data?.cta?.href,
-				},
 			}"
 			:kicker-color="'text-cyan-400'"
-			class="pb-10"
 		/>
+		<div
+			class="col-span-12 flex justify-center pb-10 pt-4"
+		>
+			<UButton
+				v-if="data?.cta"
+				class="col-span-2 col-start-6 mt-8"
+				color="secondary"
+				:to="data?.cta?.href"
+				:label="data?.cta?.label"
+			/>
+		</div>
 		<div class="container">
 			<div
 				class="grid grid-cols-12 gap-x-8 gap-y-8"
@@ -34,6 +40,7 @@ defineProps<{
 			class="col-span-12 flex justify-center pt-4"
 		>
 			<UButton
+				v-if="data.cta_2"
 				class="col-span-2 col-start-6 mt-8"
 				color="secondary"
 				:to="data?.cta_2?.href"
