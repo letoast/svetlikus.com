@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Autoplay from 'embla-carousel-autoplay'
 import emblaCarouselVue from 'embla-carousel-vue'
 
 const props = defineProps<{
@@ -7,7 +8,10 @@ const props = defineProps<{
 
 const { $directus } = useNuxtApp()
 
-const [emblaRef, emblaApi] = emblaCarouselVue()
+const [emblaRef, emblaApi] = emblaCarouselVue(
+	{},
+	[Autoplay({ playOnInit: true, delay: 3000 })],
+)
 
 const canScrollNext = ref(true)
 const canScrollPrev = ref(true)
@@ -99,7 +103,7 @@ function updateRefs() {
 									"
 								>
 									<div
-										class="flex flex-shrink-0 flex-grow items-center gap-4"
+										class="flex max-w-[30%] flex-shrink-0 flex-grow items-center gap-4"
 									>
 										<img
 											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.filename_disk}`"
@@ -108,12 +112,12 @@ function updateRefs() {
 										>
 										<div>
 											<p
-												class="text-lg font-bold leading-[21.60px] text-white text-opacity-50"
+												class="text-lg font-bold text-white text-opacity-50"
 											>
 												{{ item?.svetlikus_testimonials_id?.name }}
 											</p>
 											<p
-												class="text-lg font-book leading-[21.60px] text-white text-opacity-50"
+												class="text-lg font-book text-white text-opacity-50"
 											>
 												{{ item?.svetlikus_testimonials_id?.translations?.[0].position }}
 											</p>
@@ -121,7 +125,7 @@ function updateRefs() {
 									</div>
 									<ClientOnly>
 										<p
-											class="text-lg font-book leading-[21.60px] opacity-50"
+											class="text-lg font-book w-full"
 											v-html="item?.svetlikus_testimonials_id?.translations?.[0]?.quote"
 										/>
 									</ClientOnly>
