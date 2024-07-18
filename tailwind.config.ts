@@ -4,6 +4,16 @@ import animate from 'tailwindcss-animate'
 import colors from 'tailwindcss/colors'
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
 
+const hexToRgb = (hex) => {
+	hex = hex.replace('#', '')
+	hex = hex.length === 3 ? hex.replace(/./g, '$&$&') : hex
+	const r = parseInt(hex.substring(0, 2), 16)
+	const g = parseInt(hex.substring(2, 4), 16)
+	const b = parseInt(hex.substring(4, 6), 16)
+	return `${r} ${g} ${b}`
+}
+
+
 const srcDir = '.'
 
 export default {
@@ -96,6 +106,48 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-up': 'fade-up 0.3s ease-out',
 			},
+			typography: {
+				DEFAULT: {
+					css: {
+						'--tw-prose-body': colors.slate[300],
+						'--tw-prose-headings': colors.slate[200],
+						'--tw-prose-lead': colors.slate[200],
+						'--tw-prose-links': colors.slate[200],
+						'--tw-prose-bold': colors.slate[300],
+						'--tw-prose-counters': colors.slate[500],
+						'--tw-prose-bullets': colors.slate[300],
+						'--tw-prose-hr': colors.slate[200],
+						'--tw-prose-quotes': colors.slate[900],
+						'--tw-prose-quote-borders': colors.slate[200],
+						'--tw-prose-captions': colors.slate[500],
+						'--tw-prose-kbd': colors.slate[900],
+						'--tw-prose-kbd-shadows': hexToRgb(colors.slate[900]),
+						'--tw-prose-code': colors.slate[900],
+						'--tw-prose-pre-code': colors.slate[200],
+						'--tw-prose-pre-bg': colors.slate[800],
+						'--tw-prose-th-borders': colors.slate[300],
+						'--tw-prose-td-borders': colors.slate[200],
+						'--tw-prose-invert-body': colors.slate[300],
+						'--tw-prose-invert-headings': colors.white,
+						'--tw-prose-invert-lead': colors.slate[400],
+						'--tw-prose-invert-links': colors.white,
+						'--tw-prose-invert-bold': colors.white,
+						'--tw-prose-invert-counters': colors.slate[400],
+						'--tw-prose-invert-bullets': colors.slate[600],
+						'--tw-prose-invert-hr': colors.slate[700],
+						'--tw-prose-invert-quotes': colors.slate[100],
+						'--tw-prose-invert-quote-borders': colors.slate[700],
+						'--tw-prose-invert-captions': colors.slate[400],
+						'--tw-prose-invert-kbd': colors.white,
+						'--tw-prose-invert-kbd-shadows': hexToRgb(colors.white),
+						'--tw-prose-invert-code': colors.white,
+						'--tw-prose-invert-pre-code': colors.slate[300],
+						'--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
+						'--tw-prose-invert-th-borders': colors.slate[600],
+						'--tw-prose-invert-td-borders': colors.slate[700],
+					},
+				},
+			},
 		},
 		linearBorderGradients: {
 			directions: { // defaults to these values
@@ -123,6 +175,7 @@ export default {
 	},
 	plugins: [
 		animate,
+		require('@tailwindcss/typography'),
 		require('tailwindcss-border-gradient-radius'),
 		require('tailwindcss-3d'),
 		plugin(function ({ matchUtilities, addUtilities }) {

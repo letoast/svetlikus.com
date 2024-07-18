@@ -65,7 +65,7 @@ const { $directus } = useNuxtApp()
 					</template>
 					<template #item="{ item: { content } }">
 						<div
-							class="text-lg"
+							class="text-lg prose"
 							v-html="content"
 						/>
 					</template>
