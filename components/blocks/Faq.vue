@@ -48,6 +48,9 @@ const { $directus } = useNuxtApp()
 						label: item.question,
 						content: item.answer,
 					}))"
+					:ui="{
+						container: 'border-b border-neutral-700 py-2',
+					}"
 				>
 					<template #default="{ item: { label }, open }">
 						<UButton
@@ -55,13 +58,16 @@ const { $directus } = useNuxtApp()
 							color="white"
 							:label="label"
 							:block="false"
-							class="justify-between px-0 text-start text-lg"
+							class="justify-between px-0 text-start text-xl"
 							:icon="open ? 'tabler:minus' : 'tabler:plus'"
 							trailing
 						/>
 					</template>
 					<template #item="{ item: { content } }">
-						<div v-html="content" />
+						<div
+							class="text-lg"
+							v-html="content"
+						/>
 					</template>
 				</UAccordion>
 			</div>
