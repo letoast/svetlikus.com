@@ -72,6 +72,12 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					"
 				>
 					<div class="relative">
+						<span
+							v-if="data.kicker"
+							class="mb-5 block text-center text-3xl font-bold uppercase text-yellow-400"
+						>
+							{{ data.kicker }}
+						</span>
 						<h1
 							class="
 								relative text-center text-4xl font-bold uppercase
