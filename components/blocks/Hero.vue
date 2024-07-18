@@ -81,7 +81,7 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 						<h1
 							class="
 								relative text-center text-4xl font-bold uppercase
-								lg:text-9xl
+								lg:text-7xl
 							"
 							v-html="data.title"
 						/>
