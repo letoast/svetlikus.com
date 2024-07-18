@@ -39,6 +39,7 @@ defineProps<{
 		>
 			<NuxtMarquee
 				class="py-1"
+				:speed="35"
 				:play="visible"
 			>
 				<BlocksTagsTagItem
