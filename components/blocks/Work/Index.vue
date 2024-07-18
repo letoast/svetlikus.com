@@ -19,7 +19,7 @@ defineProps<{
 		>
 			<UButton
 				v-if="data?.cta"
-				class="col-span-2 col-start-6 mt-8"
+				class="col-span-2 col-start-6"
 				color="secondary"
 				:to="data?.cta?.href"
 				:label="data?.cta?.label"
