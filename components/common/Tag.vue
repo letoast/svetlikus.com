@@ -5,19 +5,16 @@ const props = defineProps<{
 
 const wrapperClass = computed(() => {
 	return {
-		'bg-[linear-gradient(theme(colors.rose.500)20_0%,theme(colors.rose.500)20_0%),linear-gradient(theme(colors.neutral.950)_0%,theme(colors.neutral.950)_0%)] before:bg-[linear-gradient(149.04deg,_theme(colors.rose.500)_0%,_theme(colors.neutral.800)00_100%)]': props.color === 'rose',
-		'bg-[linear-gradient(theme(colors.yellow.500)20_0%,theme(colors.yellow.500)20_0%),linear-gradient(theme(colors.neutral.950)_0%,theme(colors.neutral.950)_0%)] before:bg-[linear-gradient(149.04deg,_theme(colors.yellow.500)_0%,_theme(colors.neutral.800)00_100%)]': props.color === 'yellow',
-		'bg-[linear-gradient(theme(colors.cyan.500)20_0%,theme(colors.cyan.500)20_0%),linear-gradient(theme(colors.neutral.950)_0%,theme(colors.neutral.950)_0%)] before:bg-[linear-gradient(149.04deg,_theme(colors.cyan.500)_0%,_theme(colors.neutral.800)00_100%)]': props.color === 'cyan',
+		'ring-rose-500/50 hover:ring-rose-500 hover:bg-rose-500/25 hover:shadow-lg hover:shadow-rose-500/25 hover:cursor-default': props.color === 'rose',
+		'ring-yellow-500/50 hover:ring-yellow-500 hover:bg-yellow-500/25 hover:shadow-lg hover:shadow-yellow-500/25 hover:cursor-default': props.color === 'yellow',
+		'ring-cyan-500/50 hover:ring-cyan-500 hover:bg-cyan-500/25 hover:shadow-lg hover:shadow-cyan-500/25 hover:cursor-default': props.color === 'cyan',
 	}
 })
 </script>
 
 <template>
 	<div
-		class="
-			relative flex items-center justify-center rounded px-2
-			before:absolute before:-left-px before:-top-px before:z-[-1] before:size-[calc(100%+2px)] before:rounded before:transition-all before:duration-300 before:content-['']
-		"
+		class="relative flex items-center justify-center rounded px-2 ring ring-[1px]"
 		:class="wrapperClass"
 	>
 		<span
