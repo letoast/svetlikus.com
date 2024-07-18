@@ -85,14 +85,11 @@ function clientData(client: unknown) {
 				description: data?.lead,
 			}"
 			:kicker-color="'text-emerald-400'"
-			class="lg:pb-10"
+			class="lg:pb-8"
 		/>
 		<div
 			ref="emblaRef"
-			class="
-				relative mt-7 overflow-hidden
-				lg:mt-14
-			"
+			class="relative mt-5 overflow-hidden"
 		>
 			<div
 				v-if="data?.clients?.length"
@@ -116,7 +113,7 @@ function clientData(client: unknown) {
 							target="_blank"
 						>
 							<img
-								class="h-12"
+								class="h-9"
 								:src="`${$directus.url}assets/${clientData(client)?.image.filename_disk}`"
 								:alt="clientData(client)?.title"
 							>
