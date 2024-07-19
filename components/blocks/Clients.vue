@@ -9,7 +9,10 @@ interface Client {
 	link?: string
 }
 
-const props = defineProps<{ data: unknown }>()
+const props = defineProps<{
+	data: unknown
+	container: boolean
+}>()
 const sectionRef = ref<HTMLElement | null>(null)
 
 const emblaRef = ref<HTMLElement | null>(null)
@@ -86,6 +89,7 @@ function clientData(client: unknown) {
 			}"
 			:kicker-color="'text-emerald-400'"
 			class="lg:pb-8"
+			:container
 		/>
 		<div
 			ref="emblaRef"

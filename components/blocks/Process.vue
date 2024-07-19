@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
 	data: unknown
+	container: boolean
 }>()
 </script>
 
@@ -14,9 +15,13 @@ defineProps<{
 			}"
 			:kicker-color="'text-blue-600'"
 			class="pb-10"
+			:container
 		/>
 		<div
-			class="container grid grid-cols-12 gap-x-8 gap-y-6"
+			class="grid grid-cols-12 gap-x-8 gap-y-6"
+			:class="{
+				container: container,
+			}"
 		>
 			<CommonProcessCard
 				v-for="card, cardIndex in data?.processes"

@@ -34,7 +34,11 @@ function updateRefs() {
 
 <template>
 	<section>
-		<div class="container">
+		<div
+			:class="{
+				container: container,
+			}"
+		>
 			<div
 				ref="emblaRef"
 				class="relative overflow-hidden rounded-2xl"

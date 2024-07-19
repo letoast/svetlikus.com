@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
 	data: unknown
+	container: boolean
 }>()
 
 const { $directus } = useNuxtApp()
@@ -16,9 +17,13 @@ const { $directus } = useNuxtApp()
 			}"
 			:kicker-color="'text-yellow-500'"
 			class="pb-5"
+			:container
 		/>
 		<div
-			class="container grid grid-cols-12 gap-x-8 gap-y-8"
+			class="grid grid-cols-12 gap-x-8 gap-y-8"
+			:class="{
+				container: container,
+			}"
 		>
 			<div class="col-span-12 flex flex-col items-center gap-4 text-neutral-400">
 				<NuxtLinkLocale

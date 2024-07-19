@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
 	data: unknown
+	container: boolean
 }>()
 
 const { $directus } = useNuxtApp()
@@ -9,7 +10,10 @@ const { $directus } = useNuxtApp()
 <template>
 	<section>
 		<div
-			class="container grid grid-cols-12 gap-x-8 gap-y-8"
+			class="grid grid-cols-12 gap-x-8 gap-y-8"
+			:class="{
+				container: container,
+			}"
 		>
 			<div
 				class="
@@ -66,7 +70,7 @@ const { $directus } = useNuxtApp()
 					</template>
 					<template #item="{ item: { content } }">
 						<div
-							class="text-lg prose"
+							class="prose text-lg"
 							v-html="content"
 						/>
 					</template>

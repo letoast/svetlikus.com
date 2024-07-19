@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
 	data: unknown
+	container: boolean
 }>()
 </script>
 
@@ -13,6 +14,7 @@ defineProps<{
 				description: data?.lead,
 			}"
 			:kicker-color="'text-cyan-400'"
+			:container
 		/>
 		<div
 			class="col-span-12 flex justify-center pb-10 pt-4"
@@ -26,7 +28,11 @@ defineProps<{
 				:variant="data?.cta?.variant"
 			/>
 		</div>
-		<div class="container">
+		<div
+			:class="{
+				container: container,
+			}"
+		>
 			<div
 				class="grid grid-cols-12 gap-x-8 gap-y-8"
 			>

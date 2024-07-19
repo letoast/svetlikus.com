@@ -4,6 +4,7 @@ import emblaCarouselVue from 'embla-carousel-vue'
 
 const props = defineProps<{
 	data: unknown
+	container: boolean
 }>()
 
 const { $directus } = useNuxtApp()
@@ -55,13 +56,17 @@ function updateRefs() {
 			}"
 			:kicker-color="'text-purple-500'"
 			class="pb-10"
+			:container
 		/>
 
 		<div
 			class="
-				container relative
+				relative
 				before:absolute before:-left-4 before:-top-4 before:z-[-1] before:h-[calc(100%+4rem)] before:w-[calc(100%+2rem)] before:rounded-2xl before:bg-[linear-gradient(to_bottom,_theme(colors.transparent),_theme(colors.neutral.900))] before:content-['']
 			"
+			:class="{
+				container: container,
+			}"
 		>
 			<div
 				class="grid grid-cols-12 items-end gap-x-8 gap-y-8"
@@ -79,7 +84,7 @@ function updateRefs() {
 					/>
 				</div>
 				<div
-					class="col-span-12 rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
+					class="col-span-12 overflow-hidden rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
 				>
 					<div
 						class="
@@ -98,12 +103,15 @@ function updateRefs() {
 									v-for="item in data?.testimonials"
 									:key="item"
 									class="
-										flex w-full flex-shrink-0 flex-grow basis-full flex-col gap-8
-										lg:flex-row lg:items-center
+										flex flex-shrink-0 flex-grow flex-col gap-8
+										lg:basis-full lg:flex-row lg:items-center
 									"
 								>
 									<div
-										class="flex max-w-[30%] flex-shrink-0 flex-grow items-center gap-4"
+										class="
+											flex items-center gap-4
+											lg:max-w-[30%] lg:flex-shrink-0 lg:flex-grow
+										"
 									>
 										<img
 											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.filename_disk}?format=auto&quality=60`"

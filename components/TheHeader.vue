@@ -31,7 +31,10 @@ const setHeaderHeight = computed(() => {
 				class="grid grid-cols-12 items-center"
 			>
 				<div
-					class="col-span-2"
+					class="
+						col-span-2 hidden
+						lg:block
+					"
 					:class="{
 						'col-span-1 hidden': setHeaderHeight > 0,
 					}"
@@ -45,7 +48,10 @@ const setHeaderHeight = computed(() => {
 				</div>
 				<div
 					ref="fixedHeaderRef"
-					class="col-span-8 flex items-center justify-center gap-6 px-6 py-4"
+					class="
+						col-span-12 flex max-w-[100vw] items-center justify-center gap-6 overflow-auto px-6 py-4
+						lg:col-span-8
+					"
 					:class="{
 						'fixed bottom-6 left-1/2 z-50 col-auto animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/40 drop-shadow-xl backdrop-blur-xl -translate-x-1/2': setHeaderHeight > 0,
 					}"

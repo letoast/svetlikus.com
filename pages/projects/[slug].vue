@@ -47,7 +47,7 @@ const { data: project } = await useAsyncData('projectId', async () => {
 
 <template>
 	<div>
-		<section>
+		<section class="mb-10">
 			<div class="container">
 				<div
 					class="grid grid-cols-12 gap-x-8 gap-y-8"
@@ -101,9 +101,14 @@ const { data: project } = await useAsyncData('projectId', async () => {
 				</div>
 			</div>
 		</section>
-		<Blocks
-			v-if="project?.blocks?.length"
-			:blocks="project.blocks"
-		/>
+
+		<div
+			class="container grid rounded-3xl border-gradient-br-neutral-500-neutral-950 gradient-border-2"
+		>
+			<Blocks
+				v-if="project?.blocks?.length"
+				:blocks="project.blocks"
+			/>
+		</div>
 	</div>
 </template>

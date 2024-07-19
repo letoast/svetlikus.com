@@ -23,5 +23,6 @@ function clearAndUpper(text: string) {
 		:is="componentFile"
 		class="py-14"
 		:data="block?.item"
+		:container="!useRoute().name?.toString().startsWith('projects-slug')"
 	/>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
 	data: unknown
+	container: boolean
 }>()
 
 const { $directus } = useNuxtApp()
@@ -16,9 +17,13 @@ const { $directus } = useNuxtApp()
 			}"
 			:kicker-color="'text-rose-600'"
 			class="pb-10"
+			:container
 		/>
 		<div
-			class="container grid grid-cols-12 gap-x-8 gap-y-8"
+			class="grid grid-cols-12 gap-x-8 gap-y-8"
+			:class="{
+				container: container,
+			}"
 		>
 			<div
 				v-for="item, index in data?.benefits"
