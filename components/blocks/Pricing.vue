@@ -114,7 +114,7 @@ function updateRefs() {
 										"
 									>
 										<img
-											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.filename_disk}?format=auto&quality=60`"
+											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.filename_disk}`"
 											:alt="item?.svetlikus_testimonials_id?.name"
 											class="h-20 w-20 rounded-md object-cover"
 										>
