@@ -6,19 +6,15 @@ const { localeProperties } = useI18n()
 
 const { data: page, error, refresh } = await useAsyncData('page', async () => {
 	return await $directus.request($readItems('svetlikus_pages', {
-		deep: {
-			translations: {
-				_filter: {
-					_and: [
-						{
-							languages_code: { _eq: localeProperties.value.iso },
-						},
-						{
-							slug: { _eq: 'home' },
-						},
-					],
+		filter: {
+			_and: [
+				{
+					translations: {
+						languages_code: { _eq: localeProperties.value.iso },
+						slug: { _eq: 'home' },
+					},
 				},
-			},
+			],
 		},
 		fields: ['*.*.*.*.*.*.*.*.*'],
 		limit: 1,

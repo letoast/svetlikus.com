@@ -114,7 +114,7 @@ function clientData(client: unknown) {
 						>
 							<img
 								class="h-9"
-								:src="`${$directus.url}assets/${clientData(client)?.image.filename_disk}`"
+								:src="`${$directus.url}assets/${clientData(client)?.image.filename_disk}?format=auto&quality=60`"
 								:alt="clientData(client)?.title"
 							>
 						</a>

@@ -106,7 +106,7 @@ function updateRefs() {
 										class="flex max-w-[30%] flex-shrink-0 flex-grow items-center gap-4"
 									>
 										<img
-											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.filename_disk}`"
+											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.filename_disk}?format=auto&quality=60`"
 											:alt="item?.svetlikus_testimonials_id?.name"
 											class="h-20 w-20 rounded-md object-cover"
 										>
