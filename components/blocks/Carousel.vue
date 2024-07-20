@@ -52,6 +52,7 @@ function updateRefs() {
 						<img
 							src="/slide.png"
 							class="size-full object-cover"
+							loading="lazy"
 						>
 					</div>
 				</div>

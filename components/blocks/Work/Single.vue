@@ -28,6 +28,7 @@ const tags = computed(() => {
 				<img
 					:src="`${$directus.url}assets/${project?.image?.id}?format=auto`"
 					class="aspect-video size-full object-cover"
+					loading="lazy"
 				>
 			</div>
 		</div>

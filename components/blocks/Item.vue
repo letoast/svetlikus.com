@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { resolveDynamicComponent } from 'vue'
-
 const props = defineProps<{
 	block: unknown
 }>()
 
-const componentFile = resolveDynamicComponent(`Blocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))
+const componentFile = resolveComponent(`LazyBlocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))
 	.split('_')
 	.map(toSentenceCase)
 	.join('')

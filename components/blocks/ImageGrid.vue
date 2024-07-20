@@ -32,6 +32,7 @@ defineProps<{
 					:key="image.directus_files_id.id"
 					:src="`${$directus.url}assets/${image.directus_files_id.id}`"
 					class="h-auto w-full"
+					loading="lazy"
 				>
 			</div>
 		</div>

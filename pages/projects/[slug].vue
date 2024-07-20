@@ -93,8 +93,9 @@ const { data: project } = await useAsyncData('projectId', async () => {
 							class="overflow-hidden rounded-lg"
 						>
 							<img
-								:src="`${$directus.url}assets/${project?.image?.filename_disk}?format=auto&quality=60`"
+								:src="`${$directus.url}assets/${project?.image?.id}`"
 								class="aspect-video size-full object-cover"
+								loading="lazy"
 							>
 						</div>
 					</div>
