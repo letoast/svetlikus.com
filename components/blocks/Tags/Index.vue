@@ -50,7 +50,7 @@ defineProps<{
 <template>
 	<section ref="sectionRef">
 		<div
-			class="flex flex-col gap-1"
+			class="flex max-w-[100vw] flex-col gap-1 overflow-hidden"
 		>
 			<NuxtMarquee
 				class="py-1"
