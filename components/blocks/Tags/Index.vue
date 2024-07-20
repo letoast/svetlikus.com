@@ -27,6 +27,21 @@ const { data: tags } = await useLazyAsyncData('tags', async () => {
 	},
 })
 
+const tags1 = tags.value
+	?.map(value => ({ value, sort: Math.random() }))
+	?.sort((a, b) => a.sort - b.sort)
+	?.map(({ value }) => value)
+
+const tags2 = tags.value
+	?.map(value => ({ value, sort: Math.random() }))
+	?.sort((a, b) => a.sort - b.sort)
+	?.map(({ value }) => value)
+
+const tags3 = tags.value
+	?.map(value => ({ value, sort: Math.random() }))
+	?.sort((a, b) => a.sort - b.sort)
+	?.map(({ value }) => value)
+
 defineProps<{
 	data: unknown
 }>()
@@ -43,10 +58,7 @@ defineProps<{
 				:play="visible"
 			>
 				<BlocksTagsTagItem
-					v-for="item, index in tags
-						?.map(value => ({ value, sort: Math.random() }))
-						?.sort((a, b) => a.sort - b.sort)
-						?.map(({ value }) => value)"
+					v-for="item, index in tags1"
 					:key="index"
 					:data="item"
 				/>
@@ -57,10 +69,7 @@ defineProps<{
 				:play="visible"
 			>
 				<BlocksTagsTagItem
-					v-for="item, index in tags
-						?.map(value => ({ value, sort: Math.random() }))
-						?.sort((a, b) => a.sort - b.sort)
-						?.map(({ value }) => value)"
+					v-for="item, index in tags2"
 					:key="index"
 					:data="item"
 				/>
@@ -70,10 +79,7 @@ defineProps<{
 				:play="visible"
 			>
 				<BlocksTagsTagItem
-					v-for="item, index in tags
-						?.map(value => ({ value, sort: Math.random() }))
-						?.sort((a, b) => a.sort - b.sort)
-						?.map(({ value }) => value)"
+					v-for="item, index in tags3"
 					:key="index"
 					:data="item"
 				/>
