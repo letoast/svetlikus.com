@@ -4,20 +4,19 @@ const props = defineProps<{
 	alt?: string
 }>()
 
-const { data, error } = useAsyncData(props.url, () =>
+const { data, error, status } = useLazyAsyncData(props.url, () =>
 	$fetch(props.url, {
 		headers: {
 			'Content-Type': 'image/svg+xml',
 		},
 		parseResponse: txt => txt,
-	})
-, {
-	server: false,
-})
+	}),
+)
 </script>
 
 <template>
 	<div
+		v-if="status === 'success'"
 		:alt
 		v-html="data"
 	/>
