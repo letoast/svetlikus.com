@@ -3,7 +3,9 @@ export default defineNuxtPlugin(async () => {
 
 	const initData = ref({})
 
-	initData.value = await $directus.request($readSingleton('svetlikus_global'))
+	callOnce('init', async () => {
+		initData.value = await $directus.request($readSingleton('svetlikus_global'))
+	})
 
 	return {
 		provide: { initData },
