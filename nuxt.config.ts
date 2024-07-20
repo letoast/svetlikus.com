@@ -3,9 +3,18 @@ export default defineNuxtConfig({
 	app: {
 		head: {
 			link: [
-				{ rel: 'stylesheet', href: 'https://use.typekit.net/tit7gaj.css' },
-				{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+				// { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+				{ rel: 'dns-prefetch', href: 'https://svetlikus.datalog.si' },
 				{ rel: 'preconnect', href: 'https://svetlikus.datalog.si' },
+				// Typekit
+				{ rel: 'preconnect', href: 'https://use.typekit.net' },
+				{ rel: 'dns-prefetch', href: 'https://use.typekit.net' },
+				{ rel: 'preconnect', href: 'https://p.typekit.net' },
+				{ rel: 'dns-prefetch', href: 'https://p.typekit.net' },
+				{ rel: 'preload', as: 'style', href: 'https://use.typekit.net/tit7gaj.css', onload: 'this.onload=null;this.rel="stylesheet"' },
+			],
+			noscript: [
+				{ rel: 'stylesheet', href: 'https://use.typekit.net/tit7gaj.css' },
 			],
 		},
 	},
