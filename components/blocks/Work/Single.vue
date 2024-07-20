@@ -26,7 +26,7 @@ const tags = computed(() => {
 				class="overflow-hidden rounded-lg"
 			>
 				<img
-					:src="`${$directus.url}assets/${project?.image?.id}?format=auto`"
+					:src="`${$directus.url}assets/${project?.image}?format=auto`"
 					class="aspect-video size-full object-cover"
 					loading="lazy"
 				>
