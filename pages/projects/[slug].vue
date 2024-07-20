@@ -6,7 +6,9 @@ const { localeProperties } = useI18n()
 
 const { data: pageIds } = await useAsyncData('projectIds', async () => {
 	return await $directus.request($readItems('svetlikus_projects', {
-		fields: ['id', 'translations.*'],
+		fields: ['id', {
+			translations: ['slug'],
+		}],
 		deep: {
 			translations: {
 				_filter: {
@@ -25,18 +27,80 @@ const { data: project } = await useAsyncData('projectId', async () => {
 	const pageId = pageIds.value?.find(page => page?.translations?.[0]?.slug === route?.params?.slug)?.id
 
 	return await $directus.request($readItem('svetlikus_projects', pageId, {
-		fields: ['*.*.*.*.*.*.*.*.*'],
+		limit: 1,
 		deep: {
 			translations: {
 				_filter: {
-					_and: [
-						{
-							languages_code: { _eq: localeProperties.value.iso },
-						},
-					],
+					languages_code: {
+						_eq: localeProperties.value.iso,
+					},
 				},
 			},
 		},
+		fields: [
+			'id',
+			{
+				tags: ['*'],
+			},
+			{
+				translations: [
+					'title',
+					'project_link',
+					'slug',
+					'description',
+					'image',
+					{
+						testimonial: ['*'],
+					},
+					{
+						blocks: [
+							'collection',
+							{
+								item: [
+									'*',
+									{
+										images: ['directus_files_id'],
+										clients: [{
+											svetlikus_clients_id: ['*'],
+										}],
+										projects: [{
+											svetlikus_projects_id: [
+												{
+													tags: [{
+														svetlikus_projects_tags_id: [
+															'color',
+															{
+																translations: ['*'],
+															},
+														],
+													}],
+													translations: [
+														'description',
+														'image',
+														'project_link',
+														'slug',
+														'title',
+													],
+												}],
+										}],
+										testimonials: [{
+											svetlikus_testimonials_id: [
+												'image',
+												'name',
+												'rating',
+												{
+													translations: ['*'],
+												},
+											],
+										}],
+										cta: ['*'],
+										cta_2: ['*'],
+									},
+								],
+							},
+						],
+					}],
+			}],
 	}))
 }, {
 	transform: (data) => {
@@ -93,7 +157,7 @@ const { data: project } = await useAsyncData('projectId', async () => {
 							class="overflow-hidden rounded-lg"
 						>
 							<img
-								:src="`${$directus.url}assets/${project?.image?.id}`"
+								:src="`${$directus.url}assets/${project?.image}`"
 								class="aspect-video size-full object-cover"
 								loading="lazy"
 							>

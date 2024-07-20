@@ -16,7 +16,66 @@ const { data: page, error, refresh } = await useAsyncData('page', async () => {
 				},
 			],
 		},
-		fields: ['*.*.*.*.*.*.*.*.*'],
+		deep: {
+			translations: {
+				_limit: 1,
+				_filter: {
+					languages_code: {
+						_eq: localeProperties.value.iso,
+					},
+				},
+			},
+		},
+		fields: [{
+			translations: [{
+				blocks: [
+					'collection',
+					{
+						item: [
+							'*',
+							{
+								images: ['directus_files_id'],
+								clients: [{
+									svetlikus_clients_id: ['*'],
+								}],
+								projects: [{
+									svetlikus_projects_id: [
+										{
+											tags: [{
+												svetlikus_projects_tags_id: [
+													'color',
+													{
+														translations: ['*'],
+													},
+												],
+											}],
+											translations: [
+												'description',
+												'image',
+												'project_link',
+												'slug',
+												'title',
+											],
+										}],
+								}],
+								testimonials: [{
+									svetlikus_testimonials_id: [
+										'image',
+										'name',
+										'rating',
+										{
+											translations: ['*'],
+										},
+									],
+								}],
+								cta: ['*'],
+								cta_2: ['*'],
+							},
+						],
+					},
+				],
+			}],
+		}],
 		limit: 1,
 	}))
 }, {

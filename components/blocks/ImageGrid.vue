@@ -29,8 +29,8 @@ defineProps<{
 			>
 				<img
 					v-for="image in data?.images"
-					:key="image.directus_files_id.id"
-					:src="`${$directus.url}assets/${image.directus_files_id.id}`"
+					:key="image.directus_files_id"
+					:src="`${$directus.url}assets/${image.directus_files_id}`"
 					class="h-auto w-full"
 					loading="lazy"
 				>

@@ -34,6 +34,7 @@ const { data: page, error, refresh } = await useAsyncData('page', async () => {
 						item: [
 							'*',
 							{
+								images: ['directus_files_id'],
 								clients: [{
 									svetlikus_clients_id: ['*'],
 								}],
