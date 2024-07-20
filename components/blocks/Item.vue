@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { NuxtErrorBoundary } from '#build/components'
+
 const props = defineProps<{
 	block: unknown
 }>()
 
-const componentFile = resolveComponent(`Blocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))
+const componentFile = resolveComponent(`LazyBlocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))
 	.split('_')
 	.map(toSentenceCase)
 	.join('')
@@ -19,10 +21,12 @@ function clearAndUpper(text: string) {
 </script>
 
 <template>
-	<component
-		:is="componentFile"
-		class="py-14"
-		:data="block?.item"
-		:container="!useRoute().name?.toString().startsWith('projects-slug')"
-	/>
+	<NuxtErrorBoundary>
+		<component
+			:is="componentFile"
+			class="py-14"
+			:data="block?.item"
+			:container="!useRoute().name?.toString().startsWith('projects-slug')"
+		/>
+	</NuxtErrorBoundary>
 </template>
