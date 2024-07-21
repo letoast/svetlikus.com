@@ -159,6 +159,7 @@ function updateRefs() {
 									'cursor-not-allowed opacity-30': !canScrollPrev,
 									'hover:border-secondary hover:bg-secondary/30 hover:shadow-lg hover:shadow-secondary/30': canScrollPrev,
 								}"
+								title="Previous slide"
 								@click="emblaApi?.scrollPrev"
 							>
 								<Icon name="tabler:chevron-left" />
@@ -173,6 +174,7 @@ function updateRefs() {
 									'cursor-not-allowed opacity-30': !canScrollNext,
 									'hover:border-secondary hover:bg-secondary/30 hover:shadow-lg hover:shadow-secondary/30': canScrollNext,
 								}"
+								title="Next slide"
 								@click="emblaApi?.scrollNext"
 							>
 								<Icon name="tabler:chevron-right" />

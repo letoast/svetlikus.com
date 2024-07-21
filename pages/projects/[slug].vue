@@ -56,9 +56,12 @@ const { data: project } = await useAsyncData('projectId', async () => {
 					'project_link',
 					'slug',
 					'description',
-					'image',
 					{
-						testimonial: ['*'],
+
+						image: ['id', 'title', 'description'],
+					},
+					{
+						testimonial: ['*', 'translations.*'],
 					},
 					{
 						blocks: $blocks,
@@ -139,16 +142,88 @@ useSeoMeta({
 							class="aspect-square overflow-hidden rounded-lg"
 						>
 							<img
-								:src="`${$directus.url}assets/${project?.translations?.image}?format=auto`"
+								v-if="project?.translations?.image"
+								:src="`${$directus.url}assets/${project?.translations?.image.id}?format=auto`"
 								class="size-full object-cover"
 								loading="lazy"
+								:alt="project?.translations?.image.title"
 							>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-
+		<div
+			class="container mb-10 grid"
+		>
+			<div
+				class="col-span-12 overflow-hidden rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
+			>
+				<div
+					class="
+						flex flex-col items-center gap-8
+						lg:flex-row
+					"
+				>
+					<div
+						ref="emblaRef"
+						class="relative overflow-hidden"
+					>
+						<div
+							class="flex"
+						>
+							<div
+								v-for="item in [project?.translations.testimonial]"
+								:key="item"
+								class="
+									flex flex-shrink-0 flex-grow flex-col gap-8
+									lg:basis-full lg:flex-row lg:items-center
+								"
+							>
+								<div
+									class="
+										flex items-center gap-4
+										lg:max-w-[30%] lg:flex-shrink-0 lg:flex-grow
+									"
+								>
+									<img
+										v-if="item?.image"
+										:src="`${$directus.url}assets/${item?.image}?format=auto`"
+										:alt="item?.name"
+										class="h-20 w-20 rounded-md object-cover"
+										loading="lazy"
+									>
+									<div>
+										<p
+											class="text-lg font-bold text-gray-200"
+										>
+											{{ item?.name }}
+										</p>
+										<p
+											class="text-md font-book text-white text-opacity-50"
+										>
+											{{ item?.translations?.[0].position }}
+										</p>
+										<UIcon
+											v-for="star, index in item?.rating"
+											:key="index"
+											name="gravity-ui:star-fill"
+											class="me-1 text-gray-300"
+										/>
+									</div>
+								</div>
+								<ClientOnly>
+									<p
+										class="text-lg font-book w-full"
+										v-html="item?.translations?.[0]?.quote"
+									/>
+								</ClientOnly>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div
 			class="container grid rounded-3xl border-gradient-br-neutral-500-neutral-950 gradient-border-2"
 		>
