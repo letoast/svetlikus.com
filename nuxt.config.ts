@@ -34,7 +34,14 @@ export default defineNuxtConfig({
 	},
 	modules: [// 'shadcn-nuxt',
 		'@nuxtjs/tailwindcss', // 'nuxt-icon',
-		'@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n', '@nuxt/scripts'],
+		'@vueuse/nuxt',
+		'@nuxt/eslint',
+		'nuxt-marquee',
+		'@nuxt/ui',
+		'@nuxtjs/i18n',
+		'@nuxt/scripts',
+		'@nuxtjs/device',
+	],
 
 	icon: {
 		mode: 'svg',

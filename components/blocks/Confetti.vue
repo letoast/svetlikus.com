@@ -57,6 +57,8 @@ watch(visible, async (isVisible) => {
 					"
 					:label="data?.cta?.label"
 					:to="data?.cta?.href"
+					variant="solid"
+					color="primary"
 				/>
 			</div>
 		</div>

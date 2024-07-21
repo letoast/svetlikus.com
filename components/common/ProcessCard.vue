@@ -74,14 +74,14 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 			/>
 			<div
 				class="
-					absolute left-[-1px] top-[-1px] z-[-1] size-[calc(100%+2px)] rounded-lg bg-[radial-gradient(15vw_circle_at_var(--x)_var(--y),_theme(colors.blue.600)_0,_transparent_100%)] transition-all translate-z-0
+					absolute left-[-1px] top-[-1px] z-[-1] size-[calc(100%+2px)] rounded-lg bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.600)_0,_transparent_100%)] transition-all translate-z-0
 					group-hover:bg-[linear-gradient(theme(colors.blue.600),_theme(colors.blue.600))]
 				"
 			/>
 			<div
 				class="
-					absolute left-0 top-0 h-full w-full rounded-lg bg-[radial-gradient(15vw_circle_at_var(--x)_var(--y),_theme(colors.zinc.900)_0,_theme(colors.zinc.950)_100%)]
-					group-hover:bg-[radial-gradient(15vw_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]
+					absolute left-0 top-0 h-full w-full rounded-lg bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.zinc.900)_0,_theme(colors.zinc.950)_100%)]
+					group-hover:bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]
 				"
 			/>
 			<div

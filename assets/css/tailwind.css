@@ -11,6 +11,12 @@
 
 	body {
 		@apply bg-[#090909] text-white h-full subpixel-antialiased;
+
+		--circle-size: 80vw;
+
+		@media screen and (width >= 1024px) {
+			--circle-size: 20vw;
+		}
 	}
 
 	a {

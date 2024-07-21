@@ -53,21 +53,21 @@ watch(visible, (isVisible) => {
 			lg:col-span-4
 		"
 		:class="[
-			customColor === 'rose' && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
+			customColor === 'rose' && 'before:bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
 			customColor === 'rose' && `
-				bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_0%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)]
-				before:-left-px before:-top-px before:size-[calc(100%+2px)] before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)]
+				bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.rose.950)_0%,_theme(colors.rose.950)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)]
+				before:-left-px before:-top-px before:size-[calc(100%+2px)] before:bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.rose.500)_13.47%,_theme(colors.rose.500)00_62.24%),linear-gradient(149.04deg,_theme(colors.rose.900)_13.47%,_theme(colors.rose.950)00_62.24%)]
 				hover:before:bg-[linear-gradient(theme(colors.rose.700),_theme(colors.rose.500))]
 			`,
-			customColor === 'yellow' && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.yellow.300)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.yellow.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
+			customColor === 'yellow' && 'before:bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.yellow.300)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.yellow.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
 			customColor === 'yellow' && `
-				bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.yellow.900)_0%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)]
+				bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.yellow.900)_0%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)]
 				before:-left-px before:-top-px before:size-[calc(100%+2px)]
 				hover:before:bg-[linear-gradient(theme(colors.yellow.500),_theme(colors.yellow.500))]
 			`,
-			customColor === 'cyan' && 'before:bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.cyan.300)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.cyan.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
+			customColor === 'cyan' && 'before:bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.cyan.300)_0%,_theme(colors.neutral.300)00_62.24%),linear-gradient(149.04deg,_theme(colors.cyan.600)_13.47%,_theme(colors.neutral.800)00_62.24%)]',
 			customColor === 'cyan' && `
-				bg-[radial-gradient(20vw_circle_at_var(--x)_var(--y),_theme(colors.cyan.900)_0%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)]
+				bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.cyan.900)_0%,_theme(colors.neutral.900)00_62.24%),linear-gradient(210deg,_theme(colors.neutral.900)_-2.85%,_#090909_100%)]
 				before:-left-px before:-top-px before:size-[calc(100%+2px)]
 				hover:before:bg-[linear-gradient(theme(colors.cyan.500),_theme(colors.cyan.500))]
 			`,

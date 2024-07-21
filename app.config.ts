@@ -53,13 +53,13 @@ export default defineAppConfig({
 			color: {
 				primary: {
 					solid: cn(`
-						text-white shadow-sm bg-primary-500 ring-1 ring-inset ring-primary
+						text-primary-50 shadow-sm bg-primary-500 ring-1 ring-inset ring-primary
 						disabled:bg-primary-500
 						focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500
-						hover:bg-primary-600 hover:ring-primary-600 hover:shadow-lg hover:shadow-primary-600/30
+						hover:bg-primary-600 hover:ring-primary-600 hover:shadow-lg hover:shadow-primary-600/30 hover:text-white
 					`),
 					outline: cn(`
-						bg-transparent ring-1 ring-inset ring-primary text-primary-500
+						bg-transparent ring-1 ring-inset ring-primary text-primary-300
 						disabled:bg-transparent
 						focus-visible:ring-2 focus-visible:ring-primary-500
 						hover:text-white hover:shadow-lg hover:bg-primary-500 hover:shadow-primary-600/30
@@ -87,7 +87,7 @@ export default defineAppConfig({
 						bg-secondary-500 text-neutral-950 shadow-sm ring-1 ring-inset ring-secondary
 						disabled:bg-secondary-500
 						focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-500
-						hover:bg-secondary-600 hover:shadow-lg hover:shadow-secondary-600/30 hover:ring-secondary-600
+						hover:bg-secondary-600 hover:text-secondary-50 hover:shadow-lg hover:shadow-secondary-600/30 hover:ring-secondary-600
 					`),
 					outline: cn(`
 						bg-transparent text-secondary-500 ring-1 ring-inset ring-secondary
