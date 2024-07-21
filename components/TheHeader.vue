@@ -47,6 +47,7 @@ const setHeaderHeight = computed(() => {
 					<NuxtLink
 						to="/"
 						class="scroll-me-5 text-secondary"
+						title="svetlikus"
 					>
 						<CommonLogo class="h-6" />
 					</NuxtLink>
@@ -61,7 +62,10 @@ const setHeaderHeight = computed(() => {
 						'fixed bottom-6 left-1/2 z-50 col-auto animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/40 drop-shadow-xl backdrop-blur-xl -translate-x-1/2': setHeaderHeight > 0,
 					}"
 				>
-					<NuxtLink to="/">
+					<NuxtLink
+						to="/"
+						title="svetlikus"
+					>
 						<Icon
 							name="tabler:home"
 							size="24"
