@@ -92,9 +92,13 @@ async function getPage(slug: string, locale: string) {
 		},
 		fields: [
 			{
-				translations: [{
-					blocks,
-				}],
+				translations: [
+					'seo_title',
+					'seo_description',
+					{
+						blocks,
+					},
+				],
 			}],
 		limit: 1,
 	}))

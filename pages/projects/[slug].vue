@@ -73,6 +73,12 @@ const { data: project } = await useAsyncData('projectId', async () => {
 		}
 	},
 })
+
+useSeoMeta({
+	title: project.value?.translations?.title,
+	description: project.value?.translations?.description,
+	image: `${$directus.url}assets/${project.value?.translations?.image}?format=auto`,
+})
 </script>
 
 <template>
