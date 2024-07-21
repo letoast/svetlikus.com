@@ -39,8 +39,16 @@ const { data: project } = await useAsyncData('projectId', async () => {
 		},
 		fields: [
 			'id',
+			'logo',
 			{
-				tags: ['*'],
+				tags: [{
+					svetlikus_projects_tags_id: [
+						'color',
+						{
+							translations: ['*'],
+						},
+					],
+				}],
 			},
 			{
 				translations: [
@@ -104,7 +112,10 @@ const { data: project } = await useAsyncData('projectId', async () => {
 	}))
 }, {
 	transform: (data) => {
-		return data?.translations?.[0]
+		return {
+			...data,
+			translations: data?.translations?.[0],
+		}
 	},
 })
 </script>
@@ -118,12 +129,23 @@ const { data: project } = await useAsyncData('projectId', async () => {
 				>
 					<div
 						class="
-							col-span-12 flex flex-col justify-center gap-4
-							md:col-span-6
+							order-2 col-span-12 flex flex-col justify-center gap-4
+							md:order-1 md:col-span-6
 						"
 					>
+						<img
+							v-if="project?.logo"
+							:src="`${$directus.url}assets/${project?.logo}?format=auto`"
+							class="w-40"
+							loading="lazy"
+						>
+						<h1
+							class="text-5xl font-bold leading-loose text-neutral-300"
+						>
+							{{ project?.translations?.title }}
+						</h1>
 						<div
-							class="flex flex-wrap gap-3"
+							class="flex max-w-lg flex-wrap gap-3"
 						>
 							<CommonTag
 								v-for="item, index in project.tags"
@@ -133,32 +155,31 @@ const { data: project } = await useAsyncData('projectId', async () => {
 								{{ item?.svetlikus_projects_tags_id?.translations?.[0].title }}
 							</CommonTag>
 						</div>
-						<h3
-							class="text-3xl font-bold text-neutral-300"
-						>
-							{{ project?.title }}
-						</h3>
+
 						<div
-							class="text-lg font-book text-neutral-400"
-							v-html="project?.description"
+							class="text-lg font-book max-w-lg text-neutral-400"
+							v-html="project?.translations?.description"
 						/>
 						<CommonCTA
 							:cta="{
 								text: 'Company website',
-								link: project?.project_link,
+								link: project?.translations?.project_link,
 								target: '_blank',
 							}"
 						/>
 					</div>
 					<div
-						class="md:col-span-6"
+						class="
+							order-1 col-span-12
+							md:order-2 md:col-span-6
+						"
 					>
 						<div
-							class="overflow-hidden rounded-lg"
+							class="aspect-square overflow-hidden rounded-lg"
 						>
 							<img
-								:src="`${$directus.url}assets/${project?.image}?format=auto`"
-								class="aspect-video size-full object-cover"
+								:src="`${$directus.url}assets/${project?.translations?.image}?format=auto`"
+								class="size-full object-cover"
 								loading="lazy"
 							>
 						</div>
@@ -171,8 +192,8 @@ const { data: project } = await useAsyncData('projectId', async () => {
 			class="container grid rounded-3xl border-gradient-br-neutral-500-neutral-950 gradient-border-2"
 		>
 			<Blocks
-				v-if="project?.blocks?.length"
-				:blocks="project.blocks"
+				v-if="project?.translations?.blocks?.length"
+				:blocks="project?.translations.blocks"
 			/>
 		</div>
 	</div>
