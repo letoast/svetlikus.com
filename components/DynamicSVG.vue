@@ -17,7 +17,10 @@ const { data, error, status } = useLazyAsyncData(props.url, () =>
 <template>
 	<div
 		v-if="status === 'success'"
-		:alt
-		v-html="data"
-	/>
+	>
+		<div
+			:alt
+			v-html="data"
+		/>
+	</div>
 </template>

@@ -19,12 +19,11 @@ function clearAndUpper(text: string) {
 </script>
 
 <template>
-	<NuxtErrorBoundary>
-		<component
-			:is="componentFile"
-			class="py-14"
-			:data="block?.item"
-			:container="!useRoute().name?.toString().startsWith('projects-slug')"
-		/>
-	</NuxtErrorBoundary>
+	<component
+		:is="componentFile"
+		:id="block?.custom_id"
+		class="py-14"
+		:data="block?.item"
+		:container="!useRoute().name?.toString().startsWith('projects-slug')"
+	/>
 </template>

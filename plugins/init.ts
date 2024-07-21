@@ -1,13 +1,18 @@
-export default defineNuxtPlugin(async () => {
-	const { $directus, $readSingleton } = useNuxtApp()
+export default defineNuxtPlugin({
+	name: 'init',
+	async setup() {
+		const { $directus, $readSingleton } = useNuxtApp()
 
-	const initData = ref({})
+		const initData = ref({})
 
-	callOnce('init', async () => {
-		initData.value = await $directus.request($readSingleton('svetlikus_global'))
-	})
+		initData.value = await useAsyncData('init', () => $directus.request($readSingleton('svetlikus_global', {
+			fields: ['*', {
+				translations: ['menu'],
+			}],
+		})))
 
-	return {
-		provide: { initData },
-	}
+		return {
+			provide: { initData },
+		}
+	},
 })

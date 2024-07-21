@@ -6,6 +6,11 @@ const { y } = useWindowScroll()
 const { height: headerHeight } = useElementBounding(headerRef)
 const { height: fixedHeaderHeight } = useElementBounding(fixedHeaderRef)
 // const fps = useFps()
+const { $initData } = useNuxtApp()
+
+const menuItems = computed(() => {
+	return $initData.value?.data?.translations?.[0]?.menu
+})
 
 const setHeaderHeight = computed(() => {
 	if (y.value > headerHeight.value) {
@@ -62,7 +67,15 @@ const setHeaderHeight = computed(() => {
 							size="24"
 						/>
 					</NuxtLink>
-					<NuxtLink to="/">
+					<NuxtLink
+						v-for="menuItem, index in menuItems"
+						:key="index"
+						:to="menuItem.url"
+						:target="menuItem.target"
+					>
+						{{ menuItem.title }}
+					</NuxtLink>
+					<!-- <NuxtLink to="/">
 						Process
 					</NuxtLink>
 					<NuxtLink to="/">
@@ -85,7 +98,7 @@ const setHeaderHeight = computed(() => {
 					</NuxtLink>
 					<NuxtLink to="/">
 						Login
-					</NuxtLink>
+					</NuxtLink> -->
 				</div>
 			</div>
 		</div>
