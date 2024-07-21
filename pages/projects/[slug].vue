@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { $directus, $readItem, $readItems } = useNuxtApp()
+const { $directus, $readItem, $readItems, $blocks } = useNuxtApp()
 const { localeProperties } = useI18n()
 
 const { data: pageIds } = await useAsyncData('projectIds', async () => {
@@ -61,52 +61,7 @@ const { data: project } = await useAsyncData('projectId', async () => {
 						testimonial: ['*'],
 					},
 					{
-						blocks: [
-							'collection',
-							{
-								item: [
-									'*',
-									{
-										images: ['directus_files_id'],
-										clients: [{
-											svetlikus_clients_id: ['*'],
-										}],
-										projects: [{
-											svetlikus_projects_id: [
-												{
-													tags: [{
-														svetlikus_projects_tags_id: [
-															'color',
-															{
-																translations: ['*'],
-															},
-														],
-													}],
-													translations: [
-														'description',
-														'image',
-														'project_link',
-														'slug',
-														'title',
-													],
-												}],
-										}],
-										testimonials: [{
-											svetlikus_testimonials_id: [
-												'image',
-												'name',
-												'rating',
-												{
-													translations: ['*'],
-												},
-											],
-										}],
-										cta: ['*'],
-										cta_2: ['*'],
-									},
-								],
-							},
-						],
+						blocks: $blocks,
 					}],
 			}],
 	}))

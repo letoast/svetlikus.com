@@ -114,8 +114,9 @@ function updateRefs() {
 										"
 									>
 										<img
-											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image}?format=auto`"
-											:alt="item?.svetlikus_testimonials_id?.name"
+											v-if="item?.svetlikus_testimonials_id?.image"
+											:src="`${$directus.url}assets/${item?.svetlikus_testimonials_id?.image?.id}?format=auto`"
+											:alt="item?.svetlikus_testimonials_id?.image?.title"
 											class="h-20 w-20 rounded-md object-cover"
 											loading="lazy"
 										>

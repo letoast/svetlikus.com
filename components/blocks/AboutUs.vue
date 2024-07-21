@@ -40,8 +40,10 @@ const { $directus } = useNuxtApp()
 
 			<div class="col-span-12 flex flex-col items-center gap-4 text-neutral-400">
 				<img
-					:src="`${$directus.url}assets/${data?.image}?format=auto`"
+					v-if="data?.image"
+					:src="`${$directus.url}assets/${data?.image?.id}?format=auto`"
 					class="aspect-[3/1] rounded object-cover"
+					:alt="data?.image?.title"
 					loading="lazy"
 				>
 			</div>

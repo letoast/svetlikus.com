@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import { useClamp } from '@vueuse/math'
-import emblaCarouselVue from 'embla-carousel-vue'
-import type { EmblaCarouselType } from 'embla-carousel'
-
-interface Client {
-	image: string
-	title: string
-	link?: string
-}
+// import emblaCarouselVue from 'embla-carousel-vue'
+// import type { EmblaCarouselType } from 'embla-carousel'
 
 const props = defineProps<{
 	data: unknown
@@ -74,10 +68,6 @@ const visible = useElementVisibility(sectionRef)
 // 		translateX.value = translateX.value - ((prevVal - currVal) * 2 / pixelRatio.value) / 100
 // 	}
 // })
-
-function clientData(client: unknown) {
-	return client?.svetlikus_clients_id
-}
 </script>
 
 <template>
@@ -104,7 +94,7 @@ function clientData(client: unknown) {
 					:play="visible"
 				>
 					<div
-						v-for="client, index in data?.clients"
+						v-for="{ svetlikus_clients_id: client }, index in data?.clients"
 						:key="index"
 						class="shrink-0 rounded px-12 py-4"
 						:class="{
@@ -112,14 +102,14 @@ function clientData(client: unknown) {
 						}"
 					>
 						<a
-							:href="clientData(client)?.url"
-							:title="clientData(client)?.title"
+							:href="client?.url"
+							:title="client?.title"
 							target="_blank"
 						>
 							<img
 								class="h-9"
-								:src="`${$directus.url}assets/${clientData(client)?.image}`"
-								:alt="clientData(client)?.title"
+								:src="`${$directus.url}assets/${client?.image.id}`"
+								:alt="client?.image?.title"
 								loading="lazy"
 							>
 						</a>
