@@ -72,7 +72,7 @@ const { $directus } = useNuxtApp()
 						<div
 							class="
 								prose
-								lg:prose-xl
+								lg:prose-lg
 							"
 							v-html="content"
 						/>
