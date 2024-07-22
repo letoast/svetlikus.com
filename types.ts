@@ -549,7 +549,15 @@ export type SvetlikusGlobal = {
 	instagram_link?: string | null
 	linked_in_link?: string | null
 	title?: string | null
+	translations: unknown[] | SvetlikusGlobalTranslations[]
 	youtube_link?: string | null
+}
+
+export type SvetlikusGlobalTranslations = {
+	id: number
+	languages_code?: string | Languages | null
+	menu?: unknown | null
+	svetlikus_global_id?: number | SvetlikusGlobal | null
 }
 
 export type SvetlikusPages = {
@@ -564,12 +572,15 @@ export type SvetlikusPagesTranslations = {
 	blocks: unknown[] | SvetlikusPagesTranslationsBlocks[]
 	id: number
 	languages_code?: string | Languages | null
+	seo_description?: string | null
+	seo_title?: string | null
 	slug?: string | null
 	svetlikus_pages_id?: number | SvetlikusPages | null
 }
 
 export type SvetlikusPagesTranslationsBlocks = {
 	collection?: string | null
+	custom_id?: string | null
 	id: number
 	item?: string | unknown | null
 	sort?: number | null
@@ -578,7 +589,9 @@ export type SvetlikusPagesTranslationsBlocks = {
 
 export type SvetlikusProjects = {
 	date_created?: string | null
+	full_width_image?: string | DirectusFiles | null
 	id: number
+	logo?: string | DirectusFiles | null
 	sort?: number | null
 	status: string
 	tags: unknown[] | SvetlikusProjectsSvetlikusProjectsTags[]
@@ -623,6 +636,7 @@ export type SvetlikusProjectsTranslations = {
 
 export type SvetlikusProjectsTranslationsBlocks = {
 	collection?: string | null
+	custom_id?: string | null
 	id: number
 	item?: string | unknown | null
 	sort?: number | null
@@ -702,6 +716,7 @@ export type CustomDirectusTypes = {
 	svetlikus_clients: SvetlikusClients[]
 	svetlikus_cta: SvetlikusCta[]
 	svetlikus_global: SvetlikusGlobal
+	svetlikus_global_translations: SvetlikusGlobalTranslations[]
 	svetlikus_pages: SvetlikusPages[]
 	svetlikus_pages_translations: SvetlikusPagesTranslations[]
 	svetlikus_pages_translations_blocks: SvetlikusPagesTranslationsBlocks[]

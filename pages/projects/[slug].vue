@@ -30,6 +30,15 @@ const { data: project } = await useAsyncData('projectId', async () => {
 		limit: 1,
 		deep: {
 			translations: {
+				// blocks: {
+				// 	_filter: {
+				// 		item: {
+				// 			status: {
+				// 				_eq: 'published',
+				// 			},
+				// 		},
+				// 	},
+				// },
 				_filter: {
 					languages_code: {
 						_eq: localeProperties.value.iso,
@@ -39,7 +48,12 @@ const { data: project } = await useAsyncData('projectId', async () => {
 		},
 		fields: [
 			'id',
-			'logo',
+			{
+				logo: ['id', 'title', 'description'],
+			},
+			{
+				full_width_image: ['id', 'title', 'description'],
+			},
 			{
 				tags: [{
 					svetlikus_projects_tags_id: [
@@ -99,9 +113,10 @@ useSeoMeta({
 					>
 						<img
 							v-if="project?.logo"
-							:src="`${$directus.url}assets/${project?.logo}?format=auto`"
+							:src="`${$directus.url}assets/${project?.logo.id}?format=auto`"
 							class="w-40"
 							loading="lazy"
+							:alt="project?.logo.title"
 						>
 						<h1
 							class="text-5xl font-bold leading-loose text-neutral-300"
@@ -112,7 +127,7 @@ useSeoMeta({
 							class="flex max-w-lg flex-wrap gap-3"
 						>
 							<CommonTag
-								v-for="item, index in project.tags"
+								v-for="item, index in project?.tags"
 								:key="index"
 								:color="item?.svetlikus_projects_tags_id?.color"
 							>
@@ -153,6 +168,7 @@ useSeoMeta({
 				</div>
 			</div>
 		</section>
+		{{ project?.translations.blocks }}
 		<div
 			v-if="project?.translations?.testimonial"
 			class="container mb-14 grid grid-cols-12"
@@ -225,6 +241,13 @@ useSeoMeta({
 				</div>
 			</div>
 		</div>
+		<img
+			v-if="project?.full_width_image"
+			:src="`${$directus.url}assets/${project?.full_width_image.id}?format=auto`"
+			class="w-full"
+			loading="lazy"
+			:alt="project?.full_width_image.title"
+		>
 		<div
 			class="container"
 		>
