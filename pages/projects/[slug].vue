@@ -86,7 +86,7 @@ useSeoMeta({
 
 <template>
 	<div>
-		<section class="mb-10">
+		<section class="mb-14">
 			<div class="container">
 				<div
 					class="grid grid-cols-12 gap-x-8 gap-y-8"
@@ -154,7 +154,8 @@ useSeoMeta({
 			</div>
 		</section>
 		<div
-			class="container mb-10 grid"
+			v-if="project?.translations?.testimonial"
+			class="container mb-14 grid grid-cols-12"
 		>
 			<div
 				class="col-span-12 overflow-hidden rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
