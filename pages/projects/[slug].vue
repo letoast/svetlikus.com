@@ -168,7 +168,6 @@ useSeoMeta({
 				</div>
 			</div>
 		</section>
-		{{ project?.translations.blocks }}
 		<div
 			v-if="project?.translations?.testimonial"
 			class="container mb-14 grid grid-cols-12"
