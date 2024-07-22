@@ -18,7 +18,10 @@ const { isOutside } = useMouseInElement(cardContainerRef)
 const { top, left } = useElementBounding(cardContainerRef)
 const smoothMouse = useSmoothMouse()
 const { roll, tilt, source } = useParallax(cardContainerRef)
-const visible = useElementVisibility(cardContainerRef)
+const device = useDevice()
+const visible = useElementVisibility(cardContainerRef, {
+	threshold: device.isMobileOrTablet ? 1 : 0.2,
+})
 
 const x = ref(smoothMouse.value[0] - left.value)
 const y = ref(smoothMouse.value[1] - top.value)
@@ -77,12 +80,18 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 					absolute left-[-1px] top-[-1px] z-[-1] size-[calc(100%+2px)] rounded-lg bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.600)_0,_transparent_100%)] transition-all translate-z-0
 					group-hover:bg-[linear-gradient(theme(colors.blue.600),_theme(colors.blue.600))]
 				"
+				:class="{
+					'bg-[linear-gradient(theme(colors.blue.600),_theme(colors.blue.600))]': visible && device.isMobileOrTablet,
+				}"
 			/>
 			<div
 				class="
 					absolute left-0 top-0 h-full w-full rounded-lg bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.zinc.900)_0,_theme(colors.zinc.950)_100%)]
 					group-hover:bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]
 				"
+				:class="{
+					'bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]': visible && device.isMobileOrTablet,
+				}"
 			/>
 			<div
 				class="pointer-events-none mb-4 flex items-end justify-between translate-z-1"
@@ -92,6 +101,9 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 						text-4xl font-bold text-zinc-300 transition-all
 						group-hover:text-blue-600
 					"
+					:class="{
+						'text-blue-600': visible && device.isMobileOrTablet,
+					}"
 				>
 					{{ title }}
 				</h3>
@@ -100,6 +112,9 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 						block text-7xl font-semibold text-zinc-950 transition-all text-stroke-zinc-500
 						group-hover:text-blue-600 group-hover:text-stroke-blue-600
 					"
+					:class="{
+						'text-blue-600 text-stroke-blue-600': visible && device.isMobileOrTablet,
+					}"
 				>{{ cardNumber }}</span>
 			</div>
 
