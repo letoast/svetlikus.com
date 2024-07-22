@@ -158,69 +158,67 @@ useSeoMeta({
 			class="container mb-14 grid grid-cols-12"
 		>
 			<div
-				class="col-span-12 overflow-hidden p-6"
+				class="col-span-12 overflow-hidden p-6 rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)]"
 			>
-				<div class="rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)]">
+				<div
+					class="
+						flex flex-col items-center gap-8
+						lg:flex-row
+					"
+				>
 					<div
-						class="
-							flex flex-col items-center gap-8
-							lg:flex-row
-						"
+						ref="emblaRef"
+						class="relative overflow-hidden"
 					>
 						<div
-							ref="emblaRef"
-							class="relative overflow-hidden"
+							class="flex"
 						>
 							<div
-								class="flex"
+								v-for="item in [project?.translations.testimonial]"
+								:key="item"
+								class="
+									flex flex-shrink-0 flex-grow flex-col gap-8
+									lg:basis-full lg:flex-row lg:items-center
+								"
 							>
 								<div
-									v-for="item in [project?.translations.testimonial]"
-									:key="item"
 									class="
-										flex flex-shrink-0 flex-grow flex-col gap-8
-										lg:basis-full lg:flex-row lg:items-center
+										flex items-center gap-4
+										lg:max-w-[30%] lg:flex-shrink-0 lg:flex-grow
 									"
 								>
-									<div
-										class="
-											flex items-center gap-4
-											lg:max-w-[30%] lg:flex-shrink-0 lg:flex-grow
-										"
+									<img
+										v-if="item?.image"
+										:src="`${$directus.url}assets/${item?.image}?format=auto`"
+										:alt="item?.name"
+										class="h-20 w-20 rounded-md object-cover"
+										loading="lazy"
 									>
-										<img
-											v-if="item?.image"
-											:src="`${$directus.url}assets/${item?.image}?format=auto`"
-											:alt="item?.name"
-											class="h-20 w-20 rounded-md object-cover"
-											loading="lazy"
-										>
-										<div>
-											<p
-												class="text-lg font-bold text-gray-200"
-											>
-												{{ item?.name }}
-											</p>
-											<p
-												class="text-md font-book text-white text-opacity-50"
-											>
-												{{ item?.translations?.[0].position }}
-											</p>
-											<UIcon
-												v-for="star, index in item?.rating"
-												:key="index"
-												name="gravity-ui:star-fill"
-												class="me-1 text-gray-300"
-											/>
-										</div>
-									</div>
-									<ClientOnly>
+									<div>
 										<p
-											class="text-lg font-book w-full"
-											v-html="item?.translations?.[0]?.quote"
+											class="text-lg font-bold text-gray-200"
+										>
+											{{ item?.name }}
+										</p>
+										<p
+											class="text-md font-book text-white text-opacity-50"
+										>
+											{{ item?.translations?.[0].position }}
+										</p>
+										<UIcon
+											v-for="star, index in item?.rating"
+											:key="index"
+											name="gravity-ui:star-fill"
+											class="me-1 text-gray-300"
 										/>
-									</ClientOnly>
+									</div>
 								</div>
+								<ClientOnly>
+									<p
+										class="text-lg font-book w-full"
+										v-html="item?.translations?.[0]?.quote"
+									/>
+								</ClientOnly>
 							</div>
 						</div>
 					</div>
@@ -228,12 +226,14 @@ useSeoMeta({
 			</div>
 		</div>
 		<div
-			class="container grid rounded-3xl border-gradient-br-neutral-500-neutral-950 gradient-border-2"
+			class="container"
 		>
-			<Blocks
-				v-if="project?.translations?.blocks?.length"
-				:blocks="project?.translations.blocks"
-			/>
+			<div class="grid rounded-3xl border-gradient-br-neutral-500-neutral-950 gradient-border-2">
+				<Blocks
+					v-if="project?.translations?.blocks?.length"
+					:blocks="project?.translations.blocks"
+				/>
+			</div>
 		</div>
 	</div>
 </template>
