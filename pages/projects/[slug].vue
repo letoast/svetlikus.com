@@ -158,7 +158,7 @@ useSeoMeta({
 			class="container mb-14 grid grid-cols-12"
 		>
 			<div
-				class="col-span-12 overflow-hidden p-6 rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)]"
+				class="col-span-12 overflow-hidden rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
 			>
 				<div
 					class="
@@ -228,11 +228,20 @@ useSeoMeta({
 		<div
 			class="container"
 		>
-			<div class="grid rounded-3xl px-4 lg:px-6 border-gradient-br-neutral-500-neutral-950 gradient-border-2">
-				<Blocks
-					v-if="project?.translations?.blocks?.length"
-					:blocks="project?.translations.blocks"
-				/>
+			<div
+				class="rounded-3xl border-gradient-br-neutral-500-neutral-950 gradient-border-2"
+			>
+				<div
+					class="
+						grid rounded-3xl bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.005)_0%,_rgba(234,_234,_234,_0.1)_100%)] px-4
+						lg:px-6
+					"
+				>
+					<Blocks
+						v-if="project?.translations?.blocks?.length"
+						:blocks="project?.translations.blocks"
+					/>
+				</div>
 			</div>
 		</div>
 	</div>
