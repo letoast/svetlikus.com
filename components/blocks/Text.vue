@@ -13,7 +13,7 @@ defineProps<{
 				container: container,
 			}"
 		>
-			<div v-html="data?.content" />
+			<div v-html="data?.content" class="prose" />
 		</div>
 	</section>
 </template>
