@@ -15,7 +15,10 @@ defineProps<{
 		>
 			<div
 				v-if="data?.lead"
-				class="mb-4 text-lg text-gray-300"
+				class="
+					prose mb-4 text-gray-300
+					lg:prose-xl
+				"
 				v-html="data.lead"
 			/>
 			<div
@@ -31,7 +34,7 @@ defineProps<{
 					v-for="image in data?.images"
 					:key="image.directus_files_id"
 					:src="`${$directus.url}assets/${image.directus_files_id.id}?format=auto`"
-					class="h-auto w-full"
+					class="h-auto w-full rounded-lg"
 					loading="lazy"
 				>
 			</div>

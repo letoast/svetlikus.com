@@ -71,7 +71,6 @@ const { data: project } = await useAsyncData('projectId', async () => {
 					'slug',
 					'description',
 					{
-
 						image: ['id', 'title', 'description'],
 					},
 					{
@@ -136,7 +135,10 @@ useSeoMeta({
 						</div>
 
 						<div
-							class="text-lg font-book max-w-lg text-neutral-400"
+							class="
+								prose font-book max-w-lg text-neutral-400
+								lg:prose-xl
+							"
 							v-html="project?.translations?.description"
 						/>
 						<CommonCTA
@@ -159,7 +161,7 @@ useSeoMeta({
 							<img
 								v-if="project?.translations?.image"
 								:src="`${$directus.url}assets/${project?.translations?.image.id}?format=auto`"
-								class="size-full object-cover"
+								class="size-full rounded-lg object-cover"
 								loading="lazy"
 								:alt="project?.translations?.image.title"
 							>
@@ -211,7 +213,10 @@ useSeoMeta({
 									>
 									<div>
 										<p
-											class="text-lg font-bold text-gray-200"
+											class="
+												prose font-bold text-gray-200
+												lg:prose-xl
+											"
 										>
 											{{ item?.name }}
 										</p>
@@ -230,7 +235,10 @@ useSeoMeta({
 								</div>
 								<ClientOnly>
 									<p
-										class="text-lg font-book w-full"
+										class="
+											prose font-book w-full
+											lg:prose-xl
+										"
 										v-html="item?.translations?.[0]?.quote"
 									/>
 								</ClientOnly>
@@ -242,8 +250,8 @@ useSeoMeta({
 		</div>
 		<img
 			v-if="project?.full_width_image"
-			:src="`${$directus.url}assets/${project?.full_width_image.id}?format=auto`"
-			class="w-full"
+			:src="`${$directus.url}assets/${project?.full_width_image.id}`"
+			class="mb-14 w-full"
 			loading="lazy"
 			:alt="project?.full_width_image.title"
 		>
@@ -256,7 +264,7 @@ useSeoMeta({
 				<div
 					class="
 						grid rounded-3xl bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.005)_0%,_rgba(234,_234,_234,_0.1)_100%)] px-4
-						lg:px-6
+						lg:px-10
 					"
 				>
 					<Blocks

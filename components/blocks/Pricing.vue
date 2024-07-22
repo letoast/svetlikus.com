@@ -122,7 +122,10 @@ function updateRefs() {
 										>
 										<div>
 											<p
-												class="text-lg font-bold text-gray-200"
+												class="
+													prose font-bold text-gray-200
+													lg:prose-xl
+												"
 											>
 												{{ item?.svetlikus_testimonials_id?.name }}
 											</p>
@@ -141,7 +144,10 @@ function updateRefs() {
 									</div>
 									<ClientOnly>
 										<p
-											class="text-lg font-book w-full"
+											class="
+												prose font-book w-full
+												lg:prose-xl
+											"
 											v-html="item?.svetlikus_testimonials_id?.translations?.[0]?.quote"
 										/>
 									</ClientOnly>

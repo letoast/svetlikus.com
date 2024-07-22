@@ -53,7 +53,10 @@ const { $directus } = useNuxtApp()
 					{{ item?.title }}
 				</h6>
 				<p
-					class="text-lg font-book text-center leading-[21.60px] text-neutral-500"
+					class="
+						prose font-book text-center leading-[21.60px] text-neutral-500
+						lg:prose-xl
+					"
 				>
 					{{ item?.description }}
 				</p>

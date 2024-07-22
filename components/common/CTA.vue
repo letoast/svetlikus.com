@@ -12,8 +12,9 @@ defineProps<{
 	<NuxtLinkLocale
 		:to="cta?.link"
 		class="
-			flex items-center gap-2 text-lg font-book text-cyan-400
+			prose flex items-center gap-2 font-book text-cyan-400
 			hover:text-cyan-300
+			lg:prose-xl
 		"
 		:target="cta.target ?? '_self'"
 	>

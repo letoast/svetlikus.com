@@ -42,7 +42,7 @@ const { $directus } = useNuxtApp()
 				<img
 					v-if="data?.image"
 					:src="`${$directus.url}assets/${data?.image?.id}?format=auto`"
-					class="aspect-[3/1] rounded object-cover"
+					class="aspect-[3/1] rounded-lg object-cover"
 					:alt="data?.image?.title"
 					loading="lazy"
 				>

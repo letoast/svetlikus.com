@@ -63,6 +63,13 @@ const blocks = [
 				}],
 				cta: ['*'],
 				cta_2: ['*'],
+				text_image: [
+					'text',
+					'direction',
+					{
+						image: ['id', 'title', 'description'],
+					},
+				],
 			},
 		],
 	},

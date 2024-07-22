@@ -27,7 +27,7 @@ const tags = computed(() => {
 			>
 				<img
 					:src="`${$directus.url}assets/${project?.image.id}?format=auto`"
-					class="aspect-video size-full object-cover"
+					class="aspect-video size-full rounded-lg object-cover"
 					loading="lazy"
 					:alt="project?.image.title"
 				>
@@ -57,7 +57,10 @@ const tags = computed(() => {
 				{{ project?.title }}
 			</h3>
 			<div
-				class="text-lg font-book text-neutral-400"
+				class="
+					prose font-book text-neutral-400
+					lg:prose-xl
+				"
 				v-html="project?.description"
 			/>
 			<CommonCTA

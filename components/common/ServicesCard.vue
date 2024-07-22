@@ -81,7 +81,10 @@ watch(visible, (isVisible) => {
 		</h3>
 		<p
 			v-if="data.description"
-			class="text-lg text-neutral-200"
+			class="
+				prose text-neutral-200
+				lg:prose-xl
+			"
 		>
 			{{ data.description }}
 		</p>
@@ -89,7 +92,10 @@ watch(visible, (isVisible) => {
 			<li
 				v-for="item, itemIndex in data.items"
 				:key="itemIndex"
-				class="mb-2 flex items-baseline gap-3 text-lg font-bold text-neutral-200"
+				class="
+					prose mb-2 flex items-baseline gap-3 font-bold text-neutral-200
+					lg:prose-xl
+				"
 			>
 				<CommonIconsCheckmark
 					:class="textColor"

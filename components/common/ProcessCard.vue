@@ -104,7 +104,10 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 			</div>
 
 			<p
-				class="pointer-events-none text-lg text-zinc-400 translate-z-1"
+				class="
+					prose pointer-events-none text-zinc-400 translate-z-1
+					lg:prose-xl
+				"
 			>
 				{{ description }}
 			</p>

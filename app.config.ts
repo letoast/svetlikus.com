@@ -21,10 +21,10 @@ export default defineAppConfig({
 			size: {
 				'2xs': 'text-xs lh-sm',
 				'xs': 'text-xs',
-				'sm': 'text-lg',
+				'sm': 'prose lg:prose-xl',
 				'md': 'text-md',
-				'lg': 'text-lg',
-				'xl': 'text-lg',
+				'lg': 'prose lg:prose-xl',
+				'xl': 'prose lg:prose-xl',
 			},
 			gap: {
 				'2xs': 'gap-2',

@@ -13,7 +13,13 @@ defineProps<{
 				container: container,
 			}"
 		>
-			<div v-html="data?.content" class="prose" />
+			<div
+				class="
+					prose
+					lg:prose-xl
+				"
+				v-html="data?.content"
+			/>
 		</div>
 	</section>
 </template>

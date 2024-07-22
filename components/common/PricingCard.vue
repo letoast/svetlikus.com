@@ -98,12 +98,15 @@ watch(visible, (isVisible) => {
 				{{ data.title }}
 			</h3>
 			<p
-				class="text-lg font-book leading-[21.60px] text-neutral-300"
+				class="
+					prose font-book leading-[21.60px] text-neutral-300
+					lg:prose-lg
+				"
 			>
 				{{ data.description }}
 			</p>
 			<p
-				class="flex items-baseline gap-3 text-xl font-semibold text-neutral-100"
+				class="flex items-baseline gap-3 text-lg font-semibold text-neutral-100"
 			>
 				<span
 					class="inline-block text-4xl"
@@ -118,7 +121,10 @@ watch(visible, (isVisible) => {
 				}"
 			>
 			<p
-				class="text-lg font-book leading-[21.60px] text-neutral-400"
+				class="
+					prose font-book leading-[21.60px] text-neutral-400
+					lg:prose-md
+				"
 			>
 				What’s included?
 			</p>
@@ -126,7 +132,7 @@ watch(visible, (isVisible) => {
 				<li
 					v-for="item, itemIndex in data?.items"
 					:key="itemIndex"
-					class="mb-2 flex items-baseline gap-3 text-lg text-neutral-200"
+					class="prose mb-2 flex items-baseline gap-3 text-neutral-200"
 				>
 					<CommonIconsCheckmark
 						:class="data.exposed ? 'text-purple-500' : 'text-neutral-100'"
