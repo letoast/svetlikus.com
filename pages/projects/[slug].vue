@@ -228,7 +228,7 @@ useSeoMeta({
 		<div
 			class="container"
 		>
-			<div class="grid rounded-3xl border-gradient-br-neutral-500-neutral-950 gradient-border-2">
+			<div class="grid rounded-3xl px-4 lg:px-6 border-gradient-br-neutral-500-neutral-950 gradient-border-2">
 				<Blocks
 					v-if="project?.translations?.blocks?.length"
 					:blocks="project?.translations.blocks"
