@@ -158,67 +158,69 @@ useSeoMeta({
 			class="container mb-14 grid grid-cols-12"
 		>
 			<div
-				class="col-span-12 overflow-hidden rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
+				class="col-span-12 overflow-hidden p-6"
 			>
-				<div
-					class="
-						flex flex-col items-center gap-8
-						lg:flex-row
-					"
-				>
+				<div class="rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)]">
 					<div
-						ref="emblaRef"
-						class="relative overflow-hidden"
+						class="
+							flex flex-col items-center gap-8
+							lg:flex-row
+						"
 					>
 						<div
-							class="flex"
+							ref="emblaRef"
+							class="relative overflow-hidden"
 						>
 							<div
-								v-for="item in [project?.translations.testimonial]"
-								:key="item"
-								class="
-									flex flex-shrink-0 flex-grow flex-col gap-8
-									lg:basis-full lg:flex-row lg:items-center
-								"
+								class="flex"
 							>
 								<div
+									v-for="item in [project?.translations.testimonial]"
+									:key="item"
 									class="
-										flex items-center gap-4
-										lg:max-w-[30%] lg:flex-shrink-0 lg:flex-grow
+										flex flex-shrink-0 flex-grow flex-col gap-8
+										lg:basis-full lg:flex-row lg:items-center
 									"
 								>
-									<img
-										v-if="item?.image"
-										:src="`${$directus.url}assets/${item?.image}?format=auto`"
-										:alt="item?.name"
-										class="h-20 w-20 rounded-md object-cover"
-										loading="lazy"
+									<div
+										class="
+											flex items-center gap-4
+											lg:max-w-[30%] lg:flex-shrink-0 lg:flex-grow
+										"
 									>
-									<div>
-										<p
-											class="text-lg font-bold text-gray-200"
+										<img
+											v-if="item?.image"
+											:src="`${$directus.url}assets/${item?.image}?format=auto`"
+											:alt="item?.name"
+											class="h-20 w-20 rounded-md object-cover"
+											loading="lazy"
 										>
-											{{ item?.name }}
-										</p>
-										<p
-											class="text-md font-book text-white text-opacity-50"
-										>
-											{{ item?.translations?.[0].position }}
-										</p>
-										<UIcon
-											v-for="star, index in item?.rating"
-											:key="index"
-											name="gravity-ui:star-fill"
-											class="me-1 text-gray-300"
-										/>
+										<div>
+											<p
+												class="text-lg font-bold text-gray-200"
+											>
+												{{ item?.name }}
+											</p>
+											<p
+												class="text-md font-book text-white text-opacity-50"
+											>
+												{{ item?.translations?.[0].position }}
+											</p>
+											<UIcon
+												v-for="star, index in item?.rating"
+												:key="index"
+												name="gravity-ui:star-fill"
+												class="me-1 text-gray-300"
+											/>
+										</div>
 									</div>
+									<ClientOnly>
+										<p
+											class="text-lg font-book w-full"
+											v-html="item?.translations?.[0]?.quote"
+										/>
+									</ClientOnly>
 								</div>
-								<ClientOnly>
-									<p
-										class="text-lg font-book w-full"
-										v-html="item?.translations?.[0]?.quote"
-									/>
-								</ClientOnly>
 							</div>
 						</div>
 					</div>
