@@ -20,6 +20,7 @@ const { $initData } = useNuxtApp()
 						v-if="$initData?.data?.linked_in_link"
 						:href="$initData?.data.linked_in_link"
 						target="_blank"
+						title="LinkedIn"
 					>
 						<Icon
 							name="mdi:linkedin"
@@ -30,6 +31,7 @@ const { $initData } = useNuxtApp()
 						v-if="$initData?.data?.instagram_link"
 						:href="$initData?.data.instagram_link"
 						target="_blank"
+						title="Instagram"
 					>
 						<Icon
 							name="mdi:instagram"
@@ -40,6 +42,7 @@ const { $initData } = useNuxtApp()
 						v-if="$initData?.data?.youtube_link"
 						:href="$initData?.data.youtube_link"
 						target="_blank"
+						title="YouTube"
 					>
 						<Icon
 							name="mdi:youtube"
@@ -50,6 +53,7 @@ const { $initData } = useNuxtApp()
 						v-if="$initData?.data?.facebook_link"
 						:href="$initData?.data.facebook_link"
 						target="_blank"
+						title="Facebook"
 					>
 						<Icon
 							name="ri:facebook-fill"
