@@ -1,6 +1,10 @@
 <script setup lang="ts">
 defineProps<{
-	cta: {
+	to?: string
+	label?: string
+	variant?: 'solid' | 'outline' | 'soft' | 'ghost' | 'link'
+	color?: string
+	cta?: {
 		text: string
 		link: string
 		target?: '_blank' | '_self'
@@ -9,7 +13,15 @@ defineProps<{
 </script>
 
 <template>
+	<UButton
+		v-if="to"
+		:label
+		:to
+		:target="to.startsWith('http') ? '_blank' : '_self'"
+		:color
+	/>
 	<NuxtLinkLocale
+		v-else
 		:to="cta?.link"
 		class="
 			prose flex items-center gap-2 font-book text-cyan-400

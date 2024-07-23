@@ -30,13 +30,14 @@ defineProps<{
 				:title="card.title"
 				:description="card.description"
 			/>
-			<UButton
+			<CommonCTA
 				class="
 					col-span-10 col-start-2 mt-8
 					lg:col-span-2 lg:col-start-6
 				"
 				:label="data?.cta?.label"
 				:to="data?.cta?.href"
+				:variant="data?.cta?.variant"
 			/>
 		</div>
 	</section>

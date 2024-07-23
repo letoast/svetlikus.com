@@ -50,7 +50,8 @@ watch(visible, async (isVisible) => {
 			<div
 				class="container grid grid-cols-12 gap-x-8 gap-y-8"
 			>
-				<UButton
+				<CommonCTA
+					v-if="data?.cta"
 					class="
 						col-span-10 col-start-2 mt-8
 						lg:col-span-2 lg:col-start-6

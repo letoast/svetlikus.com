@@ -64,7 +64,7 @@ const { $directus } = useNuxtApp()
 			<div
 				class="col-span-12 flex justify-center pt-4"
 			>
-				<UButton
+				<CommonCTA
 					v-if="data.cta"
 					class="col-span-2 col-start-6 mt-8"
 					color="secondary"

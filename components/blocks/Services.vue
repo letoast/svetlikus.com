@@ -33,7 +33,8 @@ defineProps<{
 				}"
 				:custom-color="service.color"
 			/>
-			<UButton
+			<CommonCTA
+				v-if="data?.cta"
 				class="
 					col-span-10 col-start-2 mt-8
 					lg:col-span-2 lg:col-start-6

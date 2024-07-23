@@ -102,7 +102,8 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 			<div
 				class="mt-10 grid grid-cols-12 gap-8"
 			>
-				<UButton
+				<CommonCTA
+					v-if="data?.cta"
 					color="primary"
 					class="
 						col-span-10 col-start-2
@@ -111,9 +112,9 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					:label="data?.cta?.label"
 					:variant="data?.cta?.variant || 'solid'"
 					:to="data?.cta?.href"
-					:target="data?.cta?.href.startsWith('http') ? '_blank' : '_self'"
 				/>
-				<UButton
+				<CommonCTA
+					v-if="data?.cta_2"
 					color="primary"
 					class="
 						col-span-10 col-start-2
@@ -122,7 +123,6 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					:label="data?.cta_2?.label"
 					:variant="data?.cta_2?.variant || 'outline'"
 					:to="data?.cta?.href"
-					:target="data?.cta?.href.startsWith('http') ? '_blank' : '_self'"
 				/>
 			</div>
 		</div>
