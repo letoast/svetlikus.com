@@ -19,6 +19,7 @@ defineProps<{
 		:to
 		:target="to.startsWith('http') ? '_blank' : '_self'"
 		:color
+		:variant
 	/>
 	<NuxtLinkLocale
 		v-else

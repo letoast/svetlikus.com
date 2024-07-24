@@ -122,7 +122,7 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					"
 					:label="data?.cta_2?.label"
 					:variant="data?.cta_2?.variant || 'outline'"
-					:to="data?.cta?.href"
+					:to="data?.cta_2?.href"
 				/>
 			</div>
 		</div>
