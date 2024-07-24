@@ -94,17 +94,17 @@ function updateRefs() {
 					>
 						<div
 							ref="emblaRef"
-							class="relative overflow-hidden"
+							class="relative max-w-full overflow-hidden"
 						>
 							<div
-								class="flex"
+								class="flex max-w-full items-center"
 							>
 								<div
 									v-for="item in data?.testimonials"
 									:key="item"
 									class="
-										flex flex-shrink-0 flex-grow flex-col gap-8
-										lg:basis-full lg:flex-row lg:items-center
+										flex max-w-full flex-shrink-0 flex-grow flex-col gap-8
+										lg:mr-2 lg:basis-full lg:flex-row lg:items-center
 									"
 								>
 									<div
