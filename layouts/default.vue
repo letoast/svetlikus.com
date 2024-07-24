@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<div>
+	<div class="max-w-[100svw] overflow-x-hidden">
 		<NuxtLoadingIndicator />
 		<TheHeader ref="defaultHeaderRef" />
 		<CommonVerticalSideText />

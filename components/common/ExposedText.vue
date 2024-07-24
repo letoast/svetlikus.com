@@ -19,40 +19,43 @@ withDefaults(defineProps<{
 
 <template>
 	<div
-		class="grid grid-cols-12 gap-x-8 gap-y-6"
 		:class="{
 			container: container,
 		}"
 	>
 		<div
-			class="
-				col-span-12 flex flex-col justify-center gap-4 text-center
-				lg:col-span-6 lg:col-start-4
-			"
+			class="grid grid-cols-12 gap-x-8 gap-y-6"
 		>
-			<span
-				v-if="data.kicker"
-				class="text-xl/6 font-bold uppercase"
-				:class="kickerColor"
-			>
-				{{ data.kicker }}
-			</span>
 			<div
-				v-if="data.title"
 				class="
-					text-[1.75rem]/[2.25rem] font-bold text-gray-100
-					lg:text-[2.75rem]/[3.25rem]
+					col-span-12 flex flex-col justify-center gap-4 text-center
+					lg:col-span-6 lg:col-start-4
 				"
-				v-html="data.title"
+			>
+				<span
+					v-if="data.kicker"
+					class="text-xl/6 font-bold uppercase"
+					:class="kickerColor"
+				>
+					{{ data.kicker }}
+				</span>
+				<div
+					v-if="data.title"
+					class="
+						text-[1.75rem]/[2.25rem] font-bold text-gray-100
+						lg:text-[2.75rem]/[3.25rem]
+					"
+					v-html="data.title"
+				/>
+			</div>
+			<div
+				v-if="data.description"
+				class="
+					prose col-span-12 max-w-full text-center text-gray-400
+					lg:prose-2xl lg:col-span-8 lg:col-start-3
+				"
+				v-html="data.description"
 			/>
 		</div>
-		<div
-			v-if="data.description"
-			class="
-				prose col-span-12 max-w-full text-center text-gray-400
-				lg:prose-2xl lg:col-span-8 lg:col-start-3
-			"
-			v-html="data.description"
-		/>
 	</div>
 </template>
