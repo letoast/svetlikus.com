@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import tv from 'tailwind-variants'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
 	data: {
 		title: string
 		description: string
@@ -9,10 +9,11 @@ withDefaults(defineProps<{
 		pricePeriod?: string
 		pricePeriodSuperscript?: string
 		items: string[]
-		cta: {
-			text: string
-			link: string
-		}
+		cta?: unknown
+		// cta: {
+		// 	text: string
+		// 	link: string
+		// }
 		exposed?: boolean
 		above_info?: string
 	}
@@ -25,11 +26,19 @@ withDefaults(defineProps<{
 		pricePeriodSuperscript: '',
 		items: [],
 		cta: {
+			key: '',
+			collection: '',
 			text: '',
 			link: '',
 		},
 		exposed: false,
 	}),
+})
+
+const { $directus, $readItem, $readItems, $blocks } = useNuxtApp()
+
+const { data: cta_data } = await useAsyncData(`cta-${props.data?.cta?.key}`, async () => {
+	return await $directus.request($readItem(props.data?.cta?.collection, props.data?.cta?.key))
 })
 
 const cardRef = ref<HTMLElement | null>(null)
@@ -141,6 +150,13 @@ watch(visible, (isVisible) => {
 					{{ item?.description }}
 				</li>
 			</ul>
+			<CommonCTA
+				v-if="cta_data"
+				:label="cta_data.label"
+				:to="cta_data.href"
+				:variant="data.exposed ? 'solid' : 'outline'"
+				color="primary"
+			/>
 		</div>
 	</div>
 </template>
