@@ -5,6 +5,7 @@ defineProps<{
 }>()
 
 const canvas = ref(null)
+const device = useDevice()
 
 const { $script } = useScriptNpm({
 	packageName: 'js-confetti',
@@ -22,11 +23,11 @@ const visible = useElementVisibility(canvas)
 watch(visible, async (isVisible) => {
 	if (isVisible) {
 		const { JSConfetti } = await $script
-		const confetti = new JSConfetti()
+		const confetti = new JSConfetti({ canvas: canvas.value })
 		confetti.addConfetti({
 			colors: ['#A54CFE', '#FF3355', '#0063E5', '#00E2F0', '#FFD919', '#00E599'],
 			confettiRadius: 3,
-			confettiNumber: 200,
+			confettiNumber: device.isMobileOrTablet ? 70 : 200,
 		})
 	}
 })
@@ -50,7 +51,12 @@ watch(visible, async (isVisible) => {
 			<div
 				class="container"
 			>
-				<div class="grid grid-cols-12 gap-x-8 gap-y-8">
+				<div
+					class="
+						grid grid-cols-12 gap-y-8
+						lg:gap-x-8
+					"
+				>
 					<CommonCTA
 						v-if="data?.cta"
 						class="

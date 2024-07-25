@@ -25,7 +25,10 @@ const { $directus } = useNuxtApp()
 			}"
 		>
 			<div
-				class="grid grid-cols-12 gap-x-8 gap-y-8"
+				class="
+					grid grid-cols-12 gap-y-8
+					lg:gap-x-8
+				"
 			>
 				<div class="col-span-12 flex flex-col items-center gap-4 text-neutral-400">
 					<NuxtLinkLocale

@@ -8,7 +8,10 @@ defineProps<{
 <template>
 	<section>
 		<div
-			class="grid grid-cols-12 items-center gap-x-8 gap-y-6"
+			class="
+				grid grid-cols-12 items-center gap-y-6
+				lg:gap-x-8
+			"
 			:class="{
 				container: container,
 			}"

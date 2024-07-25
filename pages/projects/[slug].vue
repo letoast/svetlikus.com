@@ -102,7 +102,10 @@ useSeoMeta({
 		<section class="mb-14">
 			<div class="container">
 				<div
-					class="grid grid-cols-12 gap-x-8 gap-y-8"
+					class="
+						grid grid-cols-12 gap-y-8
+						lg:gap-x-8
+					"
 				>
 					<div
 						class="
@@ -118,7 +121,10 @@ useSeoMeta({
 							:alt="project?.logo.title"
 						>
 						<h1
-							class="text-5xl font-bold leading-loose text-neutral-300"
+							class="
+								text-3xl font-bold leading-normal text-neutral-300
+								lg:text-5xl
+							"
 						>
 							{{ project?.translations?.title }}
 						</h1>

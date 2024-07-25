@@ -24,7 +24,10 @@ withDefaults(defineProps<{
 		}"
 	>
 		<div
-			class="grid grid-cols-12 gap-x-8 gap-y-6"
+			class="
+				grid grid-cols-12 gap-y-6
+				lg:gap-x-8
+			"
 		>
 			<div
 				class="

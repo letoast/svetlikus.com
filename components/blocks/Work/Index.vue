@@ -34,7 +34,10 @@ defineProps<{
 			}"
 		>
 			<div
-				class="grid grid-cols-12 gap-x-8 gap-y-8"
+				class="
+					grid grid-cols-12 gap-y-8
+					lg:gap-x-8
+				"
 			>
 				<BlocksWorkSingle
 					v-for="project, index in data?.projects"

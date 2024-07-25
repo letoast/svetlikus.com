@@ -8,7 +8,10 @@ defineProps<{
 <template>
 	<section>
 		<div
-			class="gap-x-8 gap-y-6"
+			class="
+				gap-y-6
+				lg:gap-x-8
+			"
 			:class="{
 				container: container,
 			}"

@@ -63,7 +63,10 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 	<section ref="sectionRef">
 		<div class="container">
 			<div
-				class="grid grid-cols-12 gap-x-8"
+				class="
+					grid grid-cols-12
+					lg:gap-x-8
+				"
 			>
 				<div
 					class="

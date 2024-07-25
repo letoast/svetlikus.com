@@ -69,7 +69,10 @@ function updateRefs() {
 			}"
 		>
 			<div
-				class="grid grid-cols-12 items-end gap-x-8 gap-y-8"
+				class="
+					grid grid-cols-12 items-end gap-y-8
+					lg:gap-x-8
+				"
 			>
 				<div
 					v-for="item, index in data?.pricing_table"
