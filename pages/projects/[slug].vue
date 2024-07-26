@@ -223,7 +223,7 @@ useSeoMeta({
 									v-for="item in [project?.translations.testimonial]"
 									:key="item"
 									class="
-										flex flex-shrink-0 flex-grow flex-col gap-8
+										flex max-w-full flex-shrink-0 flex-grow flex-col gap-8
 										lg:basis-full lg:flex-row lg:items-center
 									"
 								>
@@ -263,10 +263,10 @@ useSeoMeta({
 										</div>
 									</div>
 									<ClientOnly>
-										<p
+										<div
 											class="
-												prose font-book w-full
-												lg:prose-xl
+												prose font-book flex items-start
+												lg:prose-xl lg:w-full
 											"
 											v-html="item?.translations?.[0]?.quote"
 										/>
@@ -293,8 +293,8 @@ useSeoMeta({
 			>
 				<div
 					class="
-						grid rounded-3xl bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.005)_0%,_rgba(234,_234,_234,_0.1)_100%)] px-4
-						lg:px-10
+						grid rounded-3xl bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.005)_0%,_rgba(234,_234,_234,_0.1)_100%)] px-4 pt-4
+						lg:px-10 lg:pt-10
 					"
 				>
 					<Blocks

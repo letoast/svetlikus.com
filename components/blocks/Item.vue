@@ -2,6 +2,8 @@
 const props = defineProps<{
 	block: unknown
 	index: number
+	isLast: boolean
+	isFirst: boolean
 }>()
 
 const componentFile = resolveComponent(`LazyBlocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))
@@ -23,7 +25,7 @@ function clearAndUpper(text: string) {
 	<component
 		:is="componentFile"
 		:id="block?.custom_id"
-		:class="index !== 0 && 'py-14'"
+		:class="[isFirst && 'py-14', isLast && $route.name?.toString()?.startsWith('projects-slug') && 'pb-0']"
 		:data="block?.item"
 		:container="!useRoute().name?.toString().startsWith('projects-slug')"
 	/>
