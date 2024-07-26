@@ -35,8 +35,8 @@ defineProps<{
 		>
 			<div
 				class="
-					grid grid-cols-12 gap-y-8
-					lg:gap-x-8
+					grid grid-cols-12 gap-y-14
+					lg:gap-x-8 lg:gap-y-20
 				"
 			>
 				<BlocksWorkSingle

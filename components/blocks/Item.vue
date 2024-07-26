@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
 	block: unknown
+	index: number
 }>()
 
 const componentFile = resolveComponent(`LazyBlocks${toSentenceCase(props.block?.collection?.replace('svetlikus_block_', ''))
@@ -22,7 +23,7 @@ function clearAndUpper(text: string) {
 	<component
 		:is="componentFile"
 		:id="block?.custom_id"
-		class="py-14"
+		:class="index !== 0 && 'py-14'"
 		:data="block?.item"
 		:container="!useRoute().name?.toString().startsWith('projects-slug')"
 	/>

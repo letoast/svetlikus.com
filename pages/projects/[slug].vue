@@ -4,11 +4,24 @@ const route = useRoute()
 const { $directus, $readItem, $readItems, $blocks } = useNuxtApp()
 const { localeProperties } = useI18n()
 
-const { data: pageIds } = await useAsyncData('projectIds', async () => {
+const { data: projects } = await useAsyncData('projectIds', async () => {
 	return await $directus.request($readItems('svetlikus_projects', {
-		fields: ['id', {
-			translations: ['slug'],
-		}],
+		fields: [
+			'id',
+			{
+				tags: [{
+					svetlikus_projects_tags_id: [
+						'color',
+						{
+							translations: ['title'],
+						},
+					],
+				}],
+			},
+			{
+				translations: ['slug', 'title', 'description', { image: ['id', 'title', 'description'] }],
+			},
+		],
 		deep: {
 			translations: {
 				_filter: {
@@ -23,9 +36,18 @@ const { data: pageIds } = await useAsyncData('projectIds', async () => {
 	}))
 })
 
-const { data: project } = await useAsyncData('projectId', async () => {
-	const pageId = pageIds.value?.find(page => page?.translations?.[0]?.slug === route?.params?.slug)?.id
+const currentIndex = projects.value?.findIndex(page => page?.translations?.[0]?.slug === route?.params?.slug)
+if (currentIndex === -1) {
+	throw createError({
+		statusCode: 404,
+		statusMessage: 'Not found',
+	})
+}
+const pageId = projects.value[currentIndex]?.id
 
+const nextProject = projects.value?.[currentIndex + 1]
+
+const { data: project } = await useAsyncData('projectId', async () => {
 	return await $directus.request($readItem('svetlikus_projects', pageId, {
 		limit: 1,
 		deep: {
@@ -192,7 +214,7 @@ useSeoMeta({
 					>
 						<div
 							ref="emblaRef"
-							class="relative overflow-hidden"
+							class="relative w-full overflow-hidden"
 						>
 							<div
 								class="flex"
@@ -279,6 +301,65 @@ useSeoMeta({
 						v-if="project?.translations?.blocks?.length"
 						:blocks="project?.translations.blocks"
 					/>
+				</div>
+			</div>
+		</div>
+		<div
+			v-if="nextProject"
+			class="container mb-20 mt-12"
+		>
+			<div class="mb-5 flex items-center justify-between px-4">
+				<span>
+					Next project
+				</span>
+
+				<CommonCTA
+					label="All projects"
+					to="/all-projects"
+					color="secondary"
+				/>
+			</div>
+			<div
+				:style="{
+					'--bg-image': `url('${$directus.url + 'assets/' + nextProject?.translations?.[0]?.image?.id}')`,
+				}"
+				class="overflow-hidden rounded-xl border-gradient-tr-cyan-500-neutral-950 gradient-border-2"
+			>
+				<div
+					class="
+						h-full w-full overflow-hidden rounded-xl bg-[linear-gradient(to_right_bottom,theme(colors.neutral.950),_theme(colors.neutral.950/60%)),var(--bg-image)] bg-cover bg-center bg-no-repeat p-6 py-12
+						lg:bg-[linear-gradient(to_right,theme(colors.neutral.950)_30%,_theme(colors.neutral.950/0)),var(--bg-image)] lg:p-16 lg:py-24
+					"
+				>
+					<div class="flex max-w-xl flex-col items-start gap-4 text-neutral-200">
+						<h3
+							class="
+								text-3xl font-bold text-neutral-100
+								lg:text-5xl
+							"
+						>
+							{{ nextProject?.translations?.[0]?.title }}
+						</h3>
+						<div class="flex flex-wrap gap-3">
+							<CommonTag
+								v-for="item, index in projects[currentIndex + 1]?.tags"
+								:key="index"
+								:color="item?.svetlikus_projects_tags_id?.color"
+							>
+								{{ item?.svetlikus_projects_tags_id?.translations?.[0].title }}
+							</CommonTag>
+						</div>
+						<p
+							class="prose prose-xl"
+							v-html="nextProject?.translations?.[0]?.description"
+						/>
+						<CommonCTA
+							:cta="{
+								text: 'View Case Study',
+								link: `/projects/${nextProject?.translations?.[0]?.slug}`,
+							}"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -12,8 +12,9 @@ defineProps<{
 		>
 			<BlocksItem
 				:block="item"
+				:index
 				class="max-w-full"
-				:class="index === blocks.length - 1 ? 'pb-40' : ''"
+				:class="index === blocks.length - 1 && !$route.name?.startsWith('projects') ? 'pb-40' : ''"
 			/>
 		</NuxtErrorBoundary>
 	</div>

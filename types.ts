@@ -6,9 +6,9 @@ export type DirectusActivity = {
 	ip?: string | null
 	item: string
 	origin?: string | null
-	revisions: unknown[] | DirectusRevisions[]
+	revisions: unknown[] & DirectusRevisions[]
 	timestamp: string
-	user?: string | DirectusUsers | null
+	user?: (string & DirectusUsers) | null
 	user_agent?: string | null
 }
 
@@ -21,7 +21,7 @@ export type DirectusCollections = {
 	collection: string
 	color?: string | null
 	display_template?: string | null
-	group?: string | DirectusCollections | null
+	group?: (string & DirectusCollections) | null
 	hidden: boolean
 	icon?: string | null
 	item_duplication_fields?: unknown | null
@@ -42,8 +42,8 @@ export type DirectusDashboards = {
 	id: string
 	name: string
 	note?: string | null
-	panels: unknown[] | DirectusPanels[]
-	user_created?: string | DirectusUsers | null
+	panels: unknown[] & DirectusPanels[]
+	user_created?: (string & DirectusUsers) | null
 }
 
 export type DirectusExtensions = {
@@ -55,12 +55,12 @@ export type DirectusExtensions = {
 }
 
 export type DirectusFields = {
-	collection: string | DirectusCollections
+	collection: string & DirectusCollections
 	conditions?: unknown | null
 	display?: string | null
 	display_options?: unknown | null
 	field: string
-	group?: string | DirectusFields | null
+	group?: (string & DirectusFields) | null
 	hidden: boolean
 	id: number
 	interface?: string | null
@@ -86,18 +86,18 @@ export type DirectusFiles = {
 	filesize?: number | null
 	focal_point_x?: number | null
 	focal_point_y?: number | null
-	folder?: string | DirectusFolders | null
+	folder?: (string & DirectusFolders) | null
 	height?: number | null
 	id: string
 	location?: string | null
 	metadata?: unknown | null
-	modified_by?: string | DirectusUsers | null
+	modified_by?: (string & DirectusUsers) | null
 	modified_on: string
 	storage: string
 	tags?: unknown | null
 	title?: string | null
 	type?: string | null
-	uploaded_by?: string | DirectusUsers | null
+	uploaded_by?: (string & DirectusUsers) | null
 	uploaded_on: string
 	width?: number | null
 }
@@ -110,18 +110,18 @@ export type DirectusFlows = {
 	icon?: string | null
 	id: string
 	name: string
-	operation?: string | DirectusOperations | null
-	operations: unknown[] | DirectusOperations[]
+	operation?: (string & DirectusOperations) | null
+	operations: unknown[] & DirectusOperations[]
 	options?: unknown | null
 	status: string
 	trigger?: string | null
-	user_created?: string | DirectusUsers | null
+	user_created?: (string & DirectusUsers) | null
 }
 
 export type DirectusFolders = {
 	id: string
 	name: string
-	parent?: string | DirectusFolders | null
+	parent?: (string & DirectusFolders) | null
 }
 
 export type DirectusMigrations = {
@@ -135,8 +135,8 @@ export type DirectusNotifications = {
 	id: number
 	item?: string | null
 	message?: string | null
-	recipient: string | DirectusUsers
-	sender?: string | DirectusUsers | null
+	recipient: string & DirectusUsers
+	sender?: (string & DirectusUsers) | null
 	status?: string | null
 	subject: string
 	timestamp?: string | null
@@ -144,22 +144,22 @@ export type DirectusNotifications = {
 
 export type DirectusOperations = {
 	date_created?: string | null
-	flow: string | DirectusFlows
+	flow: string & DirectusFlows
 	id: string
 	key: string
 	name?: string | null
 	options?: unknown | null
 	position_x: number
 	position_y: number
-	reject?: string | DirectusOperations | null
-	resolve?: string | DirectusOperations | null
+	reject?: (string & DirectusOperations) | null
+	resolve?: (string & DirectusOperations) | null
 	type: string
-	user_created?: string | DirectusUsers | null
+	user_created?: (string & DirectusUsers) | null
 }
 
 export type DirectusPanels = {
 	color?: string | null
-	dashboard: string | DirectusDashboards
+	dashboard: string & DirectusDashboards
 	date_created?: string | null
 	height: number
 	icon?: string | null
@@ -171,7 +171,7 @@ export type DirectusPanels = {
 	position_y: number
 	show_header: boolean
 	type: string
-	user_created?: string | DirectusUsers | null
+	user_created?: (string & DirectusUsers) | null
 	width: number
 }
 
@@ -182,7 +182,7 @@ export type DirectusPermissions = {
 	id: number
 	permissions?: unknown | null
 	presets?: unknown | null
-	role?: string | DirectusRoles | null
+	role?: (string & DirectusRoles) | null
 	validation?: unknown | null
 }
 
@@ -197,9 +197,9 @@ export type DirectusPresets = {
 	layout_options?: unknown | null
 	layout_query?: unknown | null
 	refresh_interval?: number | null
-	role?: string | DirectusRoles | null
+	role?: (string & DirectusRoles) | null
 	search?: string | null
-	user?: string | DirectusUsers | null
+	user?: (string & DirectusUsers) | null
 }
 
 export type DirectusRelations = {
@@ -216,14 +216,14 @@ export type DirectusRelations = {
 }
 
 export type DirectusRevisions = {
-	activity: number | DirectusActivity
+	activity: number & DirectusActivity
 	collection: string
 	data?: unknown | null
 	delta?: unknown | null
 	id: number
 	item: string
-	parent?: number | DirectusRevisions | null
-	version?: string | DirectusVersions | null
+	parent?: (number & DirectusRevisions) | null
+	version?: (string & DirectusVersions) | null
 }
 
 export type DirectusRoles = {
@@ -235,7 +235,7 @@ export type DirectusRoles = {
 	id: string
 	ip_access?: unknown | null
 	name: string
-	users: unknown[] | DirectusUsers[]
+	users: unknown[] & DirectusUsers[]
 }
 
 export type DirectusSessions = {
@@ -243,9 +243,9 @@ export type DirectusSessions = {
 	ip?: string | null
 	next_token?: string | null
 	origin?: string | null
-	share?: string | DirectusShares | null
+	share?: (string & DirectusShares) | null
 	token: string
-	user?: string | DirectusUsers | null
+	user?: (string & DirectusUsers) | null
 	user_agent?: string | null
 }
 
@@ -264,12 +264,12 @@ export type DirectusSettings = {
 	module_bar?: unknown | null
 	project_color: string
 	project_descriptor?: string | null
-	project_logo?: string | DirectusFiles | null
+	project_logo?: (string & DirectusFiles) | null
 	project_name: string
 	project_url?: string | null
-	public_background?: string | DirectusFiles | null
-	public_favicon?: string | DirectusFiles | null
-	public_foreground?: string | DirectusFiles | null
+	public_background?: (string & DirectusFiles) | null
+	public_favicon?: (string & DirectusFiles) | null
+	public_foreground?: (string & DirectusFiles) | null
 	public_note?: string | null
 	public_registration: boolean
 	public_registration_email_filter?: unknown | null
@@ -280,14 +280,14 @@ export type DirectusSettings = {
 	report_feature_url?: string | null
 	storage_asset_presets?: unknown | null
 	storage_asset_transform?: string | null
-	storage_default_folder?: string | DirectusFolders | null
+	storage_default_folder?: (string & DirectusFolders) | null
 	theme_dark_overrides?: unknown | null
 	theme_light_overrides?: unknown | null
 	theming_group: string
 }
 
 export type DirectusShares = {
-	collection: string | DirectusCollections
+	collection: string & DirectusCollections
 	date_created?: string | null
 	date_end?: string | null
 	date_start?: string | null
@@ -296,9 +296,9 @@ export type DirectusShares = {
 	max_uses?: number | null
 	name?: string | null
 	password?: string | null
-	role?: string | DirectusRoles | null
+	role?: (string & DirectusRoles) | null
 	times_used?: number | null
-	user_created?: string | DirectusUsers | null
+	user_created?: (string & DirectusUsers) | null
 }
 
 export type DirectusTranslations = {
@@ -311,7 +311,7 @@ export type DirectusTranslations = {
 export type DirectusUsers = {
 	appearance?: string | null
 	auth_data?: unknown | null
-	avatar?: string | DirectusFiles | null
+	avatar?: (string & DirectusFiles) | null
 	description?: string | null
 	email?: string | null
 	email_notifications?: boolean | null
@@ -325,7 +325,7 @@ export type DirectusUsers = {
 	location?: string | null
 	password?: string | null
 	provider: string
-	role?: string | DirectusRoles | null
+	role?: (string & DirectusRoles) | null
 	status: string
 	tags?: unknown | null
 	tfa_secret?: string | null
@@ -338,7 +338,7 @@ export type DirectusUsers = {
 }
 
 export type DirectusVersions = {
-	collection: string | DirectusCollections
+	collection: string & DirectusCollections
 	date_created?: string | null
 	date_updated?: string | null
 	hash?: string | null
@@ -346,8 +346,8 @@ export type DirectusVersions = {
 	item: string
 	key: string
 	name?: string | null
-	user_created?: string | DirectusUsers | null
-	user_updated?: string | DirectusUsers | null
+	user_created?: (string & DirectusUsers) | null
+	user_updated?: (string & DirectusUsers) | null
 }
 
 export type DirectusWebhooks = {
@@ -370,9 +370,9 @@ export type Languages = {
 }
 
 export type SvetlikusBlockAboutUs = {
-	cta?: number | SvetlikusCta | null
+	cta?: (number & SvetlikusCta) | null
 	id: number
-	image?: string | DirectusFiles | null
+	image?: (string & DirectusFiles) | null
 	kicker?: string | null
 	lead?: string | null
 	status: string
@@ -381,16 +381,17 @@ export type SvetlikusBlockAboutUs = {
 
 export type SvetlikusBlockBenefits = {
 	benefits?: unknown | null
-	cta?: number | SvetlikusCta | null
+	cta?: (number & SvetlikusCta) | null
 	id: number
 	kicker?: string | null
 	lead?: string | null
+	Name?: string | null
 	status: string
 	title?: string | null
 }
 
 export type SvetlikusBlockClients = {
-	clients: unknown[] | SvetlikusBlockClientsSvetlikusClients[]
+	clients: unknown[] & SvetlikusBlockClientsSvetlikusClients[]
 	id: number
 	lead?: string | null
 	status: string
@@ -400,12 +401,12 @@ export type SvetlikusBlockClients = {
 export type SvetlikusBlockClientsSvetlikusClients = {
 	id: number
 	sort?: number | null
-	svetlikus_block_clients_id?: number | SvetlikusBlockClients | null
-	svetlikus_clients_id?: number | SvetlikusClients | null
+	svetlikus_block_clients_id?: (number & SvetlikusBlockClients) | null
+	svetlikus_clients_id?: (number & SvetlikusClients) | null
 }
 
 export type SvetlikusBlockConfetti = {
-	cta?: number | SvetlikusCta | null
+	cta?: (number & SvetlikusCta) | null
 	id: number
 	kicker?: string | null
 	lead?: string | null
@@ -424,59 +425,60 @@ export type SvetlikusBlockFaq = {
 
 export type SvetlikusBlockFullWidthImage = {
 	id: number
-	image?: string | DirectusFiles | null
+	image?: (string & DirectusFiles) | null
 	status: string
 }
 
 export type SvetlikusBlockHero = {
-	cta?: number | SvetlikusCta | null
-	cta_2?: number | SvetlikusCta | null
+	cta?: (number & SvetlikusCta) | null
+	cta_2?: (number & SvetlikusCta) | null
 	id: number
-	images: unknown[] | SvetlikusBlockHeroFiles[]
+	images: unknown[] & SvetlikusBlockHeroFiles[]
 	kicker?: string | null
 	lead?: string | null
-	project?: number | SvetlikusProjects | null
+	project?: (number & SvetlikusProjects) | null
 	status: string
 	title?: string | null
 }
 
 export type SvetlikusBlockHeroFiles = {
-	directus_files_id?: string | DirectusFiles | null
+	directus_files_id?: (string & DirectusFiles) | null
 	id: number
-	svetlikus_block_hero_id?: number | SvetlikusBlockHero | null
+	svetlikus_block_hero_id?: (number & SvetlikusBlockHero) | null
 }
 
 export type SvetlikusBlockImageGrid = {
 	id: number
-	images: unknown[] | SvetlikusBlockImageGridFiles[]
+	images: unknown[] & SvetlikusBlockImageGridFiles[]
 	lead?: string | null
 	status: string
 }
 
 export type SvetlikusBlockImageGridFiles = {
-	directus_files_id?: string | DirectusFiles | null
+	directus_files_id?: (string & DirectusFiles) | null
 	id: number
-	svetlikus_block_image_grid_id?: number | SvetlikusBlockImageGrid | null
+	svetlikus_block_image_grid_id?: (number & SvetlikusBlockImageGrid) | null
 }
 
 export type SvetlikusBlockPricing = {
+	cta?: (number & SvetlikusCta) | null
 	id: number
 	kicker?: string | null
 	lead?: string | null
 	pricing_table?: unknown | null
 	status: string
-	testimonials: unknown[] | SvetlikusBlockPricingSvetlikusTestimonials[]
+	testimonials: unknown[] & SvetlikusBlockPricingSvetlikusTestimonials[]
 	title?: string | null
 }
 
 export type SvetlikusBlockPricingSvetlikusTestimonials = {
 	id: number
-	svetlikus_block_pricing_id?: number | SvetlikusBlockPricing | null
-	svetlikus_testimonials_id?: number | SvetlikusTestimonials | null
+	svetlikus_block_pricing_id?: (number & SvetlikusBlockPricing) | null
+	svetlikus_testimonials_id?: (number & SvetlikusTestimonials) | null
 }
 
 export type SvetlikusBlockProcess = {
-	cta?: number | SvetlikusCta | null
+	cta?: (number & SvetlikusCta) | null
 	id: number
 	kicker?: string | null
 	lead?: string | null
@@ -486,7 +488,7 @@ export type SvetlikusBlockProcess = {
 }
 
 export type SvetlikusBlockServices = {
-	cta?: number | SvetlikusCta | null
+	cta?: (number & SvetlikusCta) | null
 	id: number
 	kicker?: string | null
 	lead?: string | null
@@ -508,13 +510,21 @@ export type SvetlikusBlockText = {
 	status: string
 }
 
+export type SvetlikusBlockTextImage = {
+	direction?: string | null
+	id: number
+	image?: (string & DirectusFiles) | null
+	status: string
+	text?: string | null
+}
+
 export type SvetlikusBlockWork = {
-	cta?: number | SvetlikusCta | null
-	cta_2?: number | SvetlikusCta | null
+	cta?: (number & SvetlikusCta) | null
+	cta_2?: (number & SvetlikusCta) | null
 	id: number
 	kicker?: string | null
 	lead?: string | null
-	projects: unknown[] | SvetlikusBlockWorkSvetlikusProjects[]
+	projects: unknown[] & SvetlikusBlockWorkSvetlikusProjects[]
 	status: string
 	title?: string | null
 }
@@ -522,13 +532,13 @@ export type SvetlikusBlockWork = {
 export type SvetlikusBlockWorkSvetlikusProjects = {
 	id: number
 	sort?: number | null
-	svetlikus_block_work_id?: number | SvetlikusBlockWork | null
-	svetlikus_projects_id?: number | SvetlikusProjects | null
+	svetlikus_block_work_id?: (number & SvetlikusBlockWork) | null
+	svetlikus_projects_id?: (number & SvetlikusProjects) | null
 }
 
 export type SvetlikusClients = {
 	id: number
-	image?: string | DirectusFiles | null
+	image?: (string & DirectusFiles) | null
 	sort?: number | null
 	status: string
 	title?: string | null
@@ -539,6 +549,7 @@ export type SvetlikusCta = {
 	href?: string | null
 	id: number
 	label?: string | null
+	type?: string | null
 	variant?: string | null
 }
 
@@ -549,15 +560,15 @@ export type SvetlikusGlobal = {
 	instagram_link?: string | null
 	linked_in_link?: string | null
 	title?: string | null
-	translations: unknown[] | SvetlikusGlobalTranslations[]
+	translations: unknown[] & SvetlikusGlobalTranslations[]
 	youtube_link?: string | null
 }
 
 export type SvetlikusGlobalTranslations = {
 	id: number
-	languages_code?: string | Languages | null
+	languages_code?: (string & Languages) | null
 	menu?: unknown | null
-	svetlikus_global_id?: number | SvetlikusGlobal | null
+	svetlikus_global_id?: (number & SvetlikusGlobal) | null
 }
 
 export type SvetlikusPages = {
@@ -565,44 +576,44 @@ export type SvetlikusPages = {
 	date_updated?: string | null
 	id: number
 	status: string
-	translations: unknown[] | SvetlikusPagesTranslations[]
+	translations: unknown[] & SvetlikusPagesTranslations[]
 }
 
 export type SvetlikusPagesTranslations = {
-	blocks: unknown[] | SvetlikusPagesTranslationsBlocks[]
+	blocks: unknown[] & SvetlikusPagesTranslationsBlocks[]
 	id: number
-	languages_code?: string | Languages | null
+	languages_code?: (string & Languages) | null
 	seo_description?: string | null
 	seo_title?: string | null
 	slug?: string | null
-	svetlikus_pages_id?: number | SvetlikusPages | null
+	svetlikus_pages_id?: (number & SvetlikusPages) | null
 }
 
 export type SvetlikusPagesTranslationsBlocks = {
 	collection?: string | null
 	custom_id?: string | null
 	id: number
-	item?: string | unknown | null
+	item?: (string & unknown) | null
 	sort?: number | null
-	svetlikus_pages_translations_id?: number | SvetlikusPagesTranslations | null
+	svetlikus_pages_translations_id?: (number & SvetlikusPagesTranslations) | null
 }
 
 export type SvetlikusProjects = {
 	date_created?: string | null
-	full_width_image?: string | DirectusFiles | null
+	full_width_image?: (string & DirectusFiles) | null
 	id: number
-	logo?: string | DirectusFiles | null
+	logo?: (string & DirectusFiles) | null
 	sort?: number | null
 	status: string
-	tags: unknown[] | SvetlikusProjectsSvetlikusProjectsTags[]
-	translations: unknown[] | SvetlikusProjectsTranslations[]
+	tags: unknown[] & SvetlikusProjectsSvetlikusProjectsTags[]
+	translations: unknown[] & SvetlikusProjectsTranslations[]
 }
 
 export type SvetlikusProjectsSvetlikusProjectsTags = {
 	id: number
 	sort?: number | null
-	svetlikus_projects_id?: number | SvetlikusProjects | null
-	svetlikus_projects_tags_id?: number | SvetlikusProjectsTags | null
+	svetlikus_projects_id?: (number & SvetlikusProjects) | null
+	svetlikus_projects_tags_id?: (number & SvetlikusProjectsTags) | null
 }
 
 export type SvetlikusProjectsTags = {
@@ -610,27 +621,27 @@ export type SvetlikusProjectsTags = {
 	id: number
 	sort?: number | null
 	status: string
-	translations: unknown[] | SvetlikusProjectsTagsTranslations[]
+	translations: unknown[] & SvetlikusProjectsTagsTranslations[]
 }
 
 export type SvetlikusProjectsTagsTranslations = {
 	id: number
-	languages_code?: string | Languages | null
+	languages_code?: (string & Languages) | null
 	slug?: string | null
-	svetlikus_projects_tags_id?: number | SvetlikusProjectsTags | null
+	svetlikus_projects_tags_id?: (number & SvetlikusProjectsTags) | null
 	title?: string | null
 }
 
 export type SvetlikusProjectsTranslations = {
-	blocks: unknown[] | SvetlikusProjectsTranslationsBlocks[]
+	blocks: unknown[] & SvetlikusProjectsTranslationsBlocks[]
 	description?: string | null
 	id: number
-	image?: string | DirectusFiles | null
-	languages_code?: string | Languages | null
+	image?: (string & DirectusFiles) | null
+	languages_code?: (string & Languages) | null
 	project_link?: string | null
 	slug?: string | null
-	svetlikus_projects_id?: number | SvetlikusProjects | null
-	testimonial?: number | SvetlikusTestimonials | null
+	svetlikus_projects_id?: (number & SvetlikusProjects) | null
+	testimonial?: (number & SvetlikusTestimonials) | null
 	title?: string | null
 }
 
@@ -638,9 +649,9 @@ export type SvetlikusProjectsTranslationsBlocks = {
 	collection?: string | null
 	custom_id?: string | null
 	id: number
-	item?: string | unknown | null
+	item?: (string & unknown) | null
 	sort?: number | null
-	svetlikus_projects_translations_id?: number | SvetlikusProjectsTranslations | null
+	svetlikus_projects_translations_id?: (number & SvetlikusProjectsTranslations) | null
 }
 
 export type SvetlikusProjectsTranslationsSvetlikusTestimonials = {
@@ -652,20 +663,20 @@ export type SvetlikusProjectsTranslationsSvetlikusTestimonials = {
 export type SvetlikusTestimonials = {
 	date_created?: string | null
 	id: number
-	image?: string | DirectusFiles | null
+	image?: (string & DirectusFiles) | null
 	name?: string | null
 	rating?: number | null
 	sort?: number | null
 	status: string
-	translations: unknown[] | SvetlikusTestimonialsTranslations[]
+	translations: unknown[] & SvetlikusTestimonialsTranslations[]
 }
 
 export type SvetlikusTestimonialsTranslations = {
 	id: number
-	languages_code?: string | Languages | null
+	languages_code?: (string & Languages) | null
 	position?: string | null
 	quote?: string | null
-	svetlikus_testimonials_id?: number | SvetlikusTestimonials | null
+	svetlikus_testimonials_id?: (number & SvetlikusTestimonials) | null
 }
 
 export type CustomDirectusTypes = {
@@ -711,6 +722,7 @@ export type CustomDirectusTypes = {
 	svetlikus_block_services: SvetlikusBlockServices[]
 	svetlikus_block_tags: SvetlikusBlockTags[]
 	svetlikus_block_text: SvetlikusBlockText[]
+	svetlikus_block_text_image: SvetlikusBlockTextImage[]
 	svetlikus_block_work: SvetlikusBlockWork[]
 	svetlikus_block_work_svetlikus_projects: SvetlikusBlockWorkSvetlikusProjects[]
 	svetlikus_clients: SvetlikusClients[]

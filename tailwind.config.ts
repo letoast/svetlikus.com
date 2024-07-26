@@ -162,9 +162,11 @@ export default {
 			},
 			colors: { // defaults to {}
 				'purple': colors.purple[500],
+				'cyan-500': colors.cyan[500],
 				'neutral-500': colors.neutral[500],
 			},
 			background: {
+				'cyan-500': colors.cyan[500],
 				'neutral-950': colors.neutral[950],
 				'neutral-900': colors.neutral[900],
 				'neutral-800': colors.neutral[800],

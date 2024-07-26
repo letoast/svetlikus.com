@@ -30,7 +30,10 @@ const setHeaderHeight = computed(() => {
 	>
 		<div
 			ref="headerRef"
-			class="container py-10"
+			class="
+				container py-5
+				lg:py-10
+			"
 		>
 			<div
 				class="grid grid-cols-12 items-center"
