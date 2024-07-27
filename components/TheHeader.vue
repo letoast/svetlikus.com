@@ -53,13 +53,13 @@ const setHeaderHeight = computed(() => {
 						'col-span-1 hidden': setHeaderHeight > 0,
 					}"
 				>
-					<NuxtLink
+					<NuxtLinkLocale
 						to="/"
 						class="scroll-me-5 text-secondary"
 						title="svetlikus"
 					>
 						<CommonLogo class="h-6" />
-					</NuxtLink>
+					</NuxtLinkLocale>
 				</div>
 				<div
 					ref="fixedHeaderRef"
@@ -105,16 +105,19 @@ const setHeaderHeight = computed(() => {
 								},
 							}"
 						>
-							<NuxtLink
+							<NuxtLinkLocale
 								to="/"
 								title="svetlikus"
-								@click="showMenu = false"
+								@click="() => {
+									showMenu = false
+									y = 0
+								}"
 							>
 								<Icon
 									name="tabler:home"
 									size="24"
 								/>
-							</NuxtLink>
+							</NuxtLinkLocale>
 							<NuxtLink
 								v-for="menuItem, index in menuItems"
 								:key="index"
@@ -134,13 +137,14 @@ const setHeaderHeight = computed(() => {
 							'mt-4': showMenu,
 						}"
 					>
-						<NuxtLink
+						<NuxtLinkLocale
 							to="/"
 							class="scroll-me-5 text-secondary"
 							title="svetlikus"
+							@click="y = 0"
 						>
 							<CommonLogo class="h-3" />
-						</NuxtLink>
+						</NuxtLinkLocale>
 
 						<UButton
 							variant="ghost"
