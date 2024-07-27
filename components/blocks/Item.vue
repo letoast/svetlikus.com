@@ -25,7 +25,8 @@ function clearAndUpper(text: string) {
 	<component
 		:is="componentFile"
 		:id="block?.custom_id"
-		:class="[isFirst && 'py-14', isLast && $route.name?.toString()?.startsWith('projects-slug') && 'pb-0']"
+		class="py-14"
+		:class="[isFirst && 'pt-0', isLast && $route.name?.toString()?.startsWith('projects-slug') && 'pb-0']"
 		:data="block?.item"
 		:container="!useRoute().name?.toString().startsWith('projects-slug')"
 	/>
