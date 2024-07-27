@@ -308,11 +308,7 @@ useSeoMeta({
 			v-if="nextProject"
 			class="container mb-20 mt-12"
 		>
-			<div class="mb-5 flex items-center justify-between px-4">
-				<span>
-					{{ $locales?.next_project }}
-				</span>
-
+			<div class="mb-5 flex items-center justify-end px-4">
 				<CommonCTA
 					v-if="$initData?.all_projects_page?.translations?.[0]?.slug"
 					:label="$locales?.view_all_projects_button_label"
@@ -333,14 +329,24 @@ useSeoMeta({
 					"
 				>
 					<div class="flex max-w-xl flex-col items-start gap-4 text-neutral-200">
-						<h3
-							class="
-								text-3xl font-bold text-neutral-100
-								lg:text-5xl
-							"
-						>
-							{{ nextProject?.translations?.[0]?.title }}
-						</h3>
+						<div class="flex flex-col items-start gap-1">
+							<span
+								class="
+									text-lg font-bold text-neutral-400
+									lg:text-xl
+								"
+							>
+								{{ $locales?.next_project }}
+							</span>
+							<h3
+								class="
+									text-3xl font-bold text-neutral-100
+									lg:text-5xl
+								"
+							>
+								{{ nextProject?.translations?.[0]?.title }}
+							</h3>
+						</div>
 						<div class="flex flex-wrap gap-3">
 							<CommonTag
 								v-for="item, index in projects[currentIndex + 1]?.tags"
