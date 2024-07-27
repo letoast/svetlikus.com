@@ -8,6 +8,7 @@ const { height: headerHeight } = useElementBounding(headerRef)
 const { height: fixedHeaderHeight } = useElementBounding(fixedHeaderRef)
 // const fps = useFps()
 const { $initData } = useNuxtApp()
+
 const showMenu = ref(false)
 
 const menuItems = computed(() => {
@@ -19,7 +20,7 @@ onMounted(() => {
 })
 
 const setHeaderHeight = computed(() => {
-	if (y.value > initialHeaderHeight.value) {
+	if (y.value > initialHeaderHeight.value && initialHeaderHeight.value) {
 		return initialHeaderHeight.value
 	}
 	else {

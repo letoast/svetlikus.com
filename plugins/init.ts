@@ -18,7 +18,7 @@ export default defineNuxtPlugin({
 			fields: ['*',
 				'all_projects_page.translations.slug',
 				{
-					translations: ['menu'],
+					translations: ['menu', 'footer'],
 				},
 			],
 		})))

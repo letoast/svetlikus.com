@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import tailwindConfig from '#tailwind-config'
-
 const { $getPage } = useNuxtApp()
 
 const { localeProperties } = useI18n()

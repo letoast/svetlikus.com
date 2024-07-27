@@ -7,5 +7,6 @@
 		<TheHeader ref="defaultHeaderRef" />
 		<CommonVerticalSideText />
 		<slot />
+		<TheFooter />
 	</div>
 </template>
