@@ -327,7 +327,7 @@ useSeoMeta({
 			>
 				<div
 					class="
-						h-full w-full overflow-hidden rounded-xl bg-[linear-gradient(to_right_bottom,theme(colors.neutral.950),_theme(colors.neutral.950/60%)),var(--bg-image)] bg-cover bg-center bg-no-repeat p-6 py-12
+						h-full w-full overflow-hidden rounded-xl bg-[linear-gradient(to_right_bottom,theme(colors.neutral.950),_theme(colors.neutral.950/60%)),var(--bg-image)] bg-cover bg-center bg-no-repeat p-6 py-8
 						lg:bg-[linear-gradient(to_right,theme(colors.neutral.950)_30%,_theme(colors.neutral.950/0)),var(--bg-image)] lg:p-16 lg:py-24
 					"
 				>

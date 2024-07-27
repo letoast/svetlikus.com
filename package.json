@@ -21,6 +21,7 @@
 		"@unpic/vue": "^0.0.50",
 		"@vueuse/components": "^10.11.0",
 		"@vueuse/math": "^10.11.0",
+		"@vueuse/motion": "^2.2.3",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"embla-carousel-autoplay": "^8.1.6",

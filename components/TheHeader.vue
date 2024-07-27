@@ -3,18 +3,24 @@ const headerRef = ref<HTMLElement | null>(null)
 const fixedHeaderRef = ref<HTMLElement | null>(null)
 
 const { y } = useWindowScroll()
+const initialHeaderHeight = ref(0)
 const { height: headerHeight } = useElementBounding(headerRef)
 const { height: fixedHeaderHeight } = useElementBounding(fixedHeaderRef)
 // const fps = useFps()
 const { $initData } = useNuxtApp()
+const showMenu = ref(false)
 
 const menuItems = computed(() => {
 	return $initData.value?.data?.translations?.[0]?.menu
 })
 
+onMounted(() => {
+	initialHeaderHeight.value = headerHeight.value
+})
+
 const setHeaderHeight = computed(() => {
-	if (y.value > headerHeight.value) {
-		return headerHeight.value
+	if (y.value > initialHeaderHeight.value) {
+		return initialHeaderHeight.value
 	}
 	else {
 		return 0
@@ -25,7 +31,7 @@ const setHeaderHeight = computed(() => {
 <template>
 	<header
 		:style="{
-			height: setHeaderHeight > 0 ? `${setHeaderHeight + fixedHeaderHeight}px` : 'auto',
+			height: setHeaderHeight > 0 ? `${setHeaderHeight}px` : 'auto',
 		}"
 	>
 		<div
@@ -58,54 +64,101 @@ const setHeaderHeight = computed(() => {
 				<div
 					ref="fixedHeaderRef"
 					class="
-						col-span-12 flex max-w-[100vw] items-center justify-center gap-6 overflow-auto px-6 py-4
-						lg:col-span-8
+						col-span-12 max-w-[100vw] overflow-auto overflow-y-hidden py-4
+						lg:col-span-8 lg:px-6
 					"
 					:class="{
-						'fixed bottom-6 left-1/2 z-50 col-auto animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/40 drop-shadow-xl backdrop-blur-xl -translate-x-1/2': setHeaderHeight > 0,
+						'fixed bottom-6 left-1/2 z-50 col-auto w-[calc(100%-1rem)] animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/40 drop-shadow-xl backdrop-blur-xl -translate-x-1/2 lg:w-auto': setHeaderHeight > 0,
 					}"
 				>
-					<NuxtLink
-						to="/"
-						title="svetlikus"
+					<div class="overflow-hidden">
+						<div
+							v-if="!$device.isMobileOrTablet || ($device.isMobileOrTablet && showMenu) || setHeaderHeight <= 0"
+							v-motion
+							class="
+								flex items-center justify-center gap-x-6 gap-y-4 text-lg
+								lg:text-base
+							"
+							:class="{
+								'flex-row flex-wrap lg:flex-nowrap': setHeaderHeight <= 0,
+								'flex-col lg:flex-row': setHeaderHeight > 0,
+							}"
+							:initial="{
+								y: fixedHeaderHeight > 0 ? 100 : 0,
+							}"
+							:enter="{
+								y: fixedHeaderHeight > 0 ? 0 : 0,
+								transition: {
+									type: 'spring',
+									stiffness: 250,
+									damping: 25,
+									mass: 0.5,
+								},
+							}"
+							:exit="{
+								y: fixedHeaderHeight > 0 ? 0 : 100,
+								transition: {
+									type: 'spring',
+									stiffness: 250,
+									damping: 25,
+									mass: 0.5,
+								},
+							}"
+						>
+							<NuxtLink
+								to="/"
+								title="svetlikus"
+								@click="showMenu = false"
+							>
+								<Icon
+									name="tabler:home"
+									size="24"
+								/>
+							</NuxtLink>
+							<NuxtLink
+								v-for="menuItem, index in menuItems"
+								:key="index"
+								:to="menuItem.url"
+								:target="menuItem.target"
+								@click="showMenu = false"
+							>
+								{{ menuItem.title }}
+							</NuxtLink>
+						</div>
+					</div>
+
+					<div
+						v-if="$device.isMobileOrTablet && setHeaderHeight > 0"
+						class="relative flex items-center justify-between px-4"
+						:class="{
+							'mt-4': showMenu,
+						}"
 					>
-						<Icon
-							name="tabler:home"
-							size="24"
-						/>
-					</NuxtLink>
-					<NuxtLink
-						v-for="menuItem, index in menuItems"
-						:key="index"
-						:to="menuItem.url"
-						:target="menuItem.target"
-					>
-						{{ menuItem.title }}
-					</NuxtLink>
-					<!-- <NuxtLink to="/">
-						Process
-					</NuxtLink>
-					<NuxtLink to="/">
-						Services
-					</NuxtLink>
-					<NuxtLink to="/">
-						Work
-					</NuxtLink>
-					<NuxtLink to="/">
-						Pricing
-					</NuxtLink>
-					<NuxtLink to="/">
-						Benefits
-					</NuxtLink>
-					<NuxtLink to="/">
-						About
-					</NuxtLink>
-					<NuxtLink to="/">
-						FAQ
-					</NuxtLink>
-					<NuxtLink to="/">
-						Login
-					</NuxtLink> -->
+						<NuxtLink
+							to="/"
+							class="scroll-me-5 text-secondary"
+							title="svetlikus"
+						>
+							<CommonLogo class="h-3" />
+						</NuxtLink>
+
+						<UButton
+							variant="ghost"
+							color="white"
+							class="absolute right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2"
+							@click="showMenu = !showMenu"
+						>
+							<Icon
+								:name="showMenu ? 'tabler:x' : 'tabler:menu'"
+								size="24"
+							/>
+						</UButton>
+						<div
+							class="rounded-md border-gradient-tr-cyan-500-neutral-950 px-4 py-2 text-sm font-bold gradient-border-1"
+						>
+							Open
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
