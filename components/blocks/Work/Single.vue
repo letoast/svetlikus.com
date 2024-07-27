@@ -3,7 +3,7 @@ const props = defineProps<{
 	data: unknown
 }>()
 
-const { $directus } = useNuxtApp()
+const { $directus, $locales } = useNuxtApp()
 
 const project = computed(() => {
 	return props.data?.svetlikus_projects_id?.translations?.[0]
