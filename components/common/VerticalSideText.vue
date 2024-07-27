@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { $initData } = useNuxtApp()
+const { $initData, $locales } = useNuxtApp()
 </script>
 
 <template>
@@ -63,7 +63,7 @@ const { $initData } = useNuxtApp()
 					<span
 						class="rotate-180 vertical-writing-lr orientation-mixed"
 					>
-						Follow us* —
+						{{ $locales.follow_us }}
 					</span>
 				</div>
 			</div>
