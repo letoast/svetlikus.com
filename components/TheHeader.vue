@@ -64,8 +64,8 @@ const setHeaderHeight = computed(() => {
 				<div
 					ref="fixedHeaderRef"
 					class="
-						col-span-12 max-w-[100vw] overflow-auto overflow-y-hidden py-4
-						lg:col-span-8 lg:px-6
+						col-span-12 max-w-[100vw] overflow-auto overflow-y-hidden py-2
+						lg:col-span-8 lg:px-6 lg:py-4
 					"
 					:class="{
 						'fixed bottom-6 left-1/2 z-50 col-auto w-[calc(100%-1rem)] animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/40 drop-shadow-xl backdrop-blur-xl -translate-x-1/2 lg:w-auto': setHeaderHeight > 0,
@@ -154,10 +154,26 @@ const setHeaderHeight = computed(() => {
 							/>
 						</UButton>
 						<div
-							class="rounded-md border-gradient-tr-cyan-500-neutral-950 px-4 py-2 text-sm font-bold gradient-border-1"
+							class="rounded-md px-4 py-2 text-sm font-bold gradient-border-1"
+							:class="$initData?.data?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
 						>
-							Open
+							<!-- TODO: Add translation -->
+							{{ $initData.data.status ? 'Open' : 'Closed' }}
 						</div>
+					</div>
+				</div>
+				<div
+					class="
+						invisible col-span-2 flex items-center justify-end
+						lg:visible
+					"
+				>
+					<div
+						class="rounded-md px-4 py-2 text-sm font-bold gradient-border-1"
+						:class="$initData?.data?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
+					>
+						<!-- TODO: Add translation -->
+						{{ $initData.data.status ? 'Open' : 'Closed' }}
 					</div>
 				</div>
 			</div>

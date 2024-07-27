@@ -81,7 +81,7 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 					group-hover:bg-[linear-gradient(theme(colors.blue.600),_theme(colors.blue.600))]
 				"
 				:class="{
-					'bg-[linear-gradient(theme(colors.blue.600),_theme(colors.blue.600))]': visible && device.isMobileOrTablet,
+					'!bg-[linear-gradient(theme(colors.blue.600),_theme(colors.blue.600))]': visible && device.isMobileOrTablet,
 				}"
 			/>
 			<div
@@ -90,7 +90,7 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 					group-hover:bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]
 				"
 				:class="{
-					'bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]': visible && device.isMobileOrTablet,
+					'!bg-[radial-gradient(var(--circle-size)_circle_at_var(--x)_var(--y),_theme(colors.blue.950)_0,_theme(colors.zinc.950)_100%)]': visible && device.isMobileOrTablet,
 				}"
 			/>
 			<div
@@ -102,7 +102,7 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 						group-hover:text-blue-600
 					"
 					:class="{
-						'text-blue-600': visible && device.isMobileOrTablet,
+						'!text-blue-600': visible && device.isMobileOrTablet,
 					}"
 				>
 					{{ title }}
@@ -113,7 +113,7 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 						group-hover:text-blue-600 group-hover:text-stroke-blue-600
 					"
 					:class="{
-						'text-blue-600 text-stroke-blue-600': visible && device.isMobileOrTablet,
+						'!text-blue-600 !text-stroke-blue-600': visible && device.isMobileOrTablet,
 					}"
 				>{{ cardNumber }}</span>
 			</div>
