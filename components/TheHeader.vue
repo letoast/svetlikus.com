@@ -11,7 +11,7 @@ const { $initData } = useNuxtApp()
 const showMenu = ref(false)
 
 const menuItems = computed(() => {
-	return $initData.value?.data?.translations?.[0]?.menu
+	return $initData.value?.translations?.[0]?.menu
 })
 
 onMounted(() => {
@@ -155,10 +155,10 @@ const setHeaderHeight = computed(() => {
 						</UButton>
 						<div
 							class="rounded-md px-4 py-2 text-sm font-bold gradient-border-1"
-							:class="$initData?.data?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
+							:class="$initData?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
 						>
 							<!-- TODO: Add translation -->
-							{{ $initData.data.status ? 'Open' : 'Closed' }}
+							{{ $initData.status ? 'Open' : 'Closed' }}
 						</div>
 					</div>
 				</div>
@@ -170,10 +170,10 @@ const setHeaderHeight = computed(() => {
 				>
 					<div
 						class="rounded-md px-4 py-2 text-sm font-bold gradient-border-1"
-						:class="$initData?.data?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
+						:class="$initData?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
 					>
 						<!-- TODO: Add translation -->
-						{{ $initData.data.status ? 'Open' : 'Closed' }}
+						{{ $initData?.status ? 'Open' : 'Closed' }}
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { $directus, $readItem, $readItems, $blocks } = useNuxtApp()
+const { $directus, $readItem, $readItems, $blocks, $locales, $initData } = useNuxtApp()
 const { localeProperties } = useI18n()
 
 const { data: projects } = await useAsyncData('projectIds', async () => {
@@ -171,7 +171,7 @@ useSeoMeta({
 						/>
 						<CommonCTA
 							:cta="{
-								text: 'Company website',
+								text: $locales?.single_project_company_website_button_label,
 								link: project?.translations?.project_link,
 								target: '_blank',
 							}"
@@ -220,8 +220,8 @@ useSeoMeta({
 								class="flex"
 							>
 								<div
-									v-for="item in [project?.translations.testimonial]"
-									:key="item"
+									v-for="item, index in [project?.translations.testimonial]"
+									:key="index"
 									class="
 										flex max-w-full flex-shrink-0 flex-grow flex-col gap-8
 										lg:basis-full lg:flex-row lg:items-center
@@ -310,12 +310,13 @@ useSeoMeta({
 		>
 			<div class="mb-5 flex items-center justify-between px-4">
 				<span>
-					Next project
+					{{ $locales?.next_project }}
 				</span>
 
 				<CommonCTA
-					label="All projects"
-					to="/all-projects"
+					v-if="$initData?.all_projects_page?.translations?.[0]?.slug"
+					:label="$locales?.view_all_projects_button_label"
+					:to="$initData?.all_projects_page?.translations?.[0]?.slug"
 					color="secondary"
 				/>
 			</div>
@@ -355,7 +356,7 @@ useSeoMeta({
 						/>
 						<CommonCTA
 							:cta="{
-								text: 'View Case Study',
+								text: $locales?.view_project_button_label,
 								link: `/projects/${nextProject?.translations?.[0]?.slug}`,
 							}"
 						/>

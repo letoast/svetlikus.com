@@ -65,7 +65,7 @@ const tags = computed(() => {
 			/>
 			<CommonCTA
 				:cta="{
-					text: 'View Case Study',
+					text: $locales.view_project_button_label,
 					link: `/projects/${project?.slug}`,
 				}"
 			/>

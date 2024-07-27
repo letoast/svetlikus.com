@@ -559,6 +559,7 @@ export type SvetlikusGlobal = {
 	id: number
 	instagram_link?: string | null
 	linked_in_link?: string | null
+	status?: number | null
 	title?: string | null
 	translations: unknown[] & SvetlikusGlobalTranslations[]
 	youtube_link?: string | null
@@ -569,6 +570,20 @@ export type SvetlikusGlobalTranslations = {
 	languages_code?: (string & Languages) | null
 	menu?: unknown | null
 	svetlikus_global_id?: (number & SvetlikusGlobal) | null
+}
+
+export type SvetlikusLocales = {
+	id: number
+	translations: unknown[] & SvetlikusLocalesTranslations[]
+}
+
+export type SvetlikusLocalesTranslations = {
+	id: number
+	languages_code?: (string & Languages) | null
+	next_project?: string | null
+	svetlikus_locales_id?: (number & SvetlikusLocales) | null
+	view_all_projects_button_label?: string | null
+	view_project_button_label?: string | null
 }
 
 export type SvetlikusPages = {
@@ -729,6 +744,8 @@ export type CustomDirectusTypes = {
 	svetlikus_cta: SvetlikusCta[]
 	svetlikus_global: SvetlikusGlobal
 	svetlikus_global_translations: SvetlikusGlobalTranslations[]
+	svetlikus_locales: SvetlikusLocales
+	svetlikus_locales_translations: SvetlikusLocalesTranslations[]
 	svetlikus_pages: SvetlikusPages[]
 	svetlikus_pages_translations: SvetlikusPagesTranslations[]
 	svetlikus_pages_translations_blocks: SvetlikusPagesTranslationsBlocks[]

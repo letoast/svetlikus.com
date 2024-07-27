@@ -17,8 +17,8 @@ const { $initData } = useNuxtApp()
 					class="pointer-events-auto flex flex-col items-center gap-4 translate-x-[calc(100%_+_1rem)]"
 				>
 					<a
-						v-if="$initData?.data?.linked_in_link"
-						:href="$initData?.data.linked_in_link"
+						v-if="$initData?.linked_in_link"
+						:href="$initData.linked_in_link"
 						target="_blank"
 						title="LinkedIn"
 					>
@@ -28,8 +28,8 @@ const { $initData } = useNuxtApp()
 						/>
 					</a>
 					<a
-						v-if="$initData?.data?.instagram_link"
-						:href="$initData?.data.instagram_link"
+						v-if="$initData?.instagram_link"
+						:href="$initData.instagram_link"
 						target="_blank"
 						title="Instagram"
 					>
@@ -39,8 +39,8 @@ const { $initData } = useNuxtApp()
 						/>
 					</a>
 					<a
-						v-if="$initData?.data?.youtube_link"
-						:href="$initData?.data.youtube_link"
+						v-if="$initData?.youtube_link"
+						:href="$initData.youtube_link"
 						target="_blank"
 						title="YouTube"
 					>
@@ -50,8 +50,8 @@ const { $initData } = useNuxtApp()
 						/>
 					</a>
 					<a
-						v-if="$initData?.data?.facebook_link"
-						:href="$initData?.data.facebook_link"
+						v-if="$initData?.facebook_link"
+						:href="$initData.facebook_link"
 						target="_blank"
 						title="Facebook"
 					>
