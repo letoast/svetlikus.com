@@ -83,8 +83,8 @@ const setHeaderHeight = computed(() => {
 							:class="{
 								'flex-row flex-wrap lg:flex-nowrap': setHeaderHeight <= 0,
 								'flex-col lg:flex-row': setHeaderHeight > 0,
-								'border-b border-neutral-100/20 lg:border-transparent': showMenu
-								'border-transparent': !showMenu
+								'border-b border-neutral-100/20 lg:border-transparent': showMenu,
+								'border-transparent': !showMenu,
 							}"
 							:initial="{
 								y: fixedHeaderHeight > 0 ? 100 : 0,
