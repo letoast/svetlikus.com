@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { $getPage } = useNuxtApp()
+const { $getPage, $directus } = useNuxtApp()
 
 const { localeProperties } = useI18n()
 
@@ -16,6 +16,7 @@ const { data: page } = await useAsyncData(`page${route.params.slug}`, async () =
 useSeoMeta({
 	title: page.value?.seo_title,
 	description: page.value?.seo_description,
+	ogImage: `${$directus.url}assets/${page.value?.seo_image}?format=auto`,
 })
 </script>
 
