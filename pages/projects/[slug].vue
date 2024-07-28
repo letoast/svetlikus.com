@@ -308,14 +308,6 @@ useSeoMeta({
 			v-if="nextProject"
 			class="container mb-20 mt-12"
 		>
-			<div class="mb-5 flex items-center justify-end px-4">
-				<CommonCTA
-					v-if="$initData?.all_projects_page?.translations?.[0]?.slug"
-					:label="$locales?.view_all_projects_button_label"
-					:to="$initData?.all_projects_page?.translations?.[0]?.slug"
-					color="secondary"
-				/>
-			</div>
 			<div
 				:style="{
 					'--bg-image': `url('${$directus.url + 'assets/' + nextProject?.translations?.[0]?.image?.id}')`,
@@ -368,6 +360,16 @@ useSeoMeta({
 						/>
 					</div>
 				</div>
+			</div>
+			<div
+				class="mt-5 flex items-center justify-center px-4"
+			>
+				<CommonCTA
+					v-if="$initData?.all_projects_page?.translations?.[0]?.slug"
+					:label="$locales?.view_all_projects_button_label"
+					:to="$initData?.all_projects_page?.translations?.[0]?.slug"
+					color="secondary"
+				/>
 			</div>
 		</div>
 	</div>
