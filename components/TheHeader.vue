@@ -77,8 +77,8 @@ const setHeaderHeight = computed(() => {
 							v-if="!$device.isMobileOrTablet || ($device.isMobileOrTablet && showMenu) || setHeaderHeight <= 0"
 							v-motion
 							class="
-								flex items-center justify-center gap-x-6 gap-y-4 text-lg
-								lg:text-base
+								flex items-center justify-center gap-x-6 gap-y-4 border-b border-neutral-100/20 px-6 py-4 text-lg
+								lg:border-b-0 lg:px-0 lg:pb-0 lg:text-base
 							"
 							:class="{
 								'flex-row flex-wrap lg:flex-nowrap': setHeaderHeight <= 0,

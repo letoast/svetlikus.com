@@ -13,7 +13,7 @@ const { $directus } = useNuxtApp()
 	<div>
 		<ImgComparisonSlider
 			class="
-				h-auto w-full
+				h-auto w-full rounded-lg
 				focus:outline-none
 			"
 		>

@@ -145,6 +145,67 @@ export default {
 						'--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
 						'--tw-prose-invert-th-borders': colors.slate[600],
 						'--tw-prose-invert-td-borders': colors.slate[700],
+						'ul': {
+							paddingInlineStart: '1em',
+						},
+						'li': {
+							paddingInlineStart: '0',
+						},
+						'ul > li': {
+							paddingInlineStart: '0',
+						},
+					},
+				},
+				sm: {
+					css: {
+						'ul': {
+							paddingInlineStart: '1em',
+						},
+						'li': {
+							paddingInlineStart: '0',
+						},
+						'ul > li': {
+							paddingInlineStart: '0',
+						},
+					},
+				},
+				base: {
+					css: {
+						'ul': {
+							paddingInlineStart: '1em',
+						},
+						'li': {
+							paddingInlineStart: '0',
+						},
+						'ul > li': {
+							paddingInlineStart: '0',
+						},
+					},
+				},
+				lg: {
+					css: {
+						'ul': {
+							paddingInlineStart: '1em',
+						},
+						'li': {
+							paddingInlineStart: '0',
+						},
+						'ul > li': {
+							paddingInlineStart: '0',
+						},
+					},
+				},
+				xl: {
+					css: {
+						'ul': {
+							paddingInlineStart: '1em',
+						},
+						'li': {
+							paddingInlineStart: '0',
+						},
+						'ul > li': {
+							paddingInlineStart: '0',
+						},
 					},
 				},
 			},
