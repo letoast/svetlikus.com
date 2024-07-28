@@ -83,13 +83,13 @@ watch(setHeaderHeight, (val) => {
 							v-if="!$device.isMobileOrTablet || ($device.isMobileOrTablet && showMenu) || setHeaderHeight <= 0"
 							v-motion
 							class="
-								flex items-center justify-center gap-x-6 gap-y-4 px-6 py-4 text-lg
+								flex items-center justify-center gap-x-6 gap-y-4 px-6 text-lg
 								lg:px-0 lg:pb-0 lg:text-base
 							"
 							:class="{
 								'flex-row flex-wrap lg:flex-nowrap': setHeaderHeight <= 0,
 								'flex-col lg:flex-row': setHeaderHeight > 0,
-								'border-b border-neutral-100/20 lg:border-transparent': showMenu,
+								'border-b border-neutral-100/20 py-4 lg:border-transparent': showMenu,
 								'border-transparent': !showMenu,
 							}"
 							:initial="{
