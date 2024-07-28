@@ -627,6 +627,7 @@ export type SvetlikusPagesTranslations = {
 	id: number
 	languages_code?: (string & Languages) | null
 	seo_description?: string | null
+	seo_image?: (string & DirectusFiles) | null
 	seo_title?: string | null
 	slug?: string | null
 	svetlikus_pages_id?: (number & SvetlikusPages) | null

@@ -105,6 +105,7 @@ async function getPage(slug: string, locale: string) {
 				translations: [
 					'seo_title',
 					'seo_description',
+					'seo_image',
 					{
 						blocks,
 					},
