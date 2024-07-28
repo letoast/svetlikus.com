@@ -70,6 +70,8 @@ const blocks = [
 						image: ['id', 'title', 'description'],
 					},
 				],
+				before: ['id', 'title', 'description'],
+				after: ['id', 'title', 'description'],
 			},
 		],
 	},
