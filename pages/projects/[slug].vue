@@ -286,6 +286,7 @@ useSeoMeta({
 			:alt="project?.full_width_image.title"
 		>
 		<div
+			v-if="project?.translations?.blocks?.length"
 			class="container"
 		>
 			<div
@@ -298,7 +299,6 @@ useSeoMeta({
 					"
 				>
 					<Blocks
-						v-if="project?.translations?.blocks?.length"
 						:blocks="project?.translations.blocks"
 					/>
 				</div>
