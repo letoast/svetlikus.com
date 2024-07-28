@@ -27,6 +27,12 @@ const setHeaderHeight = computed(() => {
 		return 0
 	}
 })
+
+watch(setHeaderHeight, (val) => {
+	if (val === 0) {
+		showMenu.value = false
+	}
+})
 </script>
 
 <template>
