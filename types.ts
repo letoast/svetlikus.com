@@ -460,6 +460,14 @@ export type SvetlikusBlockImageGridFiles = {
 	svetlikus_block_image_grid_id?: (number & SvetlikusBlockImageGrid) | null
 }
 
+export type SvetlikusBlockInquiryForm = {
+	form?: unknown | null
+	id: number
+	status: string
+	submit_label?: string | null
+	user_created?: (string & DirectusUsers) | null
+}
+
 export type SvetlikusBlockPricing = {
 	cta?: (number & SvetlikusCta) | null
 	id: number
@@ -518,6 +526,14 @@ export type SvetlikusBlockTextImage = {
 	text?: string | null
 }
 
+export type SvetlikusBlockVersus = {
+	after?: (string & DirectusFiles) | null
+	before?: (string & DirectusFiles) | null
+	id: number
+	sort?: number | null
+	status: string
+}
+
 export type SvetlikusBlockWork = {
 	cta?: (number & SvetlikusCta) | null
 	cta_2?: (number & SvetlikusCta) | null
@@ -554,6 +570,7 @@ export type SvetlikusCta = {
 }
 
 export type SvetlikusGlobal = {
+	all_projects_page?: (number & SvetlikusPages) | null
 	description?: string | null
 	facebook_link?: string | null
 	id: number
@@ -566,10 +583,18 @@ export type SvetlikusGlobal = {
 }
 
 export type SvetlikusGlobalTranslations = {
+	footer?: unknown | null
 	id: number
 	languages_code?: (string & Languages) | null
 	menu?: unknown | null
 	svetlikus_global_id?: (number & SvetlikusGlobal) | null
+}
+
+export type SvetlikusInquiries = {
+	data?: unknown | null
+	date_created?: string | null
+	id: number
+	user_created?: (string & DirectusUsers) | null
 }
 
 export type SvetlikusLocales = {
@@ -578,9 +603,12 @@ export type SvetlikusLocales = {
 }
 
 export type SvetlikusLocalesTranslations = {
+	follow_us?: string | null
 	id: number
 	languages_code?: (string & Languages) | null
 	next_project?: string | null
+	single_project_company_website_button_label?: string | null
+	successfully_submitted?: string | null
 	svetlikus_locales_id?: (number & SvetlikusLocales) | null
 	view_all_projects_button_label?: string | null
 	view_project_button_label?: string | null
@@ -609,6 +637,7 @@ export type SvetlikusPagesTranslationsBlocks = {
 	custom_id?: string | null
 	id: number
 	item?: (string & unknown) | null
+	no_vertical_padding?: boolean | null
 	sort?: number | null
 	svetlikus_pages_translations_id?: (number & SvetlikusPagesTranslations) | null
 }
@@ -665,6 +694,7 @@ export type SvetlikusProjectsTranslationsBlocks = {
 	custom_id?: string | null
 	id: number
 	item?: (string & unknown) | null
+	no_vertical_padding?: boolean | null
 	sort?: number | null
 	svetlikus_projects_translations_id?: (number & SvetlikusProjectsTranslations) | null
 }
@@ -731,6 +761,7 @@ export type CustomDirectusTypes = {
 	svetlikus_block_hero_files: SvetlikusBlockHeroFiles[]
 	svetlikus_block_image_grid: SvetlikusBlockImageGrid[]
 	svetlikus_block_image_grid_files: SvetlikusBlockImageGridFiles[]
+	svetlikus_block_inquiry_form: SvetlikusBlockInquiryForm[]
 	svetlikus_block_pricing: SvetlikusBlockPricing[]
 	svetlikus_block_pricing_svetlikus_testimonials: SvetlikusBlockPricingSvetlikusTestimonials[]
 	svetlikus_block_process: SvetlikusBlockProcess[]
@@ -738,12 +769,14 @@ export type CustomDirectusTypes = {
 	svetlikus_block_tags: SvetlikusBlockTags[]
 	svetlikus_block_text: SvetlikusBlockText[]
 	svetlikus_block_text_image: SvetlikusBlockTextImage[]
+	svetlikus_block_versus: SvetlikusBlockVersus[]
 	svetlikus_block_work: SvetlikusBlockWork[]
 	svetlikus_block_work_svetlikus_projects: SvetlikusBlockWorkSvetlikusProjects[]
 	svetlikus_clients: SvetlikusClients[]
 	svetlikus_cta: SvetlikusCta[]
 	svetlikus_global: SvetlikusGlobal
 	svetlikus_global_translations: SvetlikusGlobalTranslations[]
+	svetlikus_inquiries: SvetlikusInquiries[]
 	svetlikus_locales: SvetlikusLocales
 	svetlikus_locales_translations: SvetlikusLocalesTranslations[]
 	svetlikus_pages: SvetlikusPages[]

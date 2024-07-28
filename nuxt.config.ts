@@ -41,8 +41,12 @@ export default defineNuxtConfig({
 		'@nuxtjs/i18n',
 		'@nuxt/scripts',
 		'@nuxtjs/device',
+		'@formkit/nuxt',
 	],
-
+	formkit: {
+		// Experimental support for auto loading (see note):
+		autoImport: true,
+	},
 	icon: {
 		mode: 'svg',
 	},

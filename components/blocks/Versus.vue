@@ -10,14 +10,19 @@ const { $directus } = useNuxtApp()
 </script>
 
 <template>
-	<div>
-		<ImgComparisonSlider
-			class="
-				h-auto w-full rounded-lg
-				focus:outline-none
-			"
+	<section>
+		<div
+			:class="{
+				container: container,
+			}"
 		>
-			<!-- eslint-disable -->
+			<ImgComparisonSlider
+				class="
+					h-auto w-full rounded-lg
+					focus:outline-none
+				"
+			>
+				<!-- eslint-disable -->
 				<img
 					slot="first"
 					class="w-full"
@@ -31,6 +36,7 @@ const { $directus } = useNuxtApp()
 					:alt="data?.after?.title"
 				>
 			<!-- eslint-enable -->
-		</ImgComparisonSlider>
-	</div>
+			</ImgComparisonSlider>
+		</div>
+	</section>
 </template>

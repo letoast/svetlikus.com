@@ -19,7 +19,8 @@ const srcDir = '.'
 export default {
 	// mode: 'jit',
 	darkMode: ['class'],
-	// content: [
+	content: [
+		'./formkit.theme.ts',
 	// 	`${srcDir}/components/**/*.{vue,js,ts}`,
 	// 	`${srcDir}/layouts/**/*.vue`,
 	// 	`${srcDir}/pages/**/*.vue`,
@@ -31,7 +32,7 @@ export default {
 	// 	`${srcDir}/Error.{js,ts,vue}`,
 	// 	`${srcDir}/error.{js,ts,vue}`,
 	// 	`${srcDir}/app.config.{js,ts}`,
-	// ],
+	],
 	prefix: '',
 	theme: {
 		container: {
@@ -145,6 +146,9 @@ export default {
 						'--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
 						'--tw-prose-invert-th-borders': colors.slate[600],
 						'--tw-prose-invert-td-borders': colors.slate[700],
+						'a': {
+							textDecoration: 'none',
+						},
 						'ul': {
 							paddingInlineStart: '1em',
 						},

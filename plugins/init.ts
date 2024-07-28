@@ -25,7 +25,6 @@ export default defineNuxtPlugin({
 
 		if (initDataResponse) {
 			initData.value = initDataResponse.value
-			console.log(initDataResponse.value)
 		}
 
 		const { data: localesResponse } = await useAsyncData('locales', () => $directus.request($readSingleton('svetlikus_locales', {
@@ -55,3 +54,10 @@ export default defineNuxtPlugin({
 		}
 	},
 })
+
+declare module '#app' {
+	interface NuxtApp {
+		$initData: CustomDirectusTypes['svetlikus_global']
+		$locales: CustomDirectusTypes['svetlikus_locales_translations'][0]
+	}
+}

@@ -1,4 +1,4 @@
-import { createDirectus, rest, readItem, readItems, readSingleton } from '@directus/sdk'
+import { createDirectus, rest, readItem, readItems, readSingleton, createItem } from '@directus/sdk'
 import type { CustomDirectusTypes } from '../types'
 
 
@@ -7,6 +7,7 @@ const directus = createDirectus<CustomDirectusTypes>('https://svetlikus.datalog.
 const blocks = [
 	'collection',
 	'custom_id',
+	'no_vertical_padding',
 	{
 		item: [
 			'*',
@@ -115,6 +116,18 @@ async function getPage(slug: string, locale: string) {
 
 export default defineNuxtPlugin(async () => {
 	return {
-		provide: { directus, readItem, readItems, readSingleton, getPage, blocks },
+		provide: { directus, readItem, readItems, readSingleton, createItem, getPage, blocks },
 	}
 })
+
+declare module '#app' {
+	interface NuxtApp {
+		$directus: typeof directus
+		$readItem: typeof readItem
+		$readItems: typeof readItems
+		$readSingleton: typeof readSingleton
+		$createItem: typeof createItem
+		$getPage: typeof getPage
+		$blocks: typeof blocks
+	}
+}

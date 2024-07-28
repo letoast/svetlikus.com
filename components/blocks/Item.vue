@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
 	block: unknown
-	index: number
 	isLast: boolean
 	isFirst: boolean
 }>()
@@ -25,8 +24,14 @@ function clearAndUpper(text: string) {
 	<component
 		:is="componentFile"
 		:id="block?.custom_id"
-		class="py-14"
-		:class="[isFirst && 'pt-0', isLast && $route.name?.toString()?.startsWith('projects-slug') && 'pb-0']"
+		:class="[
+			isFirst && 'pt-0',
+			isLast && $route.name?.toString()?.startsWith('projects-slug') && 'pb-0',
+			block?.no_vertical_padding ? 'py-0' : `
+				py-10
+				lg:py-14
+			`,
+		]"
 		:data="block?.item"
 		:container="!useRoute().name?.toString().startsWith('projects-slug')"
 	/>
