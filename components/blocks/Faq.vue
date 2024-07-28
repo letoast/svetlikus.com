@@ -65,7 +65,10 @@ const { $directus } = useNuxtApp()
 							color="white"
 							:label="label"
 							:block="false"
-							class="justify-between px-0 text-start text-xl"
+							class="
+								justify-between px-0 text-start text-xl
+								hover:no-underline hover:opacity-100
+							"
 							:class="open ? '' : 'opacity-50'"
 							:icon="open ? 'tabler:minus' : 'tabler:plus'"
 							trailing

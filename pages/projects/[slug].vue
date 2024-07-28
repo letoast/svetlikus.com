@@ -170,6 +170,7 @@ useSeoMeta({
 							v-html="project?.translations?.description"
 						/>
 						<CommonCTA
+							v-if="project?.translations?.project_link"
 							:cta="{
 								text: $locales?.single_project_company_website_button_label,
 								link: project?.translations?.project_link,
