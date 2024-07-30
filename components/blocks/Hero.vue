@@ -77,13 +77,16 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					<div class="relative">
 						<span
 							v-if="data.kicker"
-							class="mb-5 block text-center text-3xl font-bold uppercase text-yellow-400"
+							class="
+								mb-5 block text-center text-lg font-bold uppercase text-yellow-400
+								lg:text-3xl
+							"
 						>
 							{{ data.kicker }}
 						</span>
 						<h1
 							class="
-								relative text-center text-4xl font-bold uppercase
+								relative text-center text-3xl font-bold uppercase
 								lg:text-7xl
 							"
 							v-html="data.title"
@@ -92,12 +95,15 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 				</div>
 				<div
 					class="
-						col-span-12 mt-10
-						lg:col-span-8 lg:col-start-3
+						col-span-12 mt-5
+						lg:col-span-8 lg:col-start-3 lg:mt-10
 					"
 				>
 					<div
-						class="lead text-center text-neutral-300"
+						class="
+							text-center text-lg text-neutral-300
+							lg:text-xl
+						"
 						v-html="data.lead"
 					/>
 				</div>

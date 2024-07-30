@@ -177,8 +177,8 @@ watch(setHeaderHeight, (val) => {
 				</div>
 				<div
 					class="
-						invisible col-span-2 flex items-center justify-end
-						lg:visible
+						col-span-2 hidden items-center justify-end
+						lg:flex
 					"
 				>
 					<div

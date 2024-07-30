@@ -5,8 +5,8 @@ const { $initData, $locales } = useNuxtApp()
 <template>
 	<div
 		class="
-			pointer-events-none invisible fixed left-1/2 top-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2
-			lg:visible
+			pointer-events-none fixed left-1/2 top-1/2 z-50 hidden w-full -translate-x-1/2 -translate-y-1/2
+			lg:block
 		"
 	>
 		<div
