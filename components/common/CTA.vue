@@ -20,6 +20,11 @@ defineProps<{
 		:target="to.startsWith('http') ? '_blank' : '_self'"
 		:color
 		:variant
+		trailing-icon="tabler:chevron-right"
+		class="
+			prose font-book
+			lg:prose-xl
+		"
 	/>
 	<NuxtLinkLocale
 		v-else
@@ -32,6 +37,9 @@ defineProps<{
 		:target="cta.target ?? '_self'"
 	>
 		{{ cta?.text }}
-		<Icon name="tabler:chevron-right" />
+		<Icon
+			name="tabler:chevron-right"
+			size="16"
+		/>
 	</NuxtLinkLocale>
 </template>
