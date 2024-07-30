@@ -34,7 +34,8 @@ export default defineNuxtConfig({
 	},
 	modules: [// 'shadcn-nuxt',
 		// 'nuxt-icon',
-		'@nuxtjs/tailwindcss', '@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n', '@nuxt/scripts', '@nuxtjs/device', '@formkit/nuxt', '@nuxt/fonts'],
+		'@nuxtjs/tailwindcss', '@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n', '@nuxt/scripts', '@nuxtjs/device', '@formkit/nuxt', '@nuxt/fonts',
+	],
 	formkit: {
 		// Experimental support for auto loading (see note):
 		autoImport: true,

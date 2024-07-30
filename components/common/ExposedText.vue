@@ -31,13 +31,16 @@ withDefaults(defineProps<{
 		>
 			<div
 				class="
-					col-span-12 flex flex-col justify-center gap-4 text-center
-					lg:col-span-6 lg:col-start-4
+					col-span-12 flex flex-col justify-center gap-2 text-center
+					lg:col-span-6 lg:col-start-4 lg:gap-4
 				"
 			>
 				<span
 					v-if="data.kicker"
-					class="text-xl/6 font-bold uppercase"
+					class="
+						font-bold uppercase
+						lg:text-xl/6
+					"
 					:class="kickerColor"
 				>
 					{{ data.kicker }}
