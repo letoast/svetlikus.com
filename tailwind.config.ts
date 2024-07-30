@@ -108,7 +108,7 @@ export default {
 				'fade-up': 'fade-up 0.3s ease-out',
 			},
 			typography: {
-				DEFAULT: {
+				'DEFAULT': {
 					css: {
 						'--tw-prose-body': colors.slate[200],
 						'--tw-prose-headings': colors.slate[100],
@@ -158,9 +158,10 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
+						'lineHeight': '1.3',
 					},
 				},
-				sm: {
+				'sm': {
 					css: {
 						'ul': {
 							paddingInlineStart: '1em',
@@ -171,9 +172,10 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
+						'lineHeight': '1.3',
 					},
 				},
-				base: {
+				'base': {
 					css: {
 						'ul': {
 							paddingInlineStart: '1em',
@@ -184,9 +186,10 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
+						'lineHeight': '1.3',
 					},
 				},
-				lg: {
+				'lg': {
 					css: {
 						'ul': {
 							paddingInlineStart: '1em',
@@ -197,9 +200,10 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
+						'lineHeight': '1.3',
 					},
 				},
-				xl: {
+				'xl': {
 					css: {
 						'ul': {
 							paddingInlineStart: '1em',
@@ -210,6 +214,21 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
+						'lineHeight': '1.3',
+					},
+				},
+				'2xl': {
+					css: {
+						'ul': {
+							paddingInlineStart: '1em',
+						},
+						'li': {
+							paddingInlineStart: '0',
+						},
+						'ul > li': {
+							paddingInlineStart: '0',
+						},
+						'lineHeight': '1.3',
 					},
 				},
 			},

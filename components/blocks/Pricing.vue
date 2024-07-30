@@ -61,7 +61,7 @@ function updateRefs() {
 
 		<div
 			class="
-				relative
+				relative pt-8
 				before:absolute before:-left-4 before:-top-4 before:z-[-1] before:h-[calc(100%+4rem)] before:w-[calc(100%+2rem)] before:rounded-2xl before:bg-[linear-gradient(to_bottom,_theme(colors.transparent),_theme(colors.neutral.900))] before:content-['']
 			"
 			:class="{
@@ -78,7 +78,7 @@ function updateRefs() {
 					v-for="item, index in data?.pricing_table"
 					:key="index"
 					class="
-						relative col-span-12 w-full
+						relative col-span-12 h-full w-full
 						lg:col-span-4
 					"
 				>

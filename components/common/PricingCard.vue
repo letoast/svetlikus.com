@@ -76,12 +76,12 @@ watch(visible, (isVisible) => {
 
 <template>
 	<div
-		class="flex flex-col items-end gap-2"
+		class="relative flex h-full flex-col items-end gap-2"
 	>
 		<span
 			v-if="data?.above_info"
 			:class="data.exposed ? 'text-purple-500' : 'text-neutral-100'"
-			class="block text-base font-medium uppercase leading-[19.20px]"
+			class="absolute -top-2 right-0 block text-base font-medium uppercase leading-[19.20px] -translate-y-full"
 		>
 			{{ data?.above_info }}
 		</span>
@@ -92,7 +92,7 @@ watch(visible, (isVisible) => {
 				'--y': `${y}px`,
 			}"
 			class="
-				relative flex flex-col gap-3 rounded-lg p-6
+				relative flex flex-grow flex-col gap-3 rounded-lg p-6
 				before:absolute before:z-[-1] before:rounded-lg before:transition-all before:duration-300 before:content-['']
 				lg:p-8
 			"
@@ -102,14 +102,14 @@ watch(visible, (isVisible) => {
 			}"
 		>
 			<h3
-				class="text-3xl font-bold leading-[33.60px]"
+				class="text-3xl font-bold"
 				:class="data.exposed ? 'text-purple-500' : 'text-neutral-100'"
 			>
 				{{ data.title }}
 			</h3>
 			<p
 				class="
-					prose font-book leading-[21.60px] text-neutral-300
+					prose font-book text-neutral-300
 					lg:prose-lg
 				"
 			>
@@ -124,8 +124,12 @@ watch(visible, (isVisible) => {
 				<span
 					v-if="data.period"
 					class="inline-block"
-				>/ {{ data.period }} <sup v-if="data.period_superscript">{{ data.period_superscript }}</sup></span>
+				>/ {{ data.period }} </span>
 			</p>
+			<span
+				v-if="data.period_superscript"
+				class="block text-sm opacity-60"
+			>{{ data.period_superscript }}</span>
 			<hr
 				class="border"
 				:class="{
@@ -159,6 +163,7 @@ watch(visible, (isVisible) => {
 				:to="cta_data.href"
 				:variant="data.exposed ? 'solid' : 'outline'"
 				color="primary"
+				class="mt-auto"
 			/>
 		</div>
 	</div>
