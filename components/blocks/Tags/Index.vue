@@ -54,7 +54,7 @@ defineProps<{
 		>
 			<NuxtMarquee
 				class="py-1"
-				:speed="35"
+				:speed="20"
 				:play="visible"
 			>
 				<BlocksTagsTagItem
@@ -66,6 +66,7 @@ defineProps<{
 			<NuxtMarquee
 				direction="right"
 				class="py-1"
+				:speed="20"
 				:play="visible"
 			>
 				<BlocksTagsTagItem
@@ -76,6 +77,7 @@ defineProps<{
 			</NuxtMarquee>
 			<NuxtMarquee
 				class="py-1"
+				:speed="20"
 				:play="visible"
 			>
 				<BlocksTagsTagItem
