@@ -6,8 +6,8 @@ const props = withDefaults(defineProps<{
 		title: string
 		description: string
 		price?: string
-		pricePeriod?: string
-		pricePeriodSuperscript?: string
+		period?: string
+		period_superscript?: string
 		items: string[]
 		cta?: unknown
 		// cta: {
@@ -22,8 +22,8 @@ const props = withDefaults(defineProps<{
 		title: '',
 		description: '',
 		price: '',
-		pricePeriod: '',
-		pricePeriodSuperscript: '',
+		period: '',
+		period_superscript: '',
 		items: [],
 		cta: {
 			key: '',
@@ -121,7 +121,10 @@ watch(visible, (isVisible) => {
 				<span
 					class="inline-block text-4xl"
 				>{{ data.price }}</span>
-				<span class="inline-block">{{ data.pricePeriod }} <sup>{{ data.pricePeriodSuperscript }}</sup></span>
+				<span
+					v-if="data.period"
+					class="inline-block"
+				>/ {{ data.period }} <sup v-if="data.period_superscript">{{ data.period_superscript }}</sup></span>
 			</p>
 			<hr
 				class="border"
