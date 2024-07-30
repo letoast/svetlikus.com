@@ -21,10 +21,7 @@ defineProps<{
 		:color
 		:variant
 		trailing-icon="tabler:chevron-right"
-		class="
-			prose font-book
-			lg:prose-xl
-		"
+		class="prose font-book"
 	/>
 	<NuxtLinkLocale
 		v-else
@@ -32,7 +29,6 @@ defineProps<{
 		class="
 			prose flex items-center gap-2 font-book text-cyan-400
 			hover:text-cyan-300
-			lg:prose-xl
 		"
 		:target="cta.target ?? '_self'"
 	>
