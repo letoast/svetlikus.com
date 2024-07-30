@@ -83,7 +83,7 @@ watch(visible, (isVisible) => {
 			v-if="data.description"
 			class="
 				prose text-neutral-200
-				lg:prose-xl
+				lg:prose-lg
 			"
 		>
 			{{ data.description }}
@@ -94,7 +94,7 @@ watch(visible, (isVisible) => {
 				:key="itemIndex"
 				class="
 					prose mb-2 flex items-baseline gap-3 font-bold text-neutral-200
-					lg:prose-xl
+					lg:prose-lg
 				"
 			>
 				<CommonIconsCheckmark

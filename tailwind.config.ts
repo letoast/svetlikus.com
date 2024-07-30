@@ -158,7 +158,7 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
-						'lineHeight': '1.3',
+						'lineHeight': 1.3,
 					},
 				},
 				'sm': {
@@ -172,7 +172,7 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
-						'lineHeight': '1.3',
+						'lineHeight': 1.3,
 					},
 				},
 				'base': {
@@ -186,7 +186,7 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
-						'lineHeight': '1.3',
+						'lineHeight': 1.3,
 					},
 				},
 				'lg': {
@@ -200,7 +200,7 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
-						'lineHeight': '1.3',
+						'lineHeight': 1.3,
 					},
 				},
 				'xl': {
@@ -214,7 +214,7 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
-						'lineHeight': '1.3',
+						'lineHeight': 1.3,
 					},
 				},
 				'2xl': {
@@ -228,7 +228,7 @@ export default {
 						'ul > li': {
 							paddingInlineStart: '0',
 						},
-						'lineHeight': '1.3',
+						'lineHeight': 1.3,
 					},
 				},
 			},
