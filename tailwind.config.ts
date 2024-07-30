@@ -80,7 +80,7 @@ export default {
 				},
 			},
 			fontFamily: {
-				sans: ['futura-pt', 'sans-serif'],
+				sans: ['Jost', 'sans-serif'],
 			},
 			keyframes: {
 				'accordion-down': {

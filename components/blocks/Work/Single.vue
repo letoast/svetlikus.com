@@ -60,8 +60,8 @@ const tags = computed(() => {
 			</h3>
 			<div
 				class="
-					prose font-book text-neutral-400
-					lg:prose-xl
+					prose font-book leading-normal text-neutral-400
+					lg:prose-xl lg:leading-normal
 				"
 				v-html="project?.description"
 			/>

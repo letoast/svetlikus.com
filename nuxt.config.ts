@@ -7,15 +7,15 @@ export default defineNuxtConfig({
 				{ rel: 'dns-prefetch', href: 'https://svetlikus.datalog.si' },
 				{ rel: 'preconnect', href: 'https://svetlikus.datalog.si' },
 				// Typekit
-				{ rel: 'preconnect', href: 'https://use.typekit.net' },
-				{ rel: 'dns-prefetch', href: 'https://use.typekit.net' },
-				{ rel: 'preconnect', href: 'https://p.typekit.net' },
-				{ rel: 'dns-prefetch', href: 'https://p.typekit.net' },
-				{ rel: 'preload', as: 'style', href: 'https://use.typekit.net/tit7gaj.css', onload: 'this.onload=null;this.rel="stylesheet"' },
+				// { rel: 'preconnect', href: 'https://use.typekit.net' },
+				// { rel: 'dns-prefetch', href: 'https://use.typekit.net' },
+				// { rel: 'preconnect', href: 'https://p.typekit.net' },
+				// { rel: 'dns-prefetch', href: 'https://p.typekit.net' },
+				// { rel: 'preload', as: 'style', href: 'https://use.typekit.net/tit7gaj.css', onload: 'this.onload=null;this.rel="stylesheet"' },
 			],
-			noscript: [
-				{ rel: 'stylesheet', href: 'https://use.typekit.net/tit7gaj.css' },
-			],
+			// noscript: [
+			// 	{ rel: 'stylesheet', href: 'https://use.typekit.net/tit7gaj.css' },
+			// ],
 		},
 	},
 	components: [
@@ -33,19 +33,20 @@ export default defineNuxtConfig({
 		},
 	},
 	modules: [// 'shadcn-nuxt',
-		'@nuxtjs/tailwindcss', // 'nuxt-icon',
-		'@vueuse/nuxt',
-		'@nuxt/eslint',
-		'nuxt-marquee',
-		'@nuxt/ui',
-		'@nuxtjs/i18n',
-		'@nuxt/scripts',
-		'@nuxtjs/device',
-		'@formkit/nuxt',
-	],
+		// 'nuxt-icon',
+		'@nuxtjs/tailwindcss', '@vueuse/nuxt', '@nuxt/eslint', 'nuxt-marquee', '@nuxt/ui', '@nuxtjs/i18n', '@nuxt/scripts', '@nuxtjs/device', '@formkit/nuxt', '@nuxt/fonts'],
 	formkit: {
 		// Experimental support for auto loading (see note):
 		autoImport: true,
+	},
+	fonts: {
+		families: [
+			{
+				name: 'Jost',
+				provider: 'google',
+				display: 'swap',
+			},
+		],
 	},
 	icon: {
 		mode: 'svg',

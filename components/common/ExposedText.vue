@@ -54,8 +54,8 @@ withDefaults(defineProps<{
 			<div
 				v-if="data.description"
 				class="
-					prose col-span-12 max-w-full text-center text-gray-400
-					lg:prose-2xl lg:col-span-8 lg:col-start-3
+					prose col-span-12 max-w-full text-center leading-normal text-gray-400
+					lg:prose-2xl lg:col-span-8 lg:col-start-3 lg:leading-normal
 				"
 				v-html="data.description"
 			/>
