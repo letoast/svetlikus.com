@@ -5,20 +5,23 @@ const props = defineProps<{
 
 const wrapperClass = computed(() => {
 	return {
-		'ring-rose-500/50 hover:ring-rose-500 hover:bg-rose-500/25 hover:shadow-lg hover:shadow-rose-500/25 hover:cursor-default': props.color === 'rose',
-		'ring-yellow-500/50 hover:ring-yellow-500 hover:bg-yellow-500/25 hover:shadow-lg hover:shadow-yellow-500/25 hover:cursor-default': props.color === 'yellow',
-		'ring-cyan-500/50 hover:ring-cyan-500 hover:bg-cyan-500/25 hover:shadow-lg hover:shadow-cyan-500/25 hover:cursor-default': props.color === 'cyan',
+		'group-hover:ring-rose-500 group-hover:bg-rose-500/25 group-hover:cursor-default': props.color === 'rose',
+		'group-hover:ring-yellow-500 group-hover:bg-yellow-500/25 group-hover:cursor-default': props.color === 'yellow',
+		'group-hover:ring-cyan-500 group-hover:bg-cyan-500/25 group-hover:cursor-default': props.color === 'cyan',
 	}
 })
 </script>
 
 <template>
 	<div
-		class="relative flex items-center justify-center rounded px-2 ring ring-[1px]"
+		class="relative flex items-center justify-center rounded px-2 ring-[1px] ring-gray-600 transition-all duration-300"
 		:class="wrapperClass"
 	>
 		<span
-			class="text-xs font-book text-center leading-[20.78px] text-white"
+			class="
+				text-xs font-book text-center leading-[20.78px] text-gray-600
+				group-hover:text-white
+			"
 		>
 			<slot />
 		</span>
