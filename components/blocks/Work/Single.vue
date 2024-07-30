@@ -4,6 +4,7 @@ const props = defineProps<{
 }>()
 
 const { $directus, $locales } = useNuxtApp()
+const device = useDevice()
 
 const project = computed(() => {
 	return props.data?.svetlikus_projects_id?.translations?.[0]
@@ -41,6 +42,7 @@ const tags = computed(() => {
 			"
 		>
 			<div
+				v-if="!device.isMobileOrTablet"
 				class="flex flex-wrap gap-3"
 			>
 				<CommonTag
