@@ -168,7 +168,7 @@ watch(setHeaderHeight, (val) => {
 						</UButton>
 						<div
 							class="rounded-md border px-4 py-2 text-sm font-bold"
-							:class="$initData?.status ? 'border-cyan-500' : 'border-rose-600'"
+							:class="$initData?.status ? 'border-green-500' : 'border-rose-600'"
 						>
 							<!-- TODO: Add translation -->
 							{{ $initData.status ? 'Open' : 'Closed' }}
@@ -183,7 +183,7 @@ watch(setHeaderHeight, (val) => {
 				>
 					<div
 						class="rounded-md border px-4 py-2 text-sm font-bold"
-						:class="$initData?.status ? 'border-cyan-500' : 'border-rose-600'"
+						:class="$initData?.status ? 'border-green-500' : 'border-rose-600'"
 					>
 						<!-- TODO: Add translation -->
 						{{ $initData?.status ? 'Open' : 'Closed' }}
