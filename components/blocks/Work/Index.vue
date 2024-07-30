@@ -35,7 +35,7 @@ defineProps<{
 		>
 			<div
 				class="
-					grid grid-cols-12 gap-y-14
+					grid grid-cols-12 gap-y-10
 					lg:gap-x-8 lg:gap-y-20
 				"
 			>
