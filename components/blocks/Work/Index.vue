@@ -33,17 +33,19 @@ defineProps<{
 				container: container,
 			}"
 		>
-			<div
-				class="
-					grid grid-cols-12 gap-y-10
-					lg:gap-x-8 lg:gap-y-20
-				"
-			>
-				<BlocksWorkSingle
+			<div class="flex flex-col gap-y-14">
+				<div
 					v-for="project, index in data?.projects"
 					:key="index"
-					:data="project"
-				/>
+					class="
+						grid grid-cols-12 gap-y-8
+						lg:gap-x-8 lg:gap-y-20
+					"
+				>
+					<BlocksWorkSingle
+						:data="project"
+					/>
+				</div>
 			</div>
 		</div>
 		<div
