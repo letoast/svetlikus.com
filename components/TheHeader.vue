@@ -75,7 +75,7 @@ watch(setHeaderHeight, (val) => {
 						lg:col-span-8 lg:px-6 lg:py-4
 					"
 					:class="{
-						'fixed bottom-6 left-1/2 z-50 col-auto w-[calc(100%-1rem)] animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/40 drop-shadow-xl backdrop-blur-xl -translate-x-1/2 lg:w-auto': setHeaderHeight > 0,
+						'fixed bottom-6 left-1/2 z-50 col-auto w-[calc(100%-1rem)] animate-fade-up rounded-xl border border-solid border-white/20 bg-neutral-950/60 drop-shadow-xl backdrop-blur-xl -translate-x-1/2 lg:w-auto': setHeaderHeight > 0,
 					}"
 				>
 					<div class="overflow-hidden">
