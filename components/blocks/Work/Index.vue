@@ -33,13 +33,13 @@ defineProps<{
 				container: container,
 			}"
 		>
-			<div class="flex flex-col gap-y-14">
+			<div class="flex flex-col gap-y-14 lg:gap-y-20">
 				<div
 					v-for="project, index in data?.projects"
 					:key="index"
 					class="
 						grid grid-cols-12 gap-y-8
-						lg:gap-x-8 lg:gap-y-20
+						lg:gap-x-8
 					"
 				>
 					<BlocksWorkSingle
