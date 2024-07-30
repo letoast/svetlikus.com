@@ -167,8 +167,8 @@ watch(setHeaderHeight, (val) => {
 							/>
 						</UButton>
 						<div
-							class="rounded-md px-4 py-2 text-sm font-bold gradient-border-1"
-							:class="$initData?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
+							class="rounded-md border px-4 py-2 text-sm font-bold"
+							:class="$initData?.status ? 'border-cyan-500' : 'border-rose-600'"
 						>
 							<!-- TODO: Add translation -->
 							{{ $initData.status ? 'Open' : 'Closed' }}
@@ -182,8 +182,8 @@ watch(setHeaderHeight, (val) => {
 					"
 				>
 					<div
-						class="rounded-md px-4 py-2 text-sm font-bold gradient-border-1"
-						:class="$initData?.status ? 'border-gradient-tr-cyan-500-neutral-950' : 'border-gradient-tr-rose-500-neutral-950'"
+						class="rounded-md border px-4 py-2 text-sm font-bold"
+						:class="$initData?.status ? 'border-cyan-500' : 'border-rose-600'"
 					>
 						<!-- TODO: Add translation -->
 						{{ $initData?.status ? 'Open' : 'Closed' }}
