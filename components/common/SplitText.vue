@@ -7,81 +7,66 @@ const props = withDefaults(defineProps<{
 	html?: string
 	text?: string
 	component?: string
-	startWhenVisible?: boolean
+	startNow?: boolean
 }>(), {
-	duration: 1,
+	duration: 0.6,
 	delay: 0,
-	startWhenVisible: false,
+	startNow: true,
 	component: 'div',
 })
 
 const { $gsap } = useNuxtApp()
 
 const wrapper = ref<HTMLElement | null>(null)
-const visible = useElementVisibility(wrapper, {
-	threshold: 0.5,
-})
+const go = ref(false)
 
-onNuxtReady(() => {
-	// console.log(wrapper.value)
-	for (const child of wrapper.value?.children || []) {
-		if (!child) return
-		if (child.classList.contains('line')) return
-		// console.log(child)
-		const splits = new SplitType(child, { types: 'lines' })
+watch([() => props.startNow, go], ([val, goVal]) => {
+	if (!import.meta.client) return
+	if (val || goVal) {
+		for (const child of wrapper.value?.children || []) {
+			if (!child) return
+			if (child.classList.contains('line')) return
+			// console.log(child)
+			const splits = new SplitType(child, { types: 'lines' })
 
-		// Wrap lines in a div to prevent overflow
-		for (const line of splits.lines || []) {
-			const lineWrapper = document.createElement('div')
-			lineWrapper.classList.add('line')
-			line.parentNode?.insertBefore(lineWrapper, line)
-			lineWrapper.appendChild(line)
-			lineWrapper.style.overflow = 'hidden'
-		}
-		// for (const line of splits.lines || []) {
-		// 	line.style.overflow = 'hidden'
-		// }
+			// Wrap lines in a div to prevent overflow
+			for (const line of splits.lines || []) {
+				const lineWrapper = document.createElement('div')
+				lineWrapper.classList.add('line')
+				line.parentNode?.insertBefore(lineWrapper, line)
+				lineWrapper.appendChild(line)
+				lineWrapper.style.overflow = 'hidden'
+			}
+			// for (const line of splits.lines || []) {
+			// 	line.style.overflow = 'hidden'
+			// }
 
-		$gsap.set(splits.lines, {
-			y: '100%',
-			willChange: 'y',
-		})
-
-		// console.log(wrapper.value)
-		if (props.startWhenVisible) {
-			const watcherStop = watch(visible, (isVisible) => {
-				if (isVisible) {
-					wrapper.value?.classList.remove('invisible')
-					$gsap.to(splits.lines, {
-						y: '0',
-						duration: props.duration,
-						delay: props.delay,
-						stagger: { amount: 0.1 },
-						ease: 'power4.out',
-						// onComplete: () => {
-						// 	splits.revert()
-						// 	watcherStop()
-						// },
-					})
-					watcherStop()
-				}
-			}, {
-				immediate: true,
+			$gsap.set(splits.lines, {
+				y: '100%',
+				willChange: 'y',
 			})
-		}
-		else {
+
+			// console.log(wrapper.value)
 			wrapper.value?.classList.remove('invisible')
 			$gsap.to(splits.lines, {
 				y: '0',
 				duration: props.duration,
 				delay: props.delay,
-				stagger: { amount: 0.1 },
-				ease: 'power4.out',
+				stagger: { amount: 0.2 },
+				ease: 'cubic-bezier(0.375, 0.075, 0.005, 0.960)',
 				// onComplete: () => {
 				// 	splits.revert()
 				// },
 			})
 		}
+	}
+}, {
+	once: true,
+})
+
+onNuxtReady(() => {
+	if (props.startNow) {
+		go.value = true
 	}
 })
 </script>

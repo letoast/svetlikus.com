@@ -4,7 +4,7 @@
 const props = withDefaults(defineProps<{
 	data: {
 		title: string
-		description: string
+		description?: string
 		price?: string
 		period?: string
 		period_superscript?: string

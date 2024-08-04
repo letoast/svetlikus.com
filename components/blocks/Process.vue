@@ -26,13 +26,26 @@ defineProps<{
 				container: container,
 			}"
 		>
-			<CommonProcessCard
+			<CommonScrollTrigger
 				v-for="card, cardIndex in data?.processes"
 				:key="cardIndex"
-				:card-number="`0${cardIndex + 1}`"
-				:title="card.title"
-				:description="card.description"
-			/>
+				v-slot="{ isVisible }"
+				class="
+					col-span-12
+					lg:col-span-6
+				"
+			>
+				<CommonFadeMoveUp
+					:start-now="isVisible"
+					:delay="cardIndex * 0.2"
+				>
+					<CommonProcessCard
+						:card-number="`0${cardIndex + 1}`"
+						:title="card.title"
+						:description="card?.description"
+					/>
+				</CommonFadeMoveUp>
+			</CommonScrollTrigger>
 			<CommonCTA
 				class="
 					col-span-10 col-start-2 mt-8

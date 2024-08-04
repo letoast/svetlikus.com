@@ -58,9 +58,8 @@ watchThrottled([roll, tilt], ([roll, tilt]) => {
 		ref="cardContainerRef"
 		style="perspective: 300px"
 		class="
-			group col-span-12
+			group
 			hover:cursor-default
-			lg:col-span-6
 		"
 	>
 		<div

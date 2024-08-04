@@ -113,32 +113,34 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					/>
 				</div>
 			</div>
-			<div
-				class="mt-10 grid grid-cols-12 gap-8"
-			>
-				<CommonCTA
-					v-if="data?.cta"
-					color="primary"
-					class="
-						col-span-10 col-start-2
-						lg:col-span-2 lg:col-start-5
-					"
-					:label="data?.cta?.label"
-					:variant="data?.cta?.variant || 'solid'"
-					:to="data?.cta?.href"
-				/>
-				<CommonCTA
-					v-if="data?.cta_2"
-					color="primary"
-					class="
-						col-span-10 col-start-2
-						lg:col-span-2
-					"
-					:label="data?.cta_2?.label"
-					:variant="data?.cta_2?.variant || 'outline'"
-					:to="data?.cta_2?.href"
-				/>
-			</div>
+			<CommonFadeMoveUp :delay="1">
+				<div
+					class="mt-10 grid grid-cols-12 gap-8"
+				>
+					<CommonCTA
+						v-if="data?.cta"
+						color="primary"
+						class="
+							col-span-10 col-start-2
+							lg:col-span-2 lg:col-start-5
+						"
+						:label="data?.cta?.label"
+						:variant="data?.cta?.variant || 'solid'"
+						:to="data?.cta?.href"
+					/>
+					<CommonCTA
+						v-if="data?.cta_2"
+						color="primary"
+						class="
+							col-span-10 col-start-2
+							lg:col-span-2
+						"
+						:label="data?.cta_2?.label"
+						:variant="data?.cta_2?.variant || 'outline'"
+						:to="data?.cta_2?.href"
+					/>
+				</div>
+			</CommonFadeMoveUp>
 		</div>
 	</section>
 </template>

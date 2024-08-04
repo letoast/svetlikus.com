@@ -74,18 +74,26 @@ function updateRefs() {
 					lg:gap-x-8
 				"
 			>
-				<div
+				<CommonScrollTrigger
 					v-for="item, index in data?.pricing_table"
 					:key="index"
+					v-slot="{ isVisible }"
 					class="
 						relative col-span-12 h-full w-full
 						lg:col-span-4
 					"
 				>
-					<CommonPricingCard
-						:data="item"
-					/>
-				</div>
+					<CommonFadeMoveUp
+						:start-now="isVisible"
+						:delay="index * 0.2"
+						y="10rem"
+					>
+						<CommonPricingCard
+							:data="item"
+						/>
+					</CommonFadeMoveUp>
+				</CommonScrollTrigger>
+
 				<div
 					class="col-span-12 overflow-hidden rounded-xl border border-neutral-100/20 bg-[linear-gradient(135deg,_rgba(234,_234,_234,_0.1)_0%,_rgba(234,_234,_234,_0.005)_100%)] p-6"
 				>

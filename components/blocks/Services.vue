@@ -28,16 +28,30 @@ defineProps<{
 					lg:gap-x-8
 				"
 			>
-				<CommonServicesCard
+				<CommonScrollTrigger
 					v-for="service, index in data?.services"
 					:key="index"
-					:data="{
-						title: service.title,
-						description: service.description,
-						items: service?.service.map(item => item?.title),
-					}"
-					:custom-color="service.color"
-				/>
+					v-slot="{ isVisible }"
+					class="
+						col-span-12
+						lg:col-span-4
+					"
+				>
+					<CommonFadeMoveUp
+						:start-now="isVisible"
+						:delay="index * 0.2"
+						y="10rem"
+					>
+						<CommonServicesCard
+							:data="{
+								title: service.title,
+								description: service?.description,
+								items: service?.service.map(item => item?.title),
+							}"
+							:custom-color="service.color"
+						/>
+					</CommonFadeMoveUp>
+				</CommonScrollTrigger>
 				<CommonCTA
 					v-if="data?.cta"
 					class="

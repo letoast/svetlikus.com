@@ -2,7 +2,7 @@
 defineProps<{
 	color: string
 	title: string
-	description: string
+	description?: string
 	icon: string
 }>()
 

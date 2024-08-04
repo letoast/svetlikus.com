@@ -91,18 +91,24 @@ onNuxtReady(() => {
 						lg:gap-y-20
 					"
 				>
-					<div
+					<CommonScrollTrigger
 						v-for="project, index in data?.projects"
 						:key="index"
-						class="
-							group grid grid-cols-12 gap-y-8
-							lg:gap-x-8
-						"
+						v-slot="{ isVisible }"
 					>
-						<BlocksWorkSingle
-							:data="project"
-						/>
-					</div>
+						<CommonFadeMoveUp :start-now="isVisible">
+							<div
+								class="
+									group grid grid-cols-12 gap-y-8
+									lg:gap-x-8
+								"
+							>
+								<BlocksWorkSingle
+									:data="project"
+								/>
+							</div>
+						</CommonFadeMoveUp>
+					</CommonScrollTrigger>
 				</div>
 			</div>
 			<div

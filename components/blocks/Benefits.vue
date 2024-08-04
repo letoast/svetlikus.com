@@ -32,15 +32,25 @@ const { $directus } = useNuxtApp()
 					lg:grid-cols-12 lg:gap-x-8
 				"
 			>
-				<BlocksBenefitsCard
+				<CommonScrollTrigger
 					v-for="item, index in data?.benefits"
 					:key="index"
+					v-slot="{ isVisible }"
 					class="lg:col-span-3"
-					:title="item?.title"
-					:description="item?.description"
-					:color="item?.color"
-					:icon="item?.icon?.key"
-				/>
+				>
+					<CommonFadeMoveUp
+						:start-now="isVisible"
+						:delay="index * 0.1"
+						y="10rem"
+					>
+						<BlocksBenefitsCard
+							:title="item?.title"
+							:description="item?.description"
+							:color="item?.color"
+							:icon="item?.icon?.key"
+						/>
+					</CommonFadeMoveUp>
+				</CommonScrollTrigger>
 				<div
 					v-if="data.cta"
 					class="
