@@ -66,8 +66,9 @@ const { $directus } = useNuxtApp()
 							:label="label"
 							:block="false"
 							class="
-								justify-between px-0 text-start text-xl
+								justify-between px-0 text-start
 								hover:no-underline hover:opacity-100
+								lg:text-xl
 							"
 							:class="open ? '' : 'opacity-50'"
 							:icon="open ? 'tabler:minus' : 'tabler:plus'"
