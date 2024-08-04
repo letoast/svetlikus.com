@@ -19,7 +19,7 @@ const { data: projects } = await useAsyncData('projectIds', async () => {
 				}],
 			},
 			{
-				translations: ['slug', 'title', 'description', { image: ['id', 'title', 'description'] }],
+				translations: ['slug', 'title', 'description', { image: ['id', 'title', 'description', 'width', 'height'] }],
 			},
 		],
 		deep: {
@@ -71,10 +71,10 @@ const { data: project } = await useAsyncData('projectId', async () => {
 		fields: [
 			'id',
 			{
-				logo: ['id', 'title', 'description'],
+				logo: ['id', 'title', 'description', 'width', 'height'],
 			},
 			{
-				full_width_image: ['id', 'title', 'description'],
+				full_width_image: ['id', 'title', 'description', 'width', 'height'],
 			},
 			{
 				tags: [{
@@ -93,7 +93,7 @@ const { data: project } = await useAsyncData('projectId', async () => {
 					'slug',
 					'description',
 					{
-						image: ['id', 'title', 'description'],
+						image: ['id', 'title', 'description', 'width', 'height'],
 					},
 					{
 						testimonial: ['*', 'translations.*'],

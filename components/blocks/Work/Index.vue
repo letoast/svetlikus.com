@@ -10,6 +10,8 @@ const { $gsap } = useNuxtApp()
 
 const exposedText = ref(null)
 const sectionRef = ref(null)
+const ctaWrapperRef = ref(null)
+const hitBottom = ref(false)
 
 onNuxtReady(() => {
 	const mm = $gsap.matchMedia(document)
@@ -18,10 +20,22 @@ onNuxtReady(() => {
 		ScrollTrigger.create({
 			trigger: sectionRef.value,
 			start: 'top top',
-			end: 'bottom 150px',
+			end: `bottom top+=${exposedText.value?.clientHeight || 0 - ctaWrapperRef.value?.clientHeight || 0}px`,
 			pinSpacing: false,
 			pin: exposedText.value,
-			markers: true,
+			// markers: true,
+			onEnter: () => {
+				hitBottom.value = false
+			},
+			onEnterBack: () => {
+				hitBottom.value = false
+			},
+			onLeave: () => {
+				hitBottom.value = true
+			},
+			onLeaveBack: () => {
+				hitBottom.value = true
+			},
 		})
 	})
 })
@@ -42,6 +56,7 @@ onNuxtReady(() => {
 			<div
 				ref="exposedText"
 				class="z-40 bg-gradient-to-b from-neutral-950 from-80% pb-20 pt-10"
+				:class="hitBottom ? 'to-80%' : 'to-100%'"
 			>
 				<CommonExposedText
 					:data="{
@@ -91,6 +106,7 @@ onNuxtReady(() => {
 				</div>
 			</div>
 			<div
+				ref="ctaWrapperRef"
 				class="col-span-12 flex justify-center pt-4"
 			>
 				<CommonCTA

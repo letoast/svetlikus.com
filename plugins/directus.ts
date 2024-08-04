@@ -12,11 +12,11 @@ const blocks = [
 		item: [
 			'*',
 			{
-				image: ['id', 'title', 'description'],
+				image: ['id', 'title', 'description', 'width', 'height'],
 				images: [
 					'lead',
 					{
-						directus_files_id: ['id', 'title', 'description'],
+						directus_files_id: ['id', 'title', 'description', 'width', 'height'],
 					},
 				],
 				clients: [{
@@ -24,7 +24,7 @@ const blocks = [
 						'title',
 						'url',
 						{
-							image: ['id', 'title', 'description'],
+							image: ['id', 'title', 'description', 'width', 'height'],
 						},
 					],
 				}],
@@ -42,7 +42,7 @@ const blocks = [
 							translations: [
 								'description',
 								{
-									image: ['id', 'title', 'description'],
+									image: ['id', 'title', 'description', 'width', 'height'],
 								},
 								'project_link',
 								'slug',
@@ -53,7 +53,7 @@ const blocks = [
 				testimonials: [{
 					svetlikus_testimonials_id: [
 						{
-							image: ['id', 'title', 'description'],
+							image: ['id', 'title', 'description', 'width', 'height'],
 						},
 						'name',
 						'rating',
@@ -68,11 +68,11 @@ const blocks = [
 					'text',
 					'direction',
 					{
-						image: ['id', 'title', 'description'],
+						image: ['id', 'title', 'description', 'width', 'height'],
 					},
 				],
-				before: ['id', 'title', 'description'],
-				after: ['id', 'title', 'description'],
+				before: ['id', 'title', 'description', 'width', 'height'],
+				after: ['id', 'title', 'description', 'width', 'height'],
 			},
 		],
 	},
