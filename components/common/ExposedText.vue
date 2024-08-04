@@ -39,16 +39,16 @@ withDefaults(defineProps<{
 					v-if="data?.kicker"
 					:start-when-visible="true"
 					class="
-						font-bold uppercase
+						block font-bold uppercase
 						lg:text-xl/6
 					"
 					:class="kickerColor"
-					component="span"
+					component="div"
 					:delay="0.5"
 				>
-					<div>
+					<span>
 						{{ data.kicker }}
-					</div>
+					</span>
 				</CommonSplitText>
 
 				<CommonSplitText

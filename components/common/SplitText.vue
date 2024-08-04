@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<{
 	component?: string
 	startWhenVisible?: boolean
 }>(), {
-	duration: 0.5,
+	duration: 1,
 	delay: 0,
 	startWhenVisible: false,
 	component: 'div',
@@ -22,53 +22,64 @@ const visible = useElementVisibility(wrapper, {
 	threshold: 0.5,
 })
 
-const show = ref(false)
-
 onNuxtReady(() => {
-	console.log(wrapper.value)
+	// console.log(wrapper.value)
 	for (const child of wrapper.value?.children || []) {
 		if (!child) return
 		if (child.classList.contains('line')) return
 		// console.log(child)
-		const splits = new SplitType(child, { types: 'words,lines' })
+		const splits = new SplitType(child, { types: 'lines' })
+
+		// Wrap lines in a div to prevent overflow
 		for (const line of splits.lines || []) {
-			line.style.overflow = 'hidden'
-			// console.log(line.children)
+			const lineWrapper = document.createElement('div')
+			lineWrapper.classList.add('line')
+			line.parentNode?.insertBefore(lineWrapper, line)
+			lineWrapper.appendChild(line)
+			lineWrapper.style.overflow = 'hidden'
 		}
+		// for (const line of splits.lines || []) {
+		// 	line.style.overflow = 'hidden'
+		// }
 
-		$gsap.set(splits.words, { y: '100%' })
+		$gsap.set(splits.lines, {
+			y: '100%',
+			willChange: 'y',
+		})
 
+		// console.log(wrapper.value)
 		if (props.startWhenVisible) {
 			const watcherStop = watch(visible, (isVisible) => {
 				if (isVisible) {
-					show.value = true
-					$gsap.to(splits.words, {
+					wrapper.value?.classList.remove('invisible')
+					$gsap.to(splits.lines, {
 						y: '0',
 						duration: props.duration,
 						delay: props.delay,
-						stagger: { amount: 0.5 },
-						ease: 'power2.out',
-						onComplete: () => {
-							splits.revert()
-							watcherStop()
-						},
+						stagger: { amount: 0.1 },
+						ease: 'power4.out',
+						// onComplete: () => {
+						// 	splits.revert()
+						// 	watcherStop()
+						// },
 					})
+					watcherStop()
 				}
 			}, {
-				once: true,
+				immediate: true,
 			})
 		}
 		else {
-			show.value = true
-			$gsap.to(splits.words, {
+			wrapper.value?.classList.remove('invisible')
+			$gsap.to(splits.lines, {
 				y: '0',
 				duration: props.duration,
 				delay: props.delay,
-				stagger: { amount: 0.5 },
-				ease: 'power2.out',
-				onComplete: () => {
-					splits.revert()
-				},
+				stagger: { amount: 0.1 },
+				ease: 'power4.out',
+				// onComplete: () => {
+				// 	splits.revert()
+				// },
 			})
 		}
 	}
@@ -79,14 +90,14 @@ onNuxtReady(() => {
 	<div
 		v-if="html"
 		ref="wrapper"
-		style="show ? 'opacity: 1' : 'opacity: 0'"
+		class="invisible"
 		v-html="html"
 	/>
 	<component
 		:is="component"
 		v-else
 		ref="wrapper"
-		style="show ? 'opacity: 1' : 'opacity: 0'"
+		class="invisible"
 	>
 		<slot />
 	</component>
