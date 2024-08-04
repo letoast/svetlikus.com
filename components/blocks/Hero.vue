@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SplitType from 'split-type'
 import { TransitionPresets } from '@vueuse/core'
 
 const props = defineProps<{
@@ -75,21 +76,24 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 					"
 				>
 					<div class="relative">
-						<span
-							v-if="data.kicker"
+						<CommonSplitText
+							v-if="data?.kicker"
 							class="
 								mb-5 block text-center text-lg font-bold uppercase text-yellow-400
 								lg:text-3xl
 							"
 						>
-							{{ data.kicker }}
-						</span>
-						<h1
+							<span>
+								{{ data.kicker }}
+							</span>
+						</CommonSplitText>
+						<CommonSplitText
 							class="
 								relative text-center text-3xl font-bold uppercase
 								lg:text-7xl
 							"
-							v-html="data.title"
+							:html="data.title"
+							:delay="0.35"
 						/>
 					</div>
 				</div>
@@ -99,12 +103,13 @@ watch(() => mouseVector.value[0], (currVal, prevVal) => {
 						lg:col-span-8 lg:col-start-3 lg:mt-10
 					"
 				>
-					<div
+					<CommonSplitText
 						class="
 							text-center text-lg text-neutral-300
 							lg:text-xl
 						"
-						v-html="data.lead"
+						:html="data.lead"
+						:delay="0.7"
 					/>
 				</div>
 			</div>

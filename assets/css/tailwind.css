@@ -12,6 +12,8 @@
 	body {
 		@apply bg-[#090909] text-white h-full subpixel-antialiased;
 
+		font-kerning: none;
+
 		--circle-size: 80vw;
 
 		@media screen and (width >= 1024px) {

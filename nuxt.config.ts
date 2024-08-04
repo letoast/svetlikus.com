@@ -41,6 +41,11 @@ export default defineNuxtConfig({
 		autoImport: true,
 	},
 	fonts: {
+		defaults: {
+			weights: ['400', '500', '600', '700', '800', '900'],
+			styles: ['italic', 'normal'],
+			subsets: ['latin'],
+		},
 		families: [
 			{
 				name: 'Jost',

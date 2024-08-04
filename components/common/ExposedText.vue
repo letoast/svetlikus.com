@@ -35,33 +35,45 @@ withDefaults(defineProps<{
 					lg:col-span-6 lg:col-start-4 lg:gap-4
 				"
 			>
-				<span
-					v-if="data.kicker"
+				<CommonSplitText
+					v-if="data?.kicker"
+					:start-when-visible="true"
 					class="
 						font-bold uppercase
 						lg:text-xl/6
 					"
 					:class="kickerColor"
+					component="span"
+					:delay="0.5"
 				>
-					{{ data.kicker }}
-				</span>
-				<div
+					<div>
+						{{ data.kicker }}
+					</div>
+				</CommonSplitText>
+
+				<CommonSplitText
 					v-if="data.title"
 					class="
 						text-[1.75rem]/[2.25rem] font-bold text-gray-100
 						lg:text-[2.75rem]/[3.25rem]
 					"
-					v-html="data.title"
+					:delay="0.35"
+					:html="data.title"
+					:start-when-visible="true"
 				/>
 			</div>
-			<div
+
+			<CommonSplitText
 				v-if="data.description"
 				class="
 					prose col-span-12 max-w-full text-center leading-normal text-gray-400
 					lg:prose-2xl lg:col-span-8 lg:col-start-3 lg:leading-normal
 				"
-				v-html="data.description"
+				:html="data.description"
+				:delay="0.5"
+				:start-when-visible="true"
 			/>
+			<div />
 		</div>
 	</div>
 </template>
