@@ -11,6 +11,7 @@ defineProps<{
 			:key="index"
 		>
 			<BlocksItem
+				v-if="item?.item"
 				:block="item"
 				:is-first="index === 0"
 				:is-last="index === blocks.length - 1"

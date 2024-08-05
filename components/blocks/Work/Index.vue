@@ -92,7 +92,7 @@ onNuxtReady(() => {
 					"
 				>
 					<CommonScrollTrigger
-						v-for="project, index in data?.projects"
+						v-for="project, index in data?.projects?.filter(project => project?.svetlikus_projects_id?.status === 'published')"
 						:key="index"
 						v-slot="{ isVisible }"
 					>

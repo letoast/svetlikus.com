@@ -52,7 +52,7 @@ const { $directus } = useNuxtApp()
 					</CommonFadeMoveUp>
 				</CommonScrollTrigger>
 				<div
-					v-if="data.cta"
+					v-if="data?.cta"
 					class="
 						col-span-2 flex justify-center pt-4
 						lg:col-span-12

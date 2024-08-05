@@ -30,6 +30,7 @@ const blocks = [
 				}],
 				projects: [{
 					svetlikus_projects_id: [
+						'status',
 						{
 							tags: [{
 								svetlikus_projects_tags_id: [
@@ -81,14 +82,10 @@ const blocks = [
 async function getPage(slug: string, locale: string) {
 	return await directus.request(readItems('svetlikus_pages', {
 		filter: {
-			_and: [
-				{
-					translations: {
-						languages_code: { _eq: locale },
-						slug: { _eq: slug },
-					},
-				},
-			],
+			translations: {
+				languages_code: { _eq: locale },
+				slug: { _eq: slug },
+			},
 		},
 		deep: {
 			translations: {
