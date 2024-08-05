@@ -36,7 +36,7 @@ watch([() => props.startNow, go], ([val, goVal]) => {
 	once: true,
 })
 
-onNuxtReady(() => {
+onMounted(() => {
 	if (props.startNow) {
 		go.value = true
 	}
