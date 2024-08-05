@@ -75,12 +75,13 @@ const { $directus } = useNuxtApp()
 							trailing
 						/>
 					</template>
-					<template #item="{ item: { content } }">
+					<template #item="{ item: { content }, open }">
 						<div
 							class="
 								prose
 								lg:prose-lg
 							"
+							:class="open ? 'pb-4' : ''"
 							v-html="content"
 						/>
 					</template>
