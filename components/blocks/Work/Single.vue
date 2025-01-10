@@ -66,6 +66,7 @@ const tags = computed(() => {
 				v-html="project?.description"
 			/>
 			<CommonCTA
+				v-if="data?.svetlikus_projects_id?.status === 'published'"
 				:cta="{
 					text: $locales.view_project_button_label,
 					link: `/projects/${project?.slug}`,

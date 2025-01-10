@@ -30,6 +30,7 @@ const blocks = [
 				}],
 				projects: [{
 					svetlikus_projects_id: [
+						'status',
 						{
 							tags: [{
 								svetlikus_projects_tags_id: [
