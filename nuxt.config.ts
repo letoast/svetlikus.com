@@ -4,8 +4,8 @@ export default defineNuxtConfig({
 		head: {
 			link: [
 				// { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-				{ rel: 'dns-prefetch', href: 'https://api.svetlikus.com' },
-				{ rel: 'preconnect', href: 'https://api.svetlikus.com' },
+				{ rel: 'dns-prefetch', href: 'https://svetlikus.datalog.si' },
+				{ rel: 'preconnect', href: 'https://svetlikus.datalog.si' },
 				// Typekit
 				// { rel: 'preconnect', href: 'https://use.typekit.net' },
 				// { rel: 'dns-prefetch', href: 'https://use.typekit.net' },
@@ -83,4 +83,14 @@ export default defineNuxtConfig({
 
 	devtools: { enabled: true },
 	compatibilityDate: '2024-07-14',
+	routeRules: {
+		'/*': {
+			isr: 60 * 60 * 3,
+		},
+		'/api/*': {
+			isr: false,
+			swr: false,
+			cache: false,
+		},
+	},
 })

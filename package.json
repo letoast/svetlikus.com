@@ -9,12 +9,13 @@
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"lint": "eslint . --fix",
-		"generate-types": "openapi-typescript https://api.svetlikus.com/server/specs/oas -o ./types/svetlikus.d.ts"
+		"generate-types": "openapi-typescript https://svetlikus.datalog.si/server/specs/oas -o ./types/svetlikus.d.ts"
 	},
 	"dependencies": {
 		"@directus/sdk": "^16.1.0",
 		"@formkit/nuxt": "^1.6.5",
 		"@img-comparison-slider/vue": "^8.0.0",
+		"@netlify/functions": "^5.1.0",
 		"@nuxt/eslint": "^0.3.13",
 		"@nuxt/ui": "npm:@nuxt/ui-edge@latest",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
@@ -59,7 +60,7 @@
 		"eslint": "^9.4.0",
 		"eslint-plugin-readable-tailwind": "^1.5.2",
 		"eslint-plugin-tailwindcss": "^3.17.3",
-		"nuxt": "^3.12.3",
+		"nuxt": "^3.20.1",
 		"nuxt-icon": "^0.6.10",
 		"shadcn-nuxt": "^0.10.4",
 		"stylelint-config-tailwindcss": "^0.0.7",
