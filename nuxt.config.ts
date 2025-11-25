@@ -4,8 +4,8 @@ export default defineNuxtConfig({
 		head: {
 			link: [
 				// { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-				{ rel: 'dns-prefetch', href: 'https://svetlikus.datalog.si' },
-				{ rel: 'preconnect', href: 'https://svetlikus.datalog.si' },
+				{ rel: 'dns-prefetch', href: 'https://api.svetlikus.com' },
+				{ rel: 'preconnect', href: 'https://api.svetlikus.com' },
 				// Typekit
 				// { rel: 'preconnect', href: 'https://use.typekit.net' },
 				// { rel: 'dns-prefetch', href: 'https://use.typekit.net' },

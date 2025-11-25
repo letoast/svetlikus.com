@@ -2,7 +2,7 @@ import { createDirectus, rest, readItem, readItems, readSingleton, createItem } 
 import type { CustomDirectusTypes } from '../types'
 
 
-const directus = createDirectus<CustomDirectusTypes>('https://svetlikus.datalog.si').with(rest())
+const directus = createDirectus<CustomDirectusTypes>('https://api.svetlikus.com').with(rest())
 
 const blocks = [
 	'collection',
