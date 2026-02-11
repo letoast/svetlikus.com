@@ -145,12 +145,14 @@ function updateRefs() {
 											>
 												{{ item?.svetlikus_testimonials_id?.translations?.[0].position }}
 											</p>
-											<UIcon
-												v-for="star, index in item?.svetlikus_testimonials_id?.rating"
-												:key="index"
-												name="gravity-ui:star-fill"
-												class="me-1 text-gray-300"
-											/>
+											<div class="flex gap-2">
+												<UIcon
+													v-for="star, index in item?.svetlikus_testimonials_id?.rating"
+													:key="index"
+													name="gravity-ui:star-fill"
+													class="me-1 text-gray-300"
+												/>
+											</div>
 										</div>
 									</div>
 									<ClientOnly>
