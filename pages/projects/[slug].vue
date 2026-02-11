@@ -3,6 +3,7 @@ const route = useRoute()
 
 const { $directus, $readItem, $readItems, $blocks, $locales, $initData } = useNuxtApp()
 const { localeProperties } = useI18n()
+const localePath = useLocalePath()
 
 const { data: projects } = await useAsyncData('projectIds', async () => {
 	return await $directus.request($readItems('svetlikus_projects', {
@@ -370,7 +371,7 @@ useSeoMeta({
 				<CommonCTA
 					v-if="$initData?.all_projects_page?.translations?.[0]?.slug"
 					:label="$locales?.view_all_projects_button_label"
-					:to="$initData?.all_projects_page?.translations?.[0]?.slug"
+					:to="localePath(`/${$initData?.all_projects_page?.translations?.[0]?.slug}`)"
 					color="secondary"
 				/>
 			</div>

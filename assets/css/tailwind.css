@@ -4,7 +4,7 @@
 
 @layer base {
 	html {
-		@apply scroll-smooth;
+		/* @apply scroll-smooth; */
 
 		/* font-size: max(16px, min(1.02vw, 20px)); */
 	}

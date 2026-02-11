@@ -8,19 +8,19 @@ defineProps<{
 
 const { $gsap } = useNuxtApp()
 
-const exposedText = ref(null)
-const sectionRef = ref(null)
-const ctaWrapperRef = ref(null)
+const exposedText = useTemplateRef('exposedText')
+const sectionRef = useTemplateRef('sectionRef')
+const ctaWrapperRef = useTemplateRef('ctaWrapperRef')
 const hitBottom = ref(false)
 
-onNuxtReady(() => {
+let trigger
+onMounted(() => {
 	const mm = $gsap.matchMedia(document)
-
 	mm.add('(min-width: 800px)', () => {
-		ScrollTrigger.create({
+		trigger = ScrollTrigger.create({
 			trigger: sectionRef.value,
 			start: 'top top',
-			end: `bottom top+=${exposedText.value?.clientHeight || 0 - ctaWrapperRef.value?.clientHeight || 0}px`,
+			end: `bottom top+=${(exposedText.value?.clientHeight || 0) - (ctaWrapperRef.value?.clientHeight || 0)}px`,
 			pinSpacing: false,
 			pin: exposedText.value,
 			// markers: true,
@@ -40,6 +40,23 @@ onNuxtReady(() => {
 	})
 })
 
+// whenever(exposedText, () => {
+// 	trigger?.refresh()
+// })
+
+// whenever(ctaWrapperRef, () => {
+// 	trigger?.refresh()
+// })
+
+useIntersectionObserver(
+	exposedText,
+	([entry], observerElement) => {
+		if (entry?.isIntersecting) {
+			trigger?.refresh()
+		}
+	},
+)
+
 // onMounted(() => {
 // 	ScrollTrigger.create({
 // 		trigger: sectionRef.value,
@@ -54,6 +71,7 @@ onNuxtReady(() => {
 	<section>
 		<div ref="sectionRef">
 			<div
+				v-if="data?.kicker || data?.title || data?.lead || data?.cta"
 				ref="exposedText"
 				class="z-40 bg-gradient-to-b from-neutral-950 from-80% pb-20 pt-10"
 				:class="hitBottom ? 'to-80%' : 'to-100%'"
