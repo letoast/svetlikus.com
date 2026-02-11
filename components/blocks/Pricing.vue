@@ -145,7 +145,7 @@ function updateRefs() {
 											>
 												{{ item?.svetlikus_testimonials_id?.translations?.[0].position }}
 											</p>
-											<div class="flex gap-2">
+											<div class="flex gap-1">
 												<UIcon
 													v-for="star, index in item?.svetlikus_testimonials_id?.rating"
 													:key="index"
