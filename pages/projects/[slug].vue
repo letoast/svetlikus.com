@@ -255,7 +255,7 @@ useSeoMeta({
 											>
 												{{ item?.translations?.[0].position }}
 											</p>
-											<div class="flex gap-2">
+											<div class="flex gap-1">
 												<UIcon
 													v-for="star, index in item?.rating"
 													:key="index"
